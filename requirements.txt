@@ -1,0 +1,11 @@
+numpy
+pandas
+gunicorn
+django
+djangorestframework
+django-environ
+whitenoise
+psycopg2-binary
+django-cors-headers
+django-filter
+rq

@@ -4,6 +4,7 @@ gunicorn
 django
 djangorestframework
 django-environ
+django-tailwind
 whitenoise
 psycopg2-binary
 django-cors-headers

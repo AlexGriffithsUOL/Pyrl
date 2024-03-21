@@ -7,7 +7,7 @@ class index(View):
         self.page_title = "Index"
         self.page_description = "Index page"
         self.page_keywords = "index"
-        self.template = "base/index.html"
+        self.template = "base/home/index.html"
         super().__init__()
 
 

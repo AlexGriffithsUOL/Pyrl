@@ -28,6 +28,11 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+NAME = "Zolv"
+SITE_TITLE = "Zolv"
+
+DOMAIN = f'https://www.{SITE_TITLE}.com'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -52,6 +57,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'tailwind',
     "theme",
+    'core',
+    'base',
 ]
 
 MIDDLEWARE = [

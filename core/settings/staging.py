@@ -2,6 +2,8 @@ from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR, DEBUG, ALLOWED_HOSTS, ST
 
 import os
 
+ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(', ')
+
 INSTALLED_APPS.append('whitenoise.runserver_nostatic')
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 

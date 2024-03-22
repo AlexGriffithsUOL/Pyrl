@@ -11,8 +11,11 @@ print('env-2', ENV)
 IS_HEROKU = 'IS_DYNO' in os.environ
 
 if IS_HEROKU and ENV == ENV_STAGING:
+    print('Importing staging')
     from .staging import *
 elif IS_HEROKU and ENV == ENV_PROD:
+    print('Importing prod')
     from .prod import *
 else:
+    print('Importing dev')
     from .dev import *

@@ -10,12 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
+
 # Define constants for settings
 
 ENV_STAGING = "STAGING"
 ENV_PROD = "PROD"
 ENV_DEV = "DEV"
 
+ENV = os.environ["ENV"]
 
 from pathlib import Path
 

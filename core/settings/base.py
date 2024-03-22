@@ -29,8 +29,8 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-NAME = "Zolv"
-SITE_TITLE = "Zolv"
+NAME = "Pyrl"
+SITE_TITLE = "Pyrl"
 
 DOMAIN = f'https://www.{SITE_TITLE}.com'
 

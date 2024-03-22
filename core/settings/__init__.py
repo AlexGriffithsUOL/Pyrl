@@ -2,6 +2,8 @@ from .base import *
 from dotenv import load_dotenv
 import os
 
+print(os.environ)
+
 if ('ENV' in os.environ) == False:
     load_dotenv()
 

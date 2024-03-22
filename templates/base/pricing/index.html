@@ -1,23 +1,14 @@
-{% extends "base/home/base.html" %}
+{% extends "base/pricing/base.html" %}
 {% load static %}
 {% block title %}{{page_title}}{% endblock %}
 {% block content %}
 
 <div class="w-full h-screen bg-red-500">
-    <div class="m-auto h-2/3">
-        <img class="object-cover h-full w-full" src={% static "img/20230623_014051.jpg" %} alt="Home" />
-    </div>
     <div class="m-auto h-full p-4 bg-gray-100">
-        <h1 class="border-b border-gray-200 text-center text-2xl font-bold">Welcome to Zolv</h1>
+        <h1 class="border-b border-gray-200 text-center text-2xl font-bold">Pricing</h1>
         <p class="text-center">
             Zolv is a web application for managing your Zoho Invoices.
         <p class="pl-24 pr-24">Hello World</p>
     </div>
-</div>
-<div class="w-full h-screen bg-sky-500">
-</div>
-<div class="w-full h-screen bg-green-500">
-</div>
-<div class="w-full h-screen bg-slate-500">
 </div>
 {% endblock %}

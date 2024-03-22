@@ -10,7 +10,7 @@ if ('ENV' in os.environ) == False:
 print('env', os.environ['ENV'])
 print('env-2', ENV)
 
-IS_HEROKU = 'IS_DYNO' in os.environ
+IS_HEROKU = 'DYNO' in os.environ
 
 print('IS_HEROKU', IS_HEROKU)
 

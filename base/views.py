@@ -4,12 +4,55 @@ from django.views.generic import View
 # Create your views here.
 class index(View):
     def __init__(self, *args, **kwargs):
-        self.page_title = "Index"
-        self.page_description = "Index page"
-        self.page_keywords = "index"
+        self.page_title = "Home"
+        self.page_description = "Home page"
+        self.page_keywords = "Home"
         self.template = "base/home/index.html"
         super().__init__()
 
 
     def get(self, request):
-        return render(request, self.template, {})
+        return render(request, self.template, 
+                      { 'page_title' : self.page_title }
+                      )
+    
+class pricing(View):
+    def __init__(self, *args, **kwargs):
+        self.page_title = "Pricing"
+        self.page_description = "Pricing page"
+        self.page_keywords = "pricing"
+        self.template = "base/pricing/index.html"
+        super().__init__()
+
+
+    def get(self, request):
+        return render(request, self.template, 
+                      { 'page_title' : self.page_title }
+                      )
+
+class about(View):
+    def __init__(self, *args, **kwargs):
+        self.page_title = "About"
+        self.page_description = "About page"
+        self.page_keywords = "about"
+        self.template = "base/about/index.html"
+        super().__init__()
+
+    def get(self, request):
+        return render(request, self.template, 
+                      { 'page_title' : self.page_title }
+                      )
+    
+class contact(View):
+    def __init__(self, *args, **kwargs):
+        self.page_title = "Contact"
+        self.page_description = "Contact page"
+        self.page_keywords = "contact"
+        self.template = "base/contact/index.html"
+        super().__init__()
+
+
+    def get(self, request):
+        return render(request, self.template, 
+                      { 'page_title' : self.page_title }
+                      )

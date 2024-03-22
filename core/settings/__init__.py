@@ -19,3 +19,5 @@ elif IS_HEROKU and ENV == ENV_PROD:
 else:
     print('Importing dev')
     from .dev import *
+
+print(INSTALLED_APPS)

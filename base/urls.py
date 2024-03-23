@@ -4,6 +4,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
+
+app_name = 'base'
+
 urlpatterns = [
     path("", view=views.index.as_view(), name="index"),
     path("pricing", view=views.pricing.as_view(), name="pricing"),

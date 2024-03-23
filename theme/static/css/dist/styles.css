@@ -1937,6 +1937,10 @@ select {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.focus\:opacity-100:focus {
+  opacity: 1;
+}
+
 .focus\:shadow-inner:focus {
   --tw-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: inset 0 2px 4px 0 var(--tw-shadow-color);

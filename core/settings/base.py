@@ -20,21 +20,17 @@ ENV_DEV = "DEV"
 
 ENV = os.environ["ENV"]
 
-print('ENV', ENV)
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-print('base dir', BASE_DIR)
-
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-NAME = "Zolv"
-SITE_TITLE = "Zolv"
+NAME = "Pyrl"
+SITE_TITLE = "Pyrl"
 
 DOMAIN = f'https://www.{SITE_TITLE}.com'
 
@@ -150,8 +146,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATIC_ROOT = BASE_DIR / "static"
-
-print('base dir', BASE_DIR)
 
 TEMPLATES = [
     {

@@ -1,20 +1,39 @@
 {% extends "base/home/base.html" %}
 {% load static %}
+{% load custom_tags%}
 {% block title %}{{page_title}}{% endblock %}
 {% block content %}
-
 <div class="w-full h-screen">
-    <div class="m-auto h-2/3">
-        <img class="object-cover h-full w-full" src={% static "img/20230623_014051.jpg" %} alt="Home" />
+    <div class="m-auto h-2/3 relative">
+        <img class="object-cover h-full w-full" src={% static "img/typing.gif" %} alt="Home" />
+        <div class="absolute flex justify-center items-center z-10 inset-0 z-10 max-h-1/3 p-4 text-center bg-gray-500 ease-in-out duration-700 hover:opacity-100 opacity-0">
+            <div class="inset-0 justify-center items-center z-10 align-content-center">
+                <div class="flex justify-center p-4">
+                    {{'white'|get_pyrl_logo}}
+                </div>
+                <p class="pb-2 text-lg text-white">For you, your clients, and your business needs.</p>
+                <p class="pb-2 text-lg text-white">Client management, open communication, securely, in one place.</p>
+                <div class="items-center justify-center flex">
+                    <a href="/pricing" class="text-lg bg-gray-100 shadow-inner focus:text-black focus:bg-gray-300 focus:shadow-inner hover:shadow-2xl p-2 ease-in-out duration-300 hover:bg-gray-700 hover:text-white">Get Started</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="m-auto h-full p-4 bg-gray-100">
-        <h1 class="border-b border-gray-200 text-center text-2xl font-bold">Welcome to Zolv</h1>
-        <p class="text-center">
-            Zolv is a web application for managing your Zoho Invoices.
-        <p class="pl-24 pr-24">Hello World</p>
+    <div class="m-auto min-h-full max-h-fit p-4 bg-gray-100">
+        <h1 class="border-b border-gray-200 text-center text-2xl font-bold">Welcome to {{'NAME'|get_setting}}</h1>
+        <p class="text-center">{{'NAME'|get_setting}} combines the power of all mainstream communciation networks, with the flexibility of a self-hosted solution.</p>
+        <p class="text-center">Client record management takes valuable time away from your customer success personnel, let us handle it.</p>
+        <p class="text-center">Freeing up your time to focus on what matters most,</p>
+        <p class="sm:hidden text-center pb-4">All your needs, all your clients, all your network, secure and readily available.</p>
+        <p class="sm:hidden text-center pb-4">Let {{'NAME'|get_setting}} handle it for you.</p>
+        <div class="items-center justify-center flex">
+            <a href="/pricing" class="text-lg bg-gray-100 shadow-inner focus:text-black focus:bg-gray-300 focus:shadow-inner hover:shadow-2xl p-2 ease-in-out duration-300 hover:bg-gray-700 hover:text-white">Get Started</a>
+        </div>
+
     </div>
 </div>
 <div class="w-full h-screen bg-sky-500">
+    <img class="object-cover h-full w-full" src={% static "img/test.jpg" %} alt="Home" />
 </div>
 <div class="w-full h-screen bg-green-500">
 </div>

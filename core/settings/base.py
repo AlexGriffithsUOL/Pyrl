@@ -41,12 +41,7 @@ DOMAIN = f'https://www.{SITE_TITLE}.com'
 SECRET_KEY = "django-insecure-^glq(et8ig!4jj^s!f$^)_7y(-@%2jzb3l*9+7wm5hsc$6-6!8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if 'DEBUG' in os.environ:
-    DEBUG = os.environ["DEBUG"]
-else:
-    DEBUG = False
-
-print(DEBUG)
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 

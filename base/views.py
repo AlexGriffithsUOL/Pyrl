@@ -2,6 +2,19 @@ from django.shortcuts import render
 from django.views.generic import View
 
 # Create your views here.
+class PyrlBaseView(View):
+    def __init__(self, *args, **kwargs):
+        self.page_title = kwargs.pop('page_title')
+        self.page_description = kwargs.pop('page_description')
+        self.page_keywords = kwargs.pop('page_keywords')
+        self.template = kwargs.pop('template')
+        super().__init__()
+
+    def get(self, request):
+        return render(request, self.template, 
+                      { 'page_title' : self.page_title }
+                      )
+
 class index(View):
     def __init__(self, *args, **kwargs):
         self.page_title = "Home"

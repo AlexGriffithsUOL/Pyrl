@@ -18,5 +18,15 @@ def get_pyrl_logo(customisation, SafeString=SafeString):
     '</svg>')
     return (SafeString(svg))
 
+def active_navbar(TF, SafeString=SafeString):
+    print(TF)
+    string_active = "block py-2 px-3 text-gray-500 bg-gray-700 rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white md:dark:text-gray-500"
+    string_inactive = "block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+    if TF:
+        return SafeString(string_active)
+    else:
+        return SafeString(string_inactive)
+
 register.filter('get_setting', get_setting)
 register.filter('get_pyrl_logo', get_pyrl_logo)
+register.filter('active_navbar', active_navbar)

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
+from .forms import SignUpForm
 
 # Create your views here.
 class PyrlBaseView(View):
@@ -68,4 +69,19 @@ class contact(View):
     def get(self, request):
         return render(request, self.template, 
                       { 'page_title' : self.page_title }
+                      )
+    
+class form(View):
+    def __init__(self, *args, **kwargs):
+        self.page_title = "Form"
+        self.page_description = "Form page"
+        self.page_keywords = "form"
+        self.template = "base/form/index.html"
+        super().__init__()
+
+
+    def get(self, request):
+        return render(request, self.template, 
+                      { 'page_title' : self.page_title,
+                        'form': SignUpForm() }
                       )

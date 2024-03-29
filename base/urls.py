@@ -8,10 +8,11 @@ from . import views
 app_name = 'base'
 
 urlpatterns = [
-    path("home", view=views.index.as_view(), name="index"),
+    path("", view=views.index.as_view(), name="index"),
     path("pricing", view=views.pricing.as_view(), name="pricing"),
     path("about", view=views.about.as_view(), name="about"),
     path("contact", view=views.contact.as_view(), name="contact"),
+    path("form", view=views.form.as_view(), name="form"),
 ]
 
 if settings.DEBUG:

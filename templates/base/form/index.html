@@ -10,6 +10,14 @@
             {{'NAME'|get_setting}} is a web application for managing your clients, staff and business relationships.
         </h2>
         <p class="pl-24 pr-24">Hello World</p>
+        <form action="/your-name/" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div>{{field.label}}</div><div class="text-black"><p>{{field}}</p></div><div class="text-black"></div>             
+            {% endfor %}
+            <input type="submit" value="Submit">
+        </form>
+        <p>end forM</p>
     </div>
 </div>
 {% endblock %}

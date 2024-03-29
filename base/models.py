@@ -1,46 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 # Create your models here.
-class pyrl_company_domain(models.Model):
+
+class pyrl_company(models.Model):
+    id = models.BigAutoField(primary_key=True)
     company_name = models.CharField(max_length=100)
-    company_description = models.CharField(max_length=100)
     company_address = models.CharField(max_length=100)
-    company_phone = models.CharField(max_length=100)
-    company_email = models.CharField(max_length=100)
+    company_description = models.TextField()
+    company_phone = models.IntegerField()
+    company_email_base = models.CharField(max_length=100)
     company_website = models.CharField(max_length=100)
-    company_logo = models.CharField(max_length=100)
+    company_logo = models.ImageField(upload_to='company_logos')
+    package_scheme = models.CharField(max_length=1)
 
     def __str__(self):
         return f'{self.company_name}'
 
 
-class pyrl_user(AbstractBaseUser):
+
+class pyrl_users(AbstractBaseUser):
+    id = models.BigAutoField(primary_key=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    email = models.EmailField()
-    phone_number = models.CharField(max_length=10)
-    company = models.ForeignKey(pyrl_company_domain, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
-
-
-# class Reporter(models.Model):
-#     first_name = models.CharField(max_length=30)
-#     last_name = models.CharField(max_length=30)
-#     email = models.EmailField()
-
-#     def __str__(self):
-#         return f"{self.first_name} {self.last_name}"
-
-
-# class Article(models.Model):
-#     headline = models.CharField(max_length=100)
-#     pub_date = models.DateField()
-#     reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return self.headline
-
-#     class Meta:
-#         ordering = ["headline"]
+    password = models.CharField(max_length=200, verbose_name="password")

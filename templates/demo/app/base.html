@@ -1,0 +1,28 @@
+{% load static tailwind_tags %}
+{% load static %}
+{% load custom_tags %}
+{% load alert_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% tailwind_css  %}
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link type="css" rel="stylesheet" href="/static/css/dist/styles.css"/>
+    <link href={% static 'css/dist/styles.css' %}/>
+    <title>{% block title %}{% endblock %} | {{ 'NAME'|get_setting }}</title>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+  <div class="bg-gray-100 dark:bg-gray-900">
+    <!-- Navbar -->
+    {% include 'fragments/main_app/navbar.html' %}
+    <!-- Sidebar -->
+    {% include 'fragments/main_app/sidebar.html' %}
+
+    <main class="p-4 md:ml-64 h-auto pt-20">
+      {% block main_app_content %}{% endblock %}
+    </main>
+  </div>
+</body>

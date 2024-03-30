@@ -1,27 +1,17 @@
-{% extends "base/pricing/base.html" %}
+{% extends "base/home/base.html" %}
 {% load static %}
 {% block title %}{{page_title}}{% endblock %}
 {% block content %}
-<div class="w-full h-screen bg-gray-100 dark:bg-gray-900">
-    <div class="w-full flex flex-wrap items-center justify-between mx-4 p-4 h-[10%]">
-        <a href={% url 'index' %} class="flex items-center space-x-3 rtl:space-x-reverse">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-gray-400 ease-in-out duration-700 hover:text-gray-700">Zolv...</span>
-        </a>
-    </div>
-      
-    {% comment %} <div class="w-full h-[10%] bg-gray-100 flex">
-            <a href="#" class="bg-gray-300">- Go back"</a>
-    </div> {% endcomment %}
-
-    <div class="m-auto h-[90%] p-12 pt-0 grid grid-cols-3 grid-rows-1 gap-12">
-        <div class="col-span-1 bg-sky-200 rounded-2xl shadow-xl p-2">
-            <h1 class="text-xl md:text-3xl text-center border-b border-sky-300 pb-2 font-bold">Standard</h1>
+<div class="w-full h-screen bg-gray-100 dark:bg-gray-800">
+    <div class="m-auto h-[90%] p-12 pb-0 grid  md:xl:grid-cols-3 md:xl:grid-rows-1 sm:grid-cols-1 sm:grid-rows-3 gap-12">
+        <div class="col-span-1 bg-white dark:bg-gray-700 rounded-2xl shadow-xl p-2">
+            <h1 class="text-xl md:text-3xl text-center border-b border-gray-300 dark:border-gray-500 pb-2 font-bold">Standard</h1>
         </div>
-        <div class="col-span-1 bg-sky-200 rounded-2xl shadow-xl p-2">
-            <h1 class="text-xl md:text-3xl text-center border-b border-sky-300 pb-2 font-bold">Executive</h1>
+        <div class="col-span-1 bg-white dark:bg-gray-700 rounded-2xl shadow-xl p-2">
+            <h1 class="text-xl md:text-3xl text-center border-b border-gray-300 pb-2 dark:border-gray-500 font-bold">Executive</h1>
         </div>
-        <div class="col-span-1 bg-sky-200 rounded-2xl shadow-xl p-2">
-            <h1 class="text-xl md:text-3xl text-center border-b border-sky-300 pb-2 font-bold">Enterprise</h1>
+        <div class="col-span-1 bg-white dark:bg-gray-700 rounded-2xl shadow-xl p-2">
+            <h1 class="text-xl md:text-3xl text-center border-b border-gray-300 pb-2 dark:border-gray-500 font-bold">Enterprise</h1>
         </div>
     </div>
 </div>

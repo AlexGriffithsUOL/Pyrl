@@ -7,7 +7,7 @@ class pyrl_company(models.Model):
     company_name = models.CharField(max_length=100)
     company_address = models.CharField(max_length=100)
     company_description = models.TextField()
-    company_phone = models.IntegerField()
+    company_phone = models.CharField(max_length=9)
     company_email_base = models.CharField(max_length=100)
     company_website = models.CharField(max_length=100)
     company_logo = models.ImageField(upload_to='company_logos')
@@ -23,3 +23,4 @@ class pyrl_users(AbstractBaseUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     password = models.CharField(max_length=200, verbose_name="password")
+    company_id = models.ForeignKey(pyrl_company, on_delete=models.CASCADE)

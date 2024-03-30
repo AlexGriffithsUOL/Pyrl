@@ -5,14 +5,10 @@ from django.conf.urls.static import static
 
 from . import views
 
-app_name = 'base'
+app_name = 'accounts'
 
 urlpatterns = [
-    path("", view=views.index.as_view(), name="index"),
-    path("pricing/", view=views.pricing.as_view(), name="pricing"),
-    path("about/", view=views.about.as_view(), name="about"),
-    path("contact/", view=views.contact.as_view(), name="contact"),
-    path("form/", view=views.form.as_view(), name="form"),
+    path("login/", view=views.login.as_view(), name="login"),
 ]
 
 if settings.DEBUG:

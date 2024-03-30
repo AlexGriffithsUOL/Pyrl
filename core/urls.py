@@ -22,7 +22,8 @@ from .settings import ENV, ENV_DEV
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("base.urls")),
+    path("home/", include("base.urls")),
+    path("accounts/", include("accounts.urls")),
 ] 
 
 if ENV == ENV_DEV:

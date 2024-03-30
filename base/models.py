@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
+from django.forms import TextInput
 # Create your models here.
 
 class pyrl_company(models.Model):
@@ -23,4 +24,4 @@ class pyrl_users(AbstractBaseUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     password = models.CharField(max_length=200, verbose_name="password")
-    company_id = models.ForeignKey(pyrl_company, on_delete=models.CASCADE)
+    # company_id = models.ForeignKey(pyrl_company, on_delete=models.CASCADE)

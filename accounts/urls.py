@@ -10,6 +10,7 @@ app_name = 'accounts'
 urlpatterns = [
     path("login/", view=views.login.as_view(), name="login"),
     path("register/", view=views.register.as_view(), name="register"),
+    path("create", view=views.create, name="create"),
 ]
 
 if settings.DEBUG:

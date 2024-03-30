@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'accounts',
     'main_app',
     'demo',
+    'jquery',
 ]
 
 MIDDLEWARE = [

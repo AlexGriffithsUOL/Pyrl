@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View
+from base.models import pyrl_users
+from django.http import HttpResponse
 
 # Create your views here.
 class login(View):
@@ -27,3 +29,16 @@ class register(View):
         return render(request, self.template, 
                       { 'page_title' : self.page_title }
                       )
+    
+def create(request):
+    print(dir(request))
+    print(request.POST)
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        password = request.POST['password']
+
+        new_user = pyrl_users(first_name=first_name, last_name=last_name, password=password)
+        new_user.save()
+        success = "Profile created successfully using ajax"
+        return HttpResponse(success)

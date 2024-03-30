@@ -32,7 +32,7 @@
                 first_name: $('#id_first_name').val(),
                 last_name: $('#id_last_name').val(),
                 password: $('#id_password').val(),
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                csrftoken: $('input[name=csrftoken]').val()
             },
             success: function (data) {
                 $('h3').html(data);

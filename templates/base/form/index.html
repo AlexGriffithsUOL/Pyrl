@@ -29,6 +29,8 @@ is_secure: {{ request.is_secure }}
         $.ajax({
             type: 'POST',
             url: "{% url 'accounts:create' %}",
+            headers: {'X-CSRFToken': csrftoken},
+            mode: 'same-origin', // Do not send CSRF token to another domain.
             data: {
                 first_name: $('#id_first_name').val(),
                 last_name: $('#id_last_name').val(),

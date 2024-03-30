@@ -1,5 +1,5 @@
 from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR, DEBUG, ALLOWED_HOSTS, STATIC_ROOT
-
+import environ
 import os
 
 ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(', ')
@@ -20,3 +20,5 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Whitenoise
 # https://whitenoise.evans.io/en/stable/django.html
+
+DATABASES = environ.Env.db()

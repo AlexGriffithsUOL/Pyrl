@@ -21,4 +21,6 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Whitenoise
 # https://whitenoise.evans.io/en/stable/django.html
 
-DATABASES = environ.Env.db_url()
+DATABASES = {
+    'default': environ.Env().db(),
+}

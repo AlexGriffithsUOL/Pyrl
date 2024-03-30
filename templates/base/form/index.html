@@ -13,6 +13,7 @@ is_secure: {{ request.is_secure }}
         <p class="pl-24 pr-24">Hello World</p>
         <h3>profile created</h3>
         <form id="post-form">
+            {% csrf_token %}
             {% for field in form %}
             <div>{{field.label}}</div><div class="text-black">{{field}}</div>
             {% endfor %}

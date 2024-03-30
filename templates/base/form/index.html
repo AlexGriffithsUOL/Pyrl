@@ -35,7 +35,8 @@ is_secure: {{ request.is_secure }}
                 first_name: $('#id_first_name').val(),
                 last_name: $('#id_last_name').val(),
                 password: $('#id_password').val(),
-                csrftoken: $('input[name=csrfmiddlewaretoken]').val()
+                csrftoken: $('input[name=csrfmiddlewaretoken]').val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
             },
             success: function (data) {
                 $('h3').html(data);

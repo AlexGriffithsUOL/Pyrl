@@ -1,42 +1,53 @@
 {% extends "base/home/base.html" %}
 {% load static %}
 {% load custom_tags%}
+{% block test %}<p>WWWWOWOWOOWO</p>{% endblock %}
 {% block title %}{{page_title}}{% endblock %}
+{% block nav_home_active %}{{ True |active_navbar }}{% endblock %}
+{% block nav_about_active %}{{ True |active_navbar }}{% endblock %}
+{% block nav_pricing_active %}{{ True |active_navbar }}{% endblock %}
+{% block nav_contact_active %}{{ True |active_navbar }}{% endblock %}
 {% block content %}
-<div class="w-full h-screen">
-    <div class="m-auto h-2/3 relative">
-        <img class="object-cover h-full w-full" src={% static "img/typing.gif" %} alt="Home" />
-        <div class="absolute flex justify-center items-center z-10 inset-0 z-10 max-h-1/3 p-4 text-center bg-gray-500 ease-in-out duration-700 hover:opacity-100 opacity-0">
-            <div class="inset-0 justify-center items-center z-10 align-content-center">
-                <div class="flex justify-center p-4">
-                    {{'white'|get_pyrl_logo}}
-                </div>
-                <p class="pb-2 text-lg text-white">For you, your clients, and your business needs.</p>
-                <p class="pb-2 text-lg text-white">Client management, open communication, securely, in one place.</p>
-                <div class="items-center justify-center flex">
-                    <a href="/pricing" class="text-lg bg-gray-100 shadow-inner focus:text-black focus:bg-gray-300 focus:shadow-inner hover:shadow-2xl p-2 ease-in-out duration-300 hover:bg-gray-700 hover:text-white">Get Started</a>
+<div class="dark:bg-gray-800 bg-gray-100">
+    <div class="w-full">
+        <div class="m-auto h-[400px] relative">
+            <img class="object-cover h-full w-full" src={% static "img/typing.gif" %} alt="Home" />
+            <div class="absolute flex justify-center items-center z-10 inset-0 z-10 max-h-1/3 p-4 text-center bg-gray-300 dark:bg-gray-700 ease-in-out duration-700 hover:opacity-100 opacity-0 focus:opacity-100">
+                <div class="inset-0 justify-center items-center z-10 align-content-center text-lg">
+                    <div class="flex justify-center p-4">
+                        {{'text-black dark:text-white'|get_pyrl_logo}}
+                    </div>
+                    <p class="pb-2">For you, your clients, and your business needs.</p>
+                    <p class="pb-2">Client management, open communication, securely, in one place.</p>
+                    <div class="items-center justify-center flex">
+                        <a href={% url "base:pricing" %} class="text-lg bg-gray-100 dark:bg-gray-900 dark:hover:text-black dark:hover:bg-gray-100 focus:shadow-inner hover:shadow-2xl p-2 ease-in-out duration-300 hover:bg-gray-700 hover:text-white">Get Started</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="m-auto min-h-full max-h-fit p-4 bg-gray-100">
-        <h1 class="border-b border-gray-200 text-center text-2xl font-bold">Welcome to {{'NAME'|get_setting}}</h1>
+    <div class="m-auto min-h-full max-h-fit p-4 mb-4">
+        <h1 class="border-b border-gray-200 dark:border-gray-700 text-center text-2xl font-bold pb-2">Welcome to {{'NAME'|get_setting}}</h1>
         <p class="text-center">{{'NAME'|get_setting}} combines the power of all mainstream communciation networks, with the flexibility of a self-hosted solution.</p>
         <p class="text-center">Client record management takes valuable time away from your customer success personnel, let us handle it.</p>
         <p class="text-center">Freeing up your time to focus on what matters most,</p>
-        <p class="sm:hidden text-center pb-4">All your needs, all your clients, all your network, secure and readily available.</p>
-        <p class="sm:hidden text-center pb-4">Let {{'NAME'|get_setting}} handle it for you.</p>
-        <div class="items-center justify-center flex">
-            <a href="/pricing" class="text-lg bg-gray-100 shadow-inner focus:text-black focus:bg-gray-300 focus:shadow-inner hover:shadow-2xl p-2 ease-in-out duration-300 hover:bg-gray-700 hover:text-white">Get Started</a>
-        </div>
-
+        <p class="text-center">All your needs, all your clients, all your network, secure and readily available.</p>
+        <p class="text-center pb-2">Let {{'NAME'|get_setting}} handle it for you.</p>
     </div>
-</div>
-<div class="w-full h-screen bg-sky-500">
-    <img class="object-cover h-full w-full" src={% static "img/test.jpg" %} alt="Home" />
-</div>
-<div class="w-full h-screen bg-green-500">
-</div>
-<div class="w-full h-screen bg-slate-500">
+    <h1 class="text-4xl text-center md:xl:text-5xl font-bold pb-4">Our core tenets</h1>
+    <div class="m-auto h-[90%] p-12 pt-0 flex grid md:xl:grid-cols-3 md:xl:grid-rows-1 gap-6 sm:grid-cols-1 sm:grid-rows-3">
+        <div class="col-span-1 p-2">
+            <h1 class="text-xl md:text-3xl text-center border-b border-gray-500 pb-2 font-bold">Reliability</h1>
+            <p>Here at {{'NAME'|get_setting}}, our mission is to provide the support to you and your team, to meet client expectations everytime. Utilising cloud-based distributed architecture, we are able to provide you with the best service at the lowest cost. Our team strives to maintain a high level of service quality, producing reliable and efficient solutions with minimal downtime.</p>
+        </div>
+        <div class="col-span-1 p-2">
+            <h1 class="text-xl md:text-3xl text-center border-b border-gray-500 pb-2 font-bold">Accountability</h1>
+            <p>Open and honest development is at the core of our design philosphy. Committed to providing a platform with full accountability, so you know exactly where and when your data is in use. Our service is built with this in mind, providing communication channels that are as transparent as you need, to meet the dynamic challenges of any individual team that may need our Client Management System.</p>
+        </div>
+        <div class="col-span-1 p-2">
+            <h1 class="text-xl md:text-3xl text-center border-b border-gray-500 pb-2 font-bold">Flexibility</h1>
+            <p>Only a few team members? Working as highly independent agents? Cooperating in a large-scale team? Our system provides you the platform to manage your clients in a diverse and customisable setup. The changing landscape of modern business requires a flexible and adaptable system, minimal downtime, maximum flexibility, open and honest accountability - all the time.</p>
+        </div>
+    </div>
 </div>
 {% endblock %}

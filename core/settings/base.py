@@ -41,7 +41,7 @@ DOMAIN = f'https://www.{SITE_TITLE}.com'
 SECRET_KEY = "django-insecure-^glq(et8ig!4jj^s!f$^)_7y(-@%2jzb3l*9+7wm5hsc$6-6!8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -60,6 +60,9 @@ INSTALLED_APPS = [
     "theme",
     'core',
     'base',
+    'accounts',
+    'main_app',
+    'demo',
 ]
 
 MIDDLEWARE = [
@@ -94,13 +97,17 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databasess
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'localpyrl',
+       'USER': 'postgres',
+       'PASSWORD': 'WhosThat9!',
+       'HOST': '127.0.0.1',
+       'PORT': '6666',
+   }
 }
 
 

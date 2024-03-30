@@ -2,10 +2,8 @@ from django.shortcuts import render
 from django.views.generic import View
 from base.models import pyrl_users
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
-@csrf_protect
 class login(View):
     def __init__(self, *args, **kwargs):
         self.page_title = "login"
@@ -32,7 +30,6 @@ class register(View):
                       { 'page_title' : self.page_title }
                       )
     
-@csrf_protect
 def create(request):
     print(dir(request))
     print(request.POST)

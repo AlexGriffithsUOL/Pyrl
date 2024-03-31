@@ -779,6 +779,10 @@ select {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .inset-0 {
   inset: 0px;
 }
@@ -815,6 +819,54 @@ select {
 
 .top-1\/2 {
   top: 50%;
+}
+
+.left-6 {
+  left: 1.5rem;
+}
+
+.left-1 {
+  left: 0.25rem;
+}
+
+.top-1 {
+  top: 0.25rem;
+}
+
+.right-1 {
+  right: 0.25rem;
+}
+
+.right-3 {
+  right: 0.75rem;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.right-5 {
+  right: 1.25rem;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
+.top-6 {
+  top: 1.5rem;
+}
+
+.right-12 {
+  right: 3rem;
+}
+
+.right-6 {
+  right: 1.5rem;
 }
 
 .z-0 {
@@ -2315,6 +2367,10 @@ select {
 }
 
 @media (min-width: 640px) {
+  .sm\:right-12 {
+    right: 3rem;
+  }
+
   .sm\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
@@ -2527,6 +2583,14 @@ select {
 
 @media (min-width: 768px) {
   @media (min-width: 1280px) {
+    .md\:xl\:top-6 {
+      top: 1.5rem;
+    }
+
+    .md\:xl\:right-6 {
+      right: 1.5rem;
+    }
+
     .md\:xl\:text-5xl {
       font-size: 3rem;
       line-height: 1;

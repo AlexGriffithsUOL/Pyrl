@@ -1,8 +1,8 @@
-function display_by_id(id) {
+function display_by_id(id, string) {
     var x = document.getElementById(id);
-    if (x.style.display === "block") {
-        x.style.display = "none";
+    if (x.classList.contains(string)) {
+        x.classList.remove(string);
     } else {
-        x.style.display = "block";
+        x.classList.add(string);
     }
 }

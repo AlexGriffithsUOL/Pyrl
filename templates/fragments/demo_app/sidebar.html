@@ -59,6 +59,7 @@
               class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-pages"
               data-collapse-toggle="dropdown-pages"
+              onClick="display_by_id('dropdown-pages')"
             >
               <svg
                 aria-hidden="true"
@@ -120,6 +121,7 @@
               class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-sales"
               data-collapse-toggle="dropdown-sales"
+              onClick="display_by_id('dropdown-sales')"
             >
               <svg
                 aria-hidden="true"
@@ -208,6 +210,7 @@
               class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-authentication"
               data-collapse-toggle="dropdown-authentication"
+              onClick="display_by_id('dropdown-authentication')"
             >
               <svg
                 aria-hidden="true"
@@ -381,6 +384,7 @@
           type="button"
           data-dropdown-toggle="language-dropdown"
           class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:hover:text-white dark:text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+          onClick="display_by_id('language-dropdown')"
         >
           <svg
             aria-hidden="true"
@@ -578,3 +582,5 @@
         </div>
       </div>
     </aside>
+
+    <script src={%static 'js/display_by_id.js'%}></script>

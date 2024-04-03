@@ -1899,6 +1899,14 @@ select {
   padding-left: 2.25rem;
 }
 
+.pt-24 {
+  padding-top: 6rem;
+}
+
+.pt-12 {
+  padding-top: 3rem;
+}
+
 .text-left {
   text-align: left;
 }

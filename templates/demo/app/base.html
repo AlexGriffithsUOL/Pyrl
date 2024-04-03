@@ -22,8 +22,9 @@
     {% include 'fragments/demo_app/sidebar.html' %}
     <!-- Full -->
     {% comment %} {% include 'fragments/demo_app/navbar_sidebar.html' %} {% endcomment %}
+    is_secure: {{ request.is_secure }}
 
-    <main class="p-4 md:ml-64 h-auto pt-10">
+    <main class="p-4 md:ml-64 h-auto pt-12">
       {% block main_app_content %}{% endblock %}
     </main>
   </div>

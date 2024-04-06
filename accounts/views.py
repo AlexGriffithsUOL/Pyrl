@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
-from base.models import pyrl_users
+from base.models import pyrl_user
 from django.http import HttpResponse
 
 # Create your views here.
@@ -38,7 +38,7 @@ def create(request):
         last_name = request.POST['last_name']
         password = request.POST['password']
 
-        new_user = pyrl_users(first_name=first_name, last_name=last_name, password=password)
+        new_user = pyrl_user(first_name=first_name, last_name=last_name, password=password)
         new_user.save()
         success = "Profile created successfully using ajax"
         return HttpResponse(success)

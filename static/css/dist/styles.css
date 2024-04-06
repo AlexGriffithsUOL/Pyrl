@@ -844,14 +844,6 @@ select {
   grid-row-start: 2;
 }
 
-.row-start-1 {
-  grid-row-start: 1;
-}
-
-.row-end-2 {
-  grid-row-end: 2;
-}
-
 .m-5 {
   margin: 1.25rem;
 }
@@ -2402,12 +2394,6 @@ select {
 
     .md\:xl\:grid-cols-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    @media (min-width: 1536px) {
-      .md\:xl\:2xl\:row-start-2 {
-        grid-row-start: 2;
-      }
     }
   }
 }

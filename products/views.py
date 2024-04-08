@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from .models import pyrl_product
 import math
+from django.http import HttpResponse
 
 class view_products(View):
     def __init__(self, *args, **kwargs):
@@ -22,6 +23,13 @@ class view_products(View):
                 'products': self.products,
             }
         )
+
+def test(request):
+    print(dir(request))
+    print(request.POST)
+    if request.method == 'GET':
+        fragment = "fragments/products/test_modal.html"
+        return render(request, fragment, {})
 
 # def create(request):
 #     print(dir(request))

@@ -30,6 +30,9 @@
         <li>
           <a href={% url 'demo:demoindex' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Demo</a>
         </li>
+        <li>
+          <a href="" class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">AJAX</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -73,9 +76,6 @@
     navbar_items = document.getElementsByClassName("test");
 
     for (var a=[], i=navbar_items.length; i;) a[--i] = navbar_items[i];
-    
-    console.log(navbar_items);
-    console.log(a);
 
     a.forEach(function(elm) {
       if (elm.classList.contains("active")) {

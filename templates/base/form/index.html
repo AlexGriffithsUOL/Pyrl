@@ -3,6 +3,7 @@
 {% load custom_tags %}
 {% block title %}{{page_title}}{% endblock %}
 {% block content %}
+{% csrf_token%}
 <div class="w-full h-screen">
     <div class="m-auto h-full p-4">
         <h1 class="border-b border-gray-200 pb-2 dark:border-gray-800 text-center text-5xl sm:text-4xl font-bold">Welcome to {{'NAME'|get_setting}}</h1>
@@ -10,14 +11,35 @@
             {{'NAME'|get_setting}} is a web application for managing your clients, staff and business relationships.
         </h2>
         <p class="pl-24 pr-24">Hello World</p>
-        <form action="/your-name/" method="post">
+        <h3>profile created</h3>
+        <form id="post-form">
             {% csrf_token %}
             {% for field in form %}
-            <div>{{field.label}}</div><div class="text-black"><p>{{field}}</p></div><div class="text-black"></div>             
+            <div>{{field.label}}</div><div class="text-black">{{field}}</div>
             {% endfor %}
             <input type="submit" value="Submit">
         </form>
         <p>end forM</p>
     </div>
 </div>
+<script src={% static 'js/jquery.js' %}></script>
+<script type="text/javascript">
+    $(document).on('submit', '#post-form', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'accounts:create' %}",
+            headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+            mode: 'same-origin', // Do not send CSRF token to another domain.
+            data: {
+                first_name: $('#id_first_name').val(),
+                last_name: $('#id_last_name').val(),
+                password: $('#id_password').val(),
+            },
+            success: function (data) {
+                $('h3').html(data);
+            }
+        })
+    });
+</script>
 {% endblock %}

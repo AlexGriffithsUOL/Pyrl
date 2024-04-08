@@ -1,11 +1,13 @@
 from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR, DEBUG, ALLOWED_HOSTS, STATIC_ROOT
-
+import environ
 import os
 
 ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(', ')
 
 INSTALLED_APPS.append('whitenoise.runserver_nostatic')
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
+
+DEBUG = os.environ['DEBUG']
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
@@ -18,3 +20,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Whitenoise
 # https://whitenoise.evans.io/en/stable/django.html
+
+DATABASES = {
+    'default': environ.Env().db(),
+}

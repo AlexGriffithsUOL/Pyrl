@@ -154,7 +154,7 @@ STATIC_URL = "theme/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATIC_ROOT = str(BASE_DIR) + STATIC_URL
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 TEMPLATES = [
     {

@@ -10,6 +10,7 @@ app_name = 'products'
 urlpatterns = [
     path("view/", view=views.view_products.as_view(), name="view"),
     path("test", view=views.test, name="test"),
+    path("create", view=views.create, name="create"),
     # path("create", view=views.create, name="create"),
 ]
 

@@ -25,21 +25,29 @@ class view_products(View):
         )
 
 def test(request):
-    print(dir(request))
     print(request.POST)
     if request.method == 'GET':
         fragment = "fragments/products/test_modal.html"
         return render(request, fragment, {})
+    
+def create(request):
+    product_name = request.POST.get('product_name')
+    product_brand = request.POST.get('product_brand')
+    product_description = request.POST.get('product_description')
+    product_price = request.POST.get('product_price')
+    product_category = request.POST.get('product_category')
+    print(product_name)
+    print(product_brand)
+    print(product_description)
+    print(product_price)
+    print(product_category)
 
-# def create(request):
-#     print(dir(request))
-#     print(request.POST)
-#     if request.method == 'POST':
-#         first_name = request.POST['first_name']
-#         last_name = request.POST['last_name']
-#         password = request.POST['password']
-
-#         new_user = pyrl_user(first_name=first_name, last_name=last_name, password=password)
-#         new_user.save()
-#         success = "Profile created successfully using ajax"
-#         return HttpResponse(success)
+    product = pyrl_product(
+        product_name=product_name, 
+        product_description=product_description, 
+        product_price=product_price, 
+        product_category=product_brand
+        )
+    
+    product.save()
+    return HttpResponse("Piss yourself uncs")

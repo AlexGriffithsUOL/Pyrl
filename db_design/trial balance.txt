@@ -1,0 +1,4 @@
+trial balance
+	-containing pnl
+	-balance sheet accounts
+	-they both interact - double entry bookkeeping

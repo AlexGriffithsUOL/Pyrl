@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'tailwind',
     "theme",
     'core',
+    'invoicing',
     'base',
     'accounts',
     'main_app',

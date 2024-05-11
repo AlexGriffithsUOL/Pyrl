@@ -1,0 +1,15 @@
+{% extends "main_app/base.html" %}
+{% block title %}Demo{% endblock %}
+{% load custom_tags %}
+{% load static %}
+{% block main_app_content %}
+{% for invoice in total_invoices %}
+    {{invoice.company_id}}
+    {{invoice.date_of_invoice}}
+    {{invoice.invoice_id}}
+    {{invoice.pid}}
+{% endfor %}
+{% endblock %}
+{% block scripts %}
+<script src={% static 'js/jquery.js' %}></script>
+{% endblock %}

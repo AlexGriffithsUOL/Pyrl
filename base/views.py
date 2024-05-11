@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
-from .forms import SignUpForm
+from .forms import SignUpForm, RootLoginForm
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 class PyrlBaseView(View):
@@ -71,12 +73,12 @@ class contact(View):
                       { 'page_title' : self.page_title }
                       )
     
-class form(View):
+class signup(View):
     def __init__(self, *args, **kwargs):
         self.page_title = "Form"
         self.page_description = "Form page"
         self.page_keywords = "form"
-        self.template = "base/form/index.html"
+        self.template = "base/signup/index.html"
         super().__init__()
 
 
@@ -85,3 +87,46 @@ class form(View):
                       { 'page_title' : self.page_title,
                         'form': SignUpForm() }
                       )
+    
+class login(View):
+    def __init__(self, *args, **kwargs):
+        self.page_title = "Login"
+        self.page_description = "Login page"
+        self.page_keywords = "login"
+        self.template = "base/login/secondary_index.html"
+        super().__init__()
+
+
+    def get(self, request):
+        return render(request, self.template, 
+                      { 'page_title' : self.page_title }
+                      )
+    
+class login_root(View):
+    def __init__(self, *args, **kwargs):
+        self.page_title = "Login"
+        self.page_description = "Login page"
+        self.page_keywords = "login"
+        self.template = "base/login/index.html"
+        super().__init__()
+
+    def get(self, request):
+        form = RootLoginForm()
+        return render(request, self.template, 
+                        { 
+                          'page_title' : self.page_title, 
+                          'form': form
+                        }
+                      )
+        
+    def post(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
+        User.authenticate(username=username, password=password)
+
+        if User is not None:
+            login(request, User)
+            return redirect('main_app:index')#User to the dashboard!)
+        else:
+            print(request, "invalid credentials")
+            return redirect('login')

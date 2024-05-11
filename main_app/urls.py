@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -9,6 +9,8 @@ app_name = 'main_app'
 
 urlpatterns = [
     path("", view=views.index.as_view(), name="index"),
+    path("products/", include("products.urls")),
+    path("invoice/", include("invoicing.urls")),
 ]
 
 if settings.DEBUG:

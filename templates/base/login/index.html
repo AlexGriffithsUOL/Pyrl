@@ -1,0 +1,16 @@
+{% extends 'base/home/base.html' %}
+{% block content %}
+<div class="container">
+    <form method="post">
+    {% for field in form %}
+        {{ field.label }}
+        {{ field}}
+    {% endfor %}
+    </form>
+</div>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Log In</button>
+</form>
+{% endblock %}

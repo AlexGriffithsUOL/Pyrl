@@ -20,14 +20,11 @@
     {% include 'fragments/main_app/navbar.html' %}
     <!-- Sidebar -->
     {% include 'fragments/main_app/sidebar.html' %}
+    <!-- Full -->
+    {% comment %} {% include 'fragments/demo_app/navbar_sidebar.html' %} {% endcomment %}
 
-    <main class="p-4 md:ml-64 h-auto pt-20">
+    <main class="p-4 md:ml-64 h-auto pt-12 mt-16 md:mt-6">
       {% block main_app_content %}{% endblock %}
     </main>
   </div>
 </body>
-  <span scripts>
-    {% block scripts %}
-    {% endblock %}
-  </span>
-</html>

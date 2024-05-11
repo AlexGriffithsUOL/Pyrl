@@ -19,9 +19,10 @@ class pyrl_company(models.Model):
 
 
 
-class pyrl_user(AbstractBaseUser):
-    id = models.BigAutoField(primary_key=True)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    password = models.CharField(max_length=200, verbose_name="password")
-    # company_id = models.ForeignKey(pyrl_company, on_delete=models.CASCADE)
+class pyrl_user(models.Model):
+    pid = models.BigAutoField(primary_key=True, auto_created=True)
+    first_name = models.CharField(max_length=30, verbose_name="First Name")
+    last_name = models.CharField(max_length=30, verbose_name="Last Name")
+    mfa_enabled = models.BooleanField(default=False, verbose_name="MFA Enabled")
+    mfa_type = models.CharField(max_length=2, verbose_name="MFA Type", choices=[('sm', 'sms'), ('em', 'email')])
+    mfa_code = models.IntegerField(verbose_name="MFA Code")

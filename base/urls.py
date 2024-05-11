@@ -12,7 +12,9 @@ urlpatterns = [
     path("pricing/", view=views.pricing.as_view(), name="pricing"),
     path("about/", view=views.about.as_view(), name="about"),
     path("contact/", view=views.contact.as_view(), name="contact"),
-    path("form/", view=views.form.as_view(), name="form"),
+    path("signup/", view=views.signup.as_view(), name="signup"),
+    path("login/", view=views.login.as_view(), name="login"),
+    path("login_root/", view=views.login_root.as_view(), name="login_root"),
 ]
 
 if settings.DEBUG:

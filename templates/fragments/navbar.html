@@ -25,7 +25,13 @@
           <a href={% url 'base:contact' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
         </li>
         <li>
-          <a href={% url 'demo:demoindex' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Demo</a>
+          <a href={% url 'main_app:index' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Demo</a>
+        </li>
+        <li>
+          <a href={% url 'base:login_root' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+        </li>
+        <li>
+          <a href={% url 'base:signup' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Signup</a>
         </li>
       </ul>
     </div>
@@ -45,10 +51,13 @@
         <a href={% url 'base:contact' %} {% if request.resolver_match.url_name == 'contact' %}class="test active"{% else %}class="test inactive"{% endif %}>Contact</a>
       </li>
       <li>
-        <a href={% url 'base:form' %} {% if request.resolver_match.url_name == 'form' %}class="test active"{% else %}class="test inactive"{% endif %}>Form</a>
+        <a href={% url 'main_app:index' %} {% if request.resolver_match.url_name == 'index' %}class="test active"{% else %}class="test inactive"{% endif %}>Demo</a>
       </li>
       <li>
-        <a href={% url 'demo:demoindex' %} {% if request.resolver_match.url_name == 'demoindex' %}class="test active"{% else %}class="test inactive"{% endif %}>Demo</a>
+        <a href={% url 'base:login_root' %}>Login</a>
+      </li>
+      <li>
+        <a href={% url 'base:signup' %}>Signup</a>
       </li>
     </ul>
   </div>

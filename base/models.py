@@ -16,13 +16,3 @@ class pyrl_company(models.Model):
 
     def __str__(self):
         return f'{self.company_name}'
-
-
-
-class pyrl_user(models.Model):
-    pid = models.BigAutoField(primary_key=True, auto_created=True)
-    first_name = models.CharField(max_length=30, verbose_name="First Name")
-    last_name = models.CharField(max_length=30, verbose_name="Last Name")
-    mfa_enabled = models.BooleanField(default=False, verbose_name="MFA Enabled")
-    mfa_type = models.CharField(max_length=2, verbose_name="MFA Type", choices=[('sm', 'sms'), ('em', 'email')])
-    mfa_code = models.IntegerField(verbose_name="MFA Code")

@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'tailwind',
     "theme",
     'core',
+    'user_management',
     'invoicing',
     'base',
     'accounts',
@@ -102,14 +103,27 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databasess
 
+DB_NAME = 'localpyrl'
+DB_USER = 'postgres'
+DB_PASSWORD = ''
+DB_IP = '127.0.0.1'
+DB_PORT = '6666'
+
+if 'ENV' not in os.environ or os.environ['ENV'] == 'DEV':
+    with open(os.path.join(BASE_DIR, 'db.password.txt'), 'r') as db_password_file:
+        data = db_password_file.read()
+        DB_PASSWORD = data
+else:
+    print(ENV)
+
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'localpyrl',
-       'USER': 'postgres',
-       'PASSWORD': 'WhosThat9!',
-       'HOST': '127.0.0.1',
-       'PORT': '6666',
+       'NAME': DB_NAME,
+       'USER': DB_USER,
+       'PASSWORD': DB_PASSWORD,
+       'HOST': DB_IP,
+       'PORT': DB_PORT,
    }
 }
 
@@ -131,6 +145,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+AUTH_USER_MODEL = 'user_management.PyrlUser'
 
 
 # Internationalization

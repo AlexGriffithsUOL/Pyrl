@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
-from base.models import pyrl_user
+from user_management.models import PyrlUser
 from django.http import HttpResponse
 
 # Create your views here.

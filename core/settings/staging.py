@@ -1,4 +1,4 @@
-from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR, DEBUG, ALLOWED_HOSTS, STATIC_ROOT
+from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR
 import environ
 import os
 

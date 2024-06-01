@@ -26,6 +26,8 @@ class view_products(View):
 
 def test(request):
     print(request.POST)
+    print(request.GET)
+
     if request.method == 'GET':
         fragment = "fragments/products/test_modal.html"
         return render(request, fragment, {})

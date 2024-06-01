@@ -8,7 +8,7 @@ from . import views
 app_name = 'demo'
 
 urlpatterns = [
-    path("", view=views.index.as_view(), name="demoindex"),
+    path("", view=views.index.as_view(), name="index"),
 ]
 
 if settings.DEBUG:

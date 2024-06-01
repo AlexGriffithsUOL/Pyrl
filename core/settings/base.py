@@ -18,7 +18,9 @@ ENV_STAGING = "STAGING"
 ENV_PROD = "PROD"
 ENV_DEV = "DEV"
 
-ENV = os.environ["ENV"]
+if 'ENV' not in os.environ:
+    ENV = ENV_DEV
+else: ENV = os.environ["ENV"]
 
 from pathlib import Path
 
@@ -109,12 +111,10 @@ DB_PASSWORD = ''
 DB_IP = '127.0.0.1'
 DB_PORT = '6666'
 
-if 'ENV' not in os.environ or os.environ['ENV'] == 'DEV':
+if ENV == ENV_DEV:
     with open(os.path.join(BASE_DIR, 'db.password.txt'), 'r') as db_password_file:
         data = db_password_file.read()
         DB_PASSWORD = data
-else:
-    print(ENV)
 
 DATABASES = {
    'default': {
@@ -188,3 +188,5 @@ TEMPLATES = [
         }
     },
 ]
+
+# Forms and Widgets

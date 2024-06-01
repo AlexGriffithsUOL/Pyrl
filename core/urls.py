@@ -28,6 +28,7 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("main_app/", include("main_app.urls")),
     path("demo/", include("demo.urls")),
+    path("auth/", include("user_management.urls")),
 ] 
 
 if ENV == ENV_DEV:

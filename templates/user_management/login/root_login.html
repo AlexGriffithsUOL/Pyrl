@@ -1,0 +1,41 @@
+{% extends "base/home/base.html" %}
+{% load static %}
+{% load custom_tags%}
+{% block title %}{{page_title}}{% endblock %}
+{% block content %}
+<div class="relative bg-gray-100 dark:bg-gray-800 flex min-h-screen flex-col justify-center overflow-hidden pt-6 sm:pt-12">
+    <div class="relative bg-white px-6 pt-10 pb-8 shadow-2xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg dark:bg-gray-700 sm:px-10 mb-12">
+      <div class="mx-auto max-w-md">
+          <h1 class="text-5xl font-bold border-b text-center pb-6">Login</h1>
+        <div class="divide-y divide-gray-300/50">
+          <div class="space-y-6 pt-1 text-base leading-7 dark:text-white text-black">
+            <p class="text-center">Log in to your Pyrl root account.</p>
+            <form method="post" class="flex-nowrap justify-center items-center">
+                <div class="mx-auto">
+                    {% csrf_token %}
+                    <ul class="space-y-2">
+                        {% for field in form %}
+                        <li class="flex justify-center">
+                            <p class="font-semibold border-b border-gray-300">{{ field.label }}</p>
+                        </li>
+                        <li class="flex justify-center min-w-full">
+                            {{ field }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="flex justify-end">
+                    <a href="{% url 'user_management:forgot_password' %}" class="text-end text-sm text-gray-500 hover:text-gray-900">Forgot password?</a>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class="mx-auto py-2 mt-4 px-4 bg-gray-300">Log In</button>
+                </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block scripts %}
+    <script src={% static 'js/clear_element.js' %}></script>
+{% endblock %}

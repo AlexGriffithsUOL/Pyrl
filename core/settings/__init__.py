@@ -1,9 +1,5 @@
 from .base import *
-from dotenv import load_dotenv
 import os
-
-if ('ENV' in os.environ) == False:
-    load_dotenv()
 
 IS_HEROKU = 'DYNO' in os.environ
 

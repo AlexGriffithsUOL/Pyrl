@@ -3,12 +3,12 @@ from django.views.generic import View
 
 # Create your views here.
 
-class index(View):
+class dashboard(View):
     def __init__(self, *args, **kwargs):
-        self.page_title = "Home"
-        self.page_description = "Home page"
-        self.page_keywords = "Home"
-        self.template = "main_app/base.html"
+        self.page_title = "Dashboard"
+        self.page_description = "Users dashboard page"
+        self.page_keywords = "Dashboard"
+        self.template = "main_app/dashboard.html"
         super().__init__()
 
     def get(self, request):

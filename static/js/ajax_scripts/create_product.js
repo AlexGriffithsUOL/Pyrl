@@ -3,7 +3,7 @@ $(document).on('submit', '#create-form', function(e) {
         $.ajax({
             type: 'post',
             headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
-            url: "{% url 'products:create' %}",
+            url: "{% url 'main_app:products:create' %}",
             mode: 'same-origin', // Do not send CSRF token to another domain.
             data: {
                 product_name: $('#name').val(),

@@ -3,7 +3,7 @@ $(document).on('submit', '#create-form', function(e) {
     $.ajax({
         type: 'post',
         headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
-        url: "{% url 'products:create' %}",
+        url: "{% url 'main_app:products:create' %}",
         data: {
             product_name: $('#name').val(),
             product_brand: $('#brand').val(),

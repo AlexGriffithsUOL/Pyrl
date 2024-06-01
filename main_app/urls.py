@@ -8,7 +8,7 @@ from . import views
 app_name = 'main_app'
 
 urlpatterns = [
-    path("", view=views.index.as_view(), name="index"),
+    path("", view=views.dashboard.as_view(), name="index"),
     path("products/", include("products.urls")),
     path("invoice/", include("invoicing.urls")),
 ]

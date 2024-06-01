@@ -1,0 +1,21 @@
+from django.urls import path
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
+from . import views
+
+app_name = 'user_management'
+
+urlpatterns = [
+    path("signup/", view=views.signup.as_view(), name="signup"),
+    path("login/", view=views.login.as_view(), name="login"),
+    path("login_root/", view=views.login_root.as_view(), name="login_root"),
+    path("logout", view=views.logout_func, name="logout"),
+    path("change_password/", view=views.change_password.as_view(), name="change_password"),
+    path("forgot_password/", view=views.forgot_password.as_view(), name="forgot_password"),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

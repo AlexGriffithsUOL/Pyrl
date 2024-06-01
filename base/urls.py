@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -12,9 +12,7 @@ urlpatterns = [
     path("pricing/", view=views.pricing.as_view(), name="pricing"),
     path("about/", view=views.about.as_view(), name="about"),
     path("contact/", view=views.contact.as_view(), name="contact"),
-    path("signup/", view=views.signup.as_view(), name="signup"),
-    path("login/", view=views.login.as_view(), name="login"),
-    path("login_root/", view=views.login_root.as_view(), name="login_root"),
+    path("auth/", include("user_management.urls")),
 ]
 
 if settings.DEBUG:

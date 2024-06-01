@@ -1,5 +1,5 @@
 {% extends "main_app/base.html" %}
-{% block title %}Demo{% endblock %}
+{% block title %}Your Products{% endblock %}
 {% block main_app_content %}
 {% load custom_tags %}
 {% load static %}
@@ -19,6 +19,9 @@
       class="grid grid-cols-3 grid-rows-3 place-content-center border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64" id="new-product"
     >{{'col-start-2 col-end-3 row-start-2 row-end-3, fill-current hover:text-gray-500 cursor-pointer ease-in-out duration-300 dark:text-gray-600 text-gray-300'|get_plus}}
   </div>
+</div>
+
+<div id="list_contents">
 </div>
 
 <script src={% static 'js/jquery.js' %}></script>

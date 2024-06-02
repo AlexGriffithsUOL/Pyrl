@@ -32,6 +32,7 @@ INTERNAL_IPS = [
 ]
 
 NAME = "Pyrl"
+DIVIDER = "@"
 SITE_TITLE = "Pyrl"
 
 DOMAIN = f'https://www.{SITE_TITLE}.com'
@@ -64,7 +65,6 @@ INSTALLED_APPS = [
     'user_management',
     'invoicing',
     'base',
-    'accounts',
     'main_app',
     'demo',
     'jquery',

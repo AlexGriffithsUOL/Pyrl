@@ -4,6 +4,7 @@ from .forms import SignUpForm, RootLoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout, user_logged_in, user_logged_out
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -82,9 +83,12 @@ class change_password(View):
         super().__init__()
 
     def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
+        if request.user.is_authenticated:
+            return render(request, self.template, 
+                        { 'page_title' : self.page_title }
+                        )
+        else:
+            return redirect('base:index')
 
 class forgot_password(View):
     def __init__(self, *args, **kwargs):

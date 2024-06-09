@@ -1,4 +1,4 @@
-from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR
+from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR, NAME, DIVIDER
 import environ
 import os
 
@@ -8,6 +8,10 @@ INSTALLED_APPS.append('whitenoise.runserver_nostatic')
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 
 DEBUG = os.environ['DEBUG']
+
+NAME = os.environ['NAME']
+DIVIDER = os.environ['DIVIDER']
+SITE_TITLE = NAME
 
 SECRET_KEY = os.environ['SECRET_KEY']
 

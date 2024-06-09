@@ -33,7 +33,7 @@ INTERNAL_IPS = [
 
 NAME = "Pyrl"
 DIVIDER = "@"
-SITE_TITLE = "Pyrl"
+SITE_TITLE = NAME
 
 DOMAIN = f'https://www.{SITE_TITLE}.com'
 

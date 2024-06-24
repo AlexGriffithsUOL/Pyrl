@@ -1,0 +1,26 @@
+Make custom widget framework
+
+Needs base input
+Then top layer input
+Then input subclasses
+
+Fix the Modal and AJAX for creating a product (Not sure what broke it)
+	Successful request, just no render
+	Modal fixed
+	
+Products modal:
+	Needs to return data to the database
+	Needs basic functionality
+	Needs customisation
+	Needs to be able to return info to analytics (may be a case of querying on a dashboard page)
+
+Navbar app:
+	Signout must sign you out,
+	Trim down features that aren't needed yet
+
+Navbar main:
+	Display bug when switching from mobile to large screen
+	
+
+
+https://getyourgame.net/user/steam_account/866042/0002493591d0BdfFa353D881952fCe5DD5F1d549fA30bD3A903101ad806623066c4A0a0Fc80ab45cb4abeA936F9bbd78F572bafA46B093eFC9c27D25e23dA34F/

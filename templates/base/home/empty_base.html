@@ -16,7 +16,7 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white">
     <div></div>
-    <a href="{% url 'base:index' %}" class="fixed left-4 top-4 z-50 text-gray-500 transition duration-300 ease-in-out hover:text-gray-800">Home...</a>
+    <a href="{% url 'base:index' %}" class="fixed left-4 top-4 z-50 text-gray-500 transition duration-300 ease-in-out dark:hover:text-gray-300 hover:text-gray-800">Home...</a>
     <div class="relative flex min-h-screen flex-col justify-center overflow-hidden">
         {% block content %}
         {% endblock %}

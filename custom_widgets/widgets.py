@@ -1,6 +1,7 @@
 from django.forms.widgets import Input, PasswordInput, TextInput, Textarea, EmailInput
 from django.utils.safestring import SafeString
 from django.forms.widgets import Widget
+from django import forms
 
 
 # Custom test widget input, replaces the INPUT inheritance
@@ -10,7 +11,7 @@ class CustomInputInput(Widget):
     """
 
     input_type = None  # Subclasses must define this.
-    template_name = "templates\widgets\input.html" # Test changing this to custom template
+    template_name = "widgets\input.html" # Test changing this to custom template
     classes = None
     styles = None
     value = None
@@ -77,5 +78,8 @@ class CustomPasswordInput(CustomInputInput):
 class CustomEmailInput(CustomInputInput):
     value = 'Email'
     input_type = "email"
-    classes = 'border-0 bg-red-500 shadow-2xl'
+    classes = 'border-0 text-black dark:text-white bg-white dark:bg-gray-500'
     template_name = "widgets/email.html"
+
+class newTestWidget(forms.EmailInput):
+    template_name = 'widgets/email2.html'

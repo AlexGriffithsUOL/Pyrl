@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .forms import SignUpForm, RootLoginForm
+from .forms import SignUpForm, RootLoginForm, FullSignupForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout, user_logged_in, user_logged_out
 from django.contrib import auth
@@ -13,14 +13,14 @@ class signup(View):
         self.page_title = "Form"
         self.page_description = "Form page"
         self.page_keywords = "form"
-        self.template = "user_management/signup/index.html"
+        self.template = "user_management/signup/test.html"
         super().__init__()
 
 
     def get(self, request):
         return render(request, self.template, 
                       { 'page_title' : self.page_title,
-                        'form': SignUpForm() }
+                        'form': FullSignupForm() }
                       )
     
 class login(View):

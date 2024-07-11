@@ -16,10 +16,10 @@
                     {% csrf_token %}
                     <ul class="space-y-2">
                         {% for field in form %}
-                        <li class="flex justify-center">
+                        {% comment %} <li class="flex justify-center">
                             <p class="font-semibold border-b border-gray-300">{{ field.label }}</p>
-                        </li>
-                        <li class="flex justify-center min-w-full">
+                        </li> {% endcomment %}
+                        <li class="flex justify-center min-w-full pt-5">
                             {{ field }}
                         </li>
                         {% endfor %}

@@ -5,6 +5,8 @@
         style="{{ widget.styles }}"
     {% endif %}
 
+    OnClick="clear_element_by_id('id_{{ widget.name }}', '{{ widget.name }}')"
+
     type="{{ widget.type }}" 
     name="{{ widget.name }}"
 

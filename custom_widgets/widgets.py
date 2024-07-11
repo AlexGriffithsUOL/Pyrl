@@ -2,6 +2,7 @@ from django.forms.widgets import Input, PasswordInput, TextInput, Textarea, Emai
 from django.utils.safestring import SafeString
 from django.forms.widgets import Widget
 from django import forms
+from django.utils.safestring import SafeString
 
 
 # Custom test widget input, replaces the INPUT inheritance
@@ -11,7 +12,7 @@ class CustomInputInput(Widget):
     """
 
     input_type = None  # Subclasses must define this.
-    template_name = "widgets\input.html" # Test changing this to custom template
+    template_name = "widgets\simple_input.html" # Test changing this to custom template
     classes = None
     styles = None
     value = None
@@ -41,7 +42,8 @@ class CustomInputInput(Widget):
         return context    
     # Returns the context for the widget
     
-
+class CustomClearingInput(CustomInputInput):
+    template_name='widgets\cleraing_input.html'
 
 class CustomInput:
     is_hidden = False
@@ -52,23 +54,7 @@ class CustomInput:
     def render(self, name, value, attrs=None, renderer=None):
         return SafeString(f'<input class="p-1 border border-black" />')
 
-class CustomTextInput(TextInput):
-    icon = ''
-    def render(self, name, value, attrs=None, renderer=None):
-        if self.icon:
-            final_attrs = self.build_attrs(attrs)
-            return SafeString(f'<div class="input-group"><span class="input-group-addon"><img src="{self.icon}" /></span>{super().render(name, value, final_attrs)}</div>')
-        else:
-            return super().render(name, value, attrs)
         
-class CustomTextInput2(TextInput):
-    icon = 'a'
-    def render(self, name, value, attrs=None, renderer=None):
-        if self.icon:
-            final_attrs = self.build_attrs(attrs)
-            return SafeString(f'<p>{self.icon}</p><div class="input-group"><span class="input-group-addon"><img src="{self.icon}" /></span>{super().render(name, value, final_attrs)}</div>')
-        else:
-            return super().render(name, value, attrs)
         
 class CustomPasswordInput(CustomInputInput):
     value = 'Password'
@@ -78,8 +64,29 @@ class CustomPasswordInput(CustomInputInput):
 class CustomEmailInput(CustomInputInput):
     value = 'Email'
     input_type = "email"
-    classes = 'border-0 text-black dark:text-white bg-white dark:bg-gray-500'
-    template_name = "widgets/email.html"
+    template_name = "widgets/large_email.html"
 
-class newTestWidget(forms.EmailInput):
-    template_name = 'widgets/email2.html'
+class CustomTextInput(CustomClearingInput):
+    value = ''
+    input_type = 'text'
+    template_name = 'widgets/large_input.html'
+
+class SignUpFormInputs:
+    class FirstNameInput(CustomTextInput):
+        value = 'First name(s)'
+    
+    class MiddleNamesInput(CustomTextInput):
+        value = 'Middle name(s)'
+
+    class LastNamesInput(CustomTextInput):
+        value = 'Last name(s)'
+
+    class EmailInput(CustomEmailInput):
+        value = 'example@example.com'
+    
+    class PasswordInput(CustomPasswordInput):
+        None
+
+    class ConfirmPasswordInput(CustomPasswordInput):
+        value='Confirm Password'
+

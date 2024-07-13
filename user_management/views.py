@@ -13,7 +13,7 @@ class signup(View):
         self.page_title = "Form"
         self.page_description = "Form page"
         self.page_keywords = "form"
-        self.template = "user_management/signup/test.html"
+        self.template = "user_management/signup/index.html"
         super().__init__()
 
 

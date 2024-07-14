@@ -42,7 +42,11 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'pyrl-active': '#1a1ae8',
+              },
+        },
     },
     plugins: [
         /**

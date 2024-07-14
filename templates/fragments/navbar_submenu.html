@@ -4,7 +4,7 @@
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
             <a class="" href={% url 'base:index' %}>
-                {{'fill-current hover:text-gray-500 ease-in-out duration-300 dark:text-white text-dark'|get_pyrl_logo}}
+                {{'fill-current hover:text-pyrl-active ease-in-out duration-300 dark:text-white text-dark'|get_pyrl_logo}}
             </a>
             <div class="flex items-center space-x-6 rtl:space-x-reverse">
                 {% if request.user.is_authenticated %}

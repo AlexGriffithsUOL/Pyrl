@@ -15,12 +15,12 @@
     <title>{% block title %}{% endblock %} {{'DIVIDER'|get_setting }} {{ 'NAME'|get_setting }}</title>
 </head>
 <body class="bg-white dark:bg-gray-900 text-black dark:text-white">
-    {% include 'fragments/navbar_submenu.html' %}
+    {% include 'fragments/navbar.html' %}
     <div class="dark:bg-gray-800 mt-[116px]">
         {% block content %}
         {% endblock %}
     </div>
-    {% include 'fragments/footer_new.html' %}
+    {% include 'fragments/footer.html' %}
 </body>
     <span scripts>
         {% block scripts%}

@@ -1,127 +1,40 @@
 {% load custom_tags %}
-<style> 
-  @media screen and (max-width: 600px) {
-    div.navbar-default {
-      display: none;
-    }
-  }
-</style>
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-    <a class="mr-2 ml-2" href={% url 'base:index' %}>
-      {{'fill-current hover:text-gray-500 ease-in-out duration-300 dark:text-white text-dark'|get_pyrl_logo}}
-    </a>
-    <button data-collapse-toggle="navbar-default" onClick="myFunction()" type="button" class="flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-    </button>
-    <div class="hidden w-full md:block md:w-auto">
-      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        <li>
-          <a href={% url 'base:index' %} class="" aria-current="page">Home</a>
-        </li>
-        <li>
-          <a href={% url 'base:about' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-        </li>
-        <li>
-          <a href={% url 'base:pricing' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-        </li>
-        <li>
-          <a href={% url 'base:contact' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-        </li>
-
-        {% if request.user.is_authenticated %}
-
-        <li>
-          <a href={% url 'main_app:index' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">App</a>
-        </li>
-        <li>
-          <a href={% url 'user_management:logout' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
-        </li>
-
-        {% else %}
-
-        <li>
-          <a href={% url 'demo:index' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Demo</a>
-        </li>
-        <li>
-          <a href={% url 'user_management:login_root' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
-        </li>
-        <li>
-          <a href={% url 'user_management:signup' %} class="block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Signup</a>
-        </li>
-
-        {% endif %}
-        
-      </ul>
-    </div>
-  </div>
-  <div class="md:xl:2xl:hidden hidden w-full md:block md:w-auto" id="navbar-default">
-    <ul class="font-medium flex flex-col p-1 md:p-0 border border-gray-100 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-      <li>
-        <a href={% url 'base:index' %} {% if request.resolver_match.url_name == 'index' %}class="test active"{% else %}class="test inactive"{% endif %} aria-current="page">Home</a>
-      </li>
-      <li>
-        <a href={% url 'base:about' %} {% if request.resolver_match.url_name == 'about' %}class="test active"{% else %}class="test inactive"{% endif %}>About</a>
-      </li>
-      <li>
-        <a href={% url 'base:pricing' %} {% if request.resolver_match.url_name == 'pricing' %}class="test active"{% else %}class="test inactive"{% endif %}>Pricing</a>
-      </li>
-      <li>
-        <a href={% url 'base:contact' %} {% if request.resolver_match.url_name == 'contact' %}class="test active"{% else %}class="test inactive"{% endif %}>Contact</a>
-      </li>
-
-      {% if request.user.is_authenticated %}
-      
-      <li>
-        <a href={% url 'main_app:index' %} {% if request.resolver_match.url_name == 'main_app' %}class="test active"{% else %}class="test inactive"{% endif %}>App</a>
-      </li>
-      <li>
-        <a href={% url 'user_management:logout' %} class="test inactive">Logout</a>
-      </li>
-
-      {% else %}
-
-      <li>
-        <a href={% url 'demo:index' %} {% if request.resolver_match.url_name == 'demo' %}class="test active"{% else %}class="test inactive"{% endif %}>Demo</a>
-      </li>
-      <li>
-        <a href={% url 'user_management:login_root' %} {% if request.resolver_match.url_name == 'login_root' %}class="test active"{% else %}class="test inactive"{% endif %}>Login</a>
-      </li>
-      <li>
-        <a href={% url 'user_management:signup' %} {% if request.resolver_match.url_name == 'signup' %}class="test active"{% else %}class="test inactive"{% endif %}>Signup</a>
-      </li>
-
-      {% endif %}
-    </ul>
-  </div>
+{% load static %}
+<nav class="fixed top-0 w-full z-50">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+            <a class="" href={% url 'base:index' %}>
+                {{'fill-current hover:text-pyrl-active ease-in-out duration-300 dark:text-white text-dark'|get_pyrl_logo}}
+            </a>
+            <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                {% if request.user.is_authenticated %}
+                    <a href={% url 'main_app:index' %} class="bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:text-black dark:hover:bg-gray-100 focus:shadow-inner hover:shadow-2xl py-2 px-4 text-gray-900 transition duration-300 ease-in-out hover:bg-gray-200">App</a>
+                    <a href={% url 'user_management:logout' %} class="bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:text-black dark:hover:bg-gray-100 focus:shadow-inner hover:shadow-2xl py-2 px-4 text-gray-900 transition duration-300 ease-in-out hover:bg-gray-200">Logout</a>
+                {% else %}
+                    <a href={% url 'user_management:login_root' %} class="bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:text-black dark:hover:bg-gray-100 focus:shadow-inner hover:shadow-2xl py-2 px-4 text-gray-900 transition duration-300 ease-in-out hover:bg-gray-200">Login</a>
+                    <a href={% url 'user_management:signup' %} class="bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:text-black dark:hover:bg-gray-100 focus:shadow-inner hover:shadow-2xl py-2 px-4 text-gray-900 transition duration-300 ease-in-out hover:bg-gray-200">Signup</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <nav class="bg-gray-100 dark:bg-gray-700">
+        <div class="max-w-screen-xl px-4 py-3 mx-auto">
+            <div class="flex items-center">
+                <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+                    <li>
+                        <a href={% url 'base:index' %} class="text-gray-900 dark:text-white hover:underline">Home</a>
+                    </li>
+                    <li>
+                        <a href={% url 'base:about' %} class="text-gray-900 dark:text-white hover:underline">About</a>
+                    </li>
+                    <li>
+                        <a href={% url 'base:pricing' %} class="text-gray-900 dark:text-white hover:underline">Pricing</a>
+                    </li>
+                    <li>
+                        <a href={% url 'base:contact' %} class="text-gray-900 dark:text-white hover:underline">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </nav>
-
-<script>
-    function myFunction() {
-        var x = document.getElementById("navbar-default");
-        if (x.style.display === "block") {
-          x.style.display = "none";
-        } else {
-          x.style.display = "block";
-        }
-      }
-
-    const active_class = "block py-2 px-3 text-gray-500 bg-gray-700 rounded md:bg-transparent md:text-gray-700 md:p-0 dark:text-white md:dark:text-gray-500";
-    const inactive_class = "block py-2 px-3 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 dark:text-white md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent";
-
-    navbar_items = document.getElementsByClassName("test");
-
-    for (var a=[], i=navbar_items.length; i;) a[--i] = navbar_items[i];
-
-    a.forEach(function(elm) {
-      if (elm.classList.contains("active")) {
-        elm.className = active_class;
-      } else if (elm.classList.contains("inactive")) {
-        elm.className = inactive_class;
-      }
-    });
-
-</script>

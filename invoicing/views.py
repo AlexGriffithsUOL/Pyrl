@@ -19,3 +19,7 @@ class index(View):
             return render(request, 'invoice/index.html', {'total_invoices': total_invoices, 'selected_invoice': selected_invoice})
         else:
             return redirect('base:index')
+        
+
+def pdf_generator(request, company_id):
+    pass

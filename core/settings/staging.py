@@ -12,7 +12,7 @@ DEBUG = os.environ['DEBUG']
 NAME = os.environ['NAME']
 DIVIDER = os.environ['DIVIDER']
 SITE_TITLE = NAME
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Static files (CSS, JavaScript, Images)

@@ -9,6 +9,7 @@ app_name = 'invoicing'
 
 urlpatterns = [
     path("", view=views.index.as_view(), name="index"),
+    path("pdf/<str:company_id>", view=views.pdf_generator, name="pdf_generator")
 ]
 
 if settings.DEBUG:

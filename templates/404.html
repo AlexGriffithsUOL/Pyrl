@@ -1,0 +1,25 @@
+{% extends "base/home/empty_base.html" %}
+{% load static %}
+{% load custom_tags%}
+{% block title %}{{page_title}}{% endblock %}
+{% block content %}
+    <div class="relative bg-white px-6 pt-10 pb-8 shadow-2xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg dark:bg-gray-700 sm:px-10 mb-12">
+      <div class="mx-auto max-w-md">
+        <a class="justify-content-center grid grid-cols-1 place-items-center mb-4" href={% url 'base:index' %}>
+            {{'fill-current hover:text-gray-500 ease-in-out duration-300 dark:text-white text-dark'|get_pyrl_logo}}
+        </a>
+        <div class="flex justify-center">
+            <h1 class="text-6xl text-center m-4 mb-8 bg-gray-800 text-white dark:bg-white dark:text-black rounded-xl px-8 pt-4 pb-5">404</h1>
+        </div>
+        <div class="flex justify-center mb-8">
+            <p class="max-w-[66%]">The requested page is not found, click below to visit our home, or go to our contact page if this is a recurring issue!</p>
+        </div>
+        <div class="flex justify-center">
+            <a href="#" class="bg-gray-800 text-white hover:text-black dark:hover:text-black dark:hover:bg-gray-100 focus:shadow-inner hover:shadow-2xl py-2 px-4 text-gray-900 transition duration-300 ease-in-out hover:bg-gray-200">Home</a>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src={% static 'js/clear_element.js' %}></script>
+{% endblock %}

@@ -14,7 +14,7 @@ class index(View):
 
     def get(self, request):
         return redirect('base:index')
-    
+
 class four_o_four(View):
     def __init__(self, *args, **kwargs):
         self.page_title = "404"

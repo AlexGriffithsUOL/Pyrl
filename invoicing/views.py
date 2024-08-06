@@ -142,6 +142,10 @@ class index(View):
         else:
             return redirect('base:index')
         
+class create_invoice(View):
+    def get(self, request):
+        pass
+
 def pdf_generator(request, company_id):
     if request.method == "GET":
         invoice_id = uuid4()

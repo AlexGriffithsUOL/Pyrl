@@ -13,6 +13,9 @@ NAME = os.environ['NAME']
 DIVIDER = os.environ['DIVIDER']
 SITE_TITLE = NAME
 # SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Static files (CSS, JavaScript, Images)

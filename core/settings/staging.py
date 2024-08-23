@@ -7,7 +7,7 @@ ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(', ')
 INSTALLED_APPS.append('whitenoise.runserver_nostatic')
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 
-DEBUG = False
+DEBUG = True
 
 NAME = os.environ['NAME']
 DIVIDER = os.environ['DIVIDER']

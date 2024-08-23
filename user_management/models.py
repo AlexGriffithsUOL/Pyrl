@@ -1,11 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 import uuid
-from base.models import pyrl_company
+from base.models import company, abstract_auditing
+
 # Create your models here.
-
-
-
 # Custom user manager
 class PyrlUserManager(BaseUserManager):
     def create_user(self, email, password=None):
@@ -37,8 +35,6 @@ class PyrlUserManager(BaseUserManager):
         user.company_id = 1
         user.save(using=self._db)
 
-
-
 # Custom user model
 class PyrlUser(AbstractBaseUser):
     # Meta class
@@ -61,7 +57,7 @@ class PyrlUser(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_root = models.BooleanField(default=False)
-    company = models.ForeignKey(pyrl_company, on_delete=models.CASCADE)
+    company = models.ForeignKey(company, on_delete=models.CASCADE)
 
     # Model-specific metadata
     EMAIL_FIELD = 'email'
@@ -79,12 +75,12 @@ class PyrlUser(AbstractBaseUser):
     mfa_type = models.CharField(max_length=2, verbose_name="MFA Type", choices=[('sm', 'sms'), ('em', 'email')], null=True, blank=True)
     mfa_code = models.IntegerField(verbose_name="MFA Code", null=True, blank=True)
 
-    address_line_1 = models.CharField(max_length=100)
-    address_line_2 = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
-    postal_code = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
+    address_line_1 = models.CharField(max_length=100, null=False)
+    address_line_2 = models.CharField(max_length=100, null=False)
+    city = models.CharField(max_length=100, null=False)
+    country = models.CharField(max_length=100, null=False)
+    postal_code = models.CharField(max_length=100, null=False)
+    country = models.CharField(max_length=100, null=False)
 
     objects = PyrlUserManager()
 
@@ -100,3 +96,35 @@ class PyrlUser(AbstractBaseUser):
     # Special functions
     def __str__(self):
         return f'User {self.primary_key} {self.email}'
+    
+class address(abstract_auditing): 
+    class Meta:
+        abstract = False
+        db_table = 'address'
+
+    pid = models.BigAutoField(primary_key=True)
+    first_line = models.TextField(null=False)
+    second_line = models.TextField(null=False)
+    third_line = models.TextField(null=False)
+    town_city = models.TextField(null=False)
+    county = models.TextField(null=False)
+    country = models.TextField(null=False)
+    postcode = models.TextField(null=False)
+    
+class system_user(abstract_auditing):
+    class Meta: 
+        abstract = False
+        db_table = 'system_users'
+    
+    pid =   models.BigAutoField(primary_key=True)
+    first_names = models.TextField()
+    middle_names = models.TextField()
+    last_names = models.TextField()
+    dob = models.DateField()
+    password = models.TextField()
+    company_id = models.ForeignKey(company, on_delete=models.CASCADE, null=False)
+    root_user = models.BooleanField()
+    contact_email_address = models.TextField()
+    contact_phone_number = models.TextField(max_length=11)
+    address_id = models.ForeignKey(address, on_delete=models.CASCADE)
+

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from user_management.models import pyrl_company
+from user_management.models import company
 
 # Register your models here.
-admin.site.register(pyrl_company)
+admin.site.register(company)

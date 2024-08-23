@@ -58,12 +58,11 @@ class login_root(View):
         email = request.POST['email']
         password = request.POST['password']
         User = authenticate(request, email=email, password=password)
-        # User.authenticate(email=username, password=password)
 
         if User is not None:
             auth.login(request, User)
             if request.user.is_authenticated:
-                return redirect('main_app:index')#User to the dashboard!)
+                return render(request, "main_app/dashboard.html", { 'company_id' : 1 })
             else: 
                 return redirect('user_management:login_root')
         else:

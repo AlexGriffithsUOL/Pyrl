@@ -1,33 +1,36 @@
 from django.shortcuts import render
 from django.views.generic import View
+from django.conf import settings
+from django.core.mail import send_mail
 
-# Create your views here.
-class PyrlBaseView(View):
+
+class page_view(View):
+    context = {}
+
+    def update_context(self, key, val):
+        self.context[key] = val
+
+    def add_to_context(self, *args, **kwargs):
+        for arg in args:
+            for key, val in arg.items():
+                self.update_context(key, val)
+
+    def get(self, request, *args, **kwargs):
+        self.add_to_context(kwargs)
+        pass
+
     def __init__(self, *args, **kwargs):
-        self.page_title = kwargs.pop('page_title')
-        self.page_description = kwargs.pop('page_description')
-        self.page_keywords = kwargs.pop('page_keywords')
-        self.template = kwargs.pop('template')
-        super().__init__()
+        pass
+
+class index(page_view):
+    page_title = "Home"
+    page_description = "Home page"
+    page_keywords = "Home"
+    template = "base/home/index.html"
 
     def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
-
-class index(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = "Home"
-        self.page_description = "Home page"
-        self.page_keywords = "Home"
-        self.template = "base/home/index.html"
-        super().__init__()
-
-
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
+        super().get(request=request, page_title = self.page_title)
+        return render(request, self.template, self.context)
     
 class pricing(View):
     def __init__(self, *args, **kwargs):

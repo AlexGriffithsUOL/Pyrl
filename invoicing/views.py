@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from invoicing.models import invoice
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from uuid import uuid4
 import random
+from invoicing.models import invoice, invoice_product_link, product
+from .forms import row_form
+from base.views import page_view
 
 class entity_info:
     # internal object address
@@ -127,24 +129,34 @@ def generate_pages(table, pag, middle_pag):
     return pages
 
 # Create your views here.
-class index(View):
+class index(page_view):
+    page_title = 'Invoice Home'
     def get(self, request):
+        super().get(request=request, page_title = self.page_title)
         if request.user.is_authenticated:
-            total_invoices = invoice.objects.all()
-            selected_invoice = total_invoices[0]
-            print(User.objects.all())
-            print(dir(selected_invoice))
-            print(selected_invoice.pid)
-            print(selected_invoice.invoice_id)
-            print(selected_invoice.company_id)
-            print(selected_invoice.date_of_invoice)
-            return render(request, 'invoice/index.html', {'total_invoices': total_invoices, 'selected_invoice': selected_invoice})
+            def total_invoice(invoice_items):
+                total = sum([x.price * x.quantity for x in invoice_items])
+                return total
+
+            total_invoices = invoice.objects.select_related('note', 'terms_conditions')
+            iv = total_invoices[0]
+
+            if iv.total == 0.00:
+                invoice_total = total_invoice(iv.invoice_product_link_set.all())
+                iv.total = invoice_total
+                iv.save()
+            
+            self.add_to_context({'total_invoices': total_invoices})
+                
+            return render(request, 'main_app/invoice/index.html', self.context)
         else:
             return redirect('base:index')
         
 class create_invoice(View):
+    template_name = 'main_app/invoice/create.html'
     def get(self, request):
-        pass
+        user_products = product.objects.all()
+        return render(request, self.template_name, {'product_choices':user_products})
 
 def pdf_generator(request, company_id):
     if request.method == "GET":
@@ -205,3 +217,14 @@ def pdf_generator(request, company_id):
         return render(request, '404.html', {})
     elif request.method == "POST":
         return redirect('base:index')
+    
+def get_row(request, fragment_id):
+    if request.user.is_authenticated:
+        fragment = "fragments/invoice/row.html"
+        user_products = product.objects.all()
+        form = row_form()
+        return render(request, fragment, 
+                      {
+                      'product_choices':user_products, 
+                      'form': form 
+                      })

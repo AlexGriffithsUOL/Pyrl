@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .models import pyrl_product
-import math
+from .models import product
+from base.models import company
+from datetime import datetime
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+import pytz
 
 class view_products(View):
     def __init__(self, *args, **kwargs):
@@ -16,13 +19,13 @@ class view_products(View):
 
     def get(self, request):
         if request.user.is_authenticated:
-            self.products = pyrl_product.objects.all()
+            products = product.objects.all()
             return render(
                 request, 
                 self.template,          
                 { 
                     'page_title' : self.page_title,
-                    'products': self.products,
+                    'products': products,
                 }
             )
         else:
@@ -30,9 +33,6 @@ class view_products(View):
 
 def test(request):
     if request.user.is_authenticated:
-        print(request.POST)
-        print(request.GET)
-
         if request.method == 'GET':
             fragment = "fragments/products/test_modal.html"
             return render(request, fragment, {})
@@ -41,25 +41,25 @@ def test(request):
     
 def create(request):
     if request.user.is_authenticated:
-        product_name = request.POST.get('product_name')
-        product_brand = request.POST.get('product_brand')
-        product_description = request.POST.get('product_description')
-        product_price = request.POST.get('product_price')
-        product_category = request.POST.get('product_category')
-        print(product_name)
-        print(product_brand)
-        print(product_description)
-        print(product_price)
-        print(product_category)
-
-        product = pyrl_product(
-            product_name=product_name, 
-            product_description=product_description, 
-            product_price=product_price, 
-            product_category=product_brand
+        print(f'user company_id {request.user.company_id}')
+        user_company = get_object_or_404(company, id=request.user.company_id)
+        current_time = f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}+00'
+        print(current_time)
+        saving_product = product(
+            company_id = user_company,
+            name = request.POST.get('product_name'),
+            description = request.POST.get('product_description'),
+            invoice_description = request.POST.get('product_description'),
+            price = float(request.POST.get('product_price')),
+            image = request.POST.get('product_name'),
+            category = request.POST.get('product_category'),
+            created_by = request.user.id,
+            created_at = current_time,
+            last_updated_by = request.user.id,
+            last_updated_at = current_time
             )
         
-        product.save()
+        saving_product.save()
         return HttpResponse("Piss yourself uncs")
     else:
         return redirect('base:index')

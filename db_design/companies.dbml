@@ -1,0 +1,32 @@
+Table company {
+    pid int [pk]
+    name text
+}
+
+Table user {
+    pid int [pk]
+    first_names text
+    middle_names text
+    last_names text
+    dob date
+    password hash
+    company_id int [fk]
+    root_user boolean
+    contact_email_address text
+    contact_phone_number text
+    address_id int [fk]
+}
+
+Table address {
+    pid int [fk]
+    first_line text
+    second_line text
+    third_line text
+    town_city text
+    county text
+    country text
+    postcode text
+}
+
+ref: user.company_id > company.pid
+ref: user.address_id > address.pid

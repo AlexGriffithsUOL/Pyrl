@@ -26,7 +26,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("home/", include("base.urls")),
     path("main_app/", include("main_app.urls")),
-    path("demo/", include("demo.urls")),
     path("auth/", include("user_management.urls")),
     path("404/", view=views.four_o_four.as_view(), name="four")
 ] 

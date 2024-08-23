@@ -2,7 +2,7 @@ from django import forms
 from user_management.models import PyrlUser
 from django.contrib.auth.models import User
 from core.widgets import widgets
-from custom_widgets.widgets import CustomTextInput, CustomPasswordInput, CustomEmailInput, SignUpFormInputs
+from custom_widgets.widgets import SignUpFormInputs
 
 class SignUpForm(forms.ModelForm):
     class Meta:

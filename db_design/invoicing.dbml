@@ -5,7 +5,10 @@ Table companies {
 
 Table products {
     pid int [pk, increment]
+    company_id int [fk]
+    product_name text
     price float
+    invoice_description text
     description text
     date_created date_timestamped
     last_updated date_timestamped
@@ -32,7 +35,7 @@ Table invoice_notes {
     last_updated date_timestamped
     created_by int [fk] // links to sub-user account
     last_updated_by int [fk] // links to sub-user account
-}
+}z
 
 Table invoice_terms_conditions {
     pid int [pk, increment]
@@ -61,5 +64,4 @@ ref: invoice_terms_conditions.invoice_id - invoice.pid
 ref: invoice_notes.invoice_id - invoice.pid
 ref: invoice_link.product_id < products.pid
 ref: invoice_link.invoice_id > invoice.pid
-// ref: coa_types.pid - coa_intermediaries.coa_type_id
-// ref: coa_intermediaries.coa_id > coa.pid
+ref: products.company_id > companies.pid

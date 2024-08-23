@@ -62,14 +62,48 @@ INSTALLED_APPS = [
     'tailwind',
     "theme",
     'core',
+    'analytics',
     'user_management',
     'invoicing',
     'base',
     'main_app',
-    'demo',
     'jquery',
     'products',
 ]
+class WEEKDAYS:
+    MONDAY = 0
+    TUESDAY = 1
+    WEDNESDAY = 2
+    THURSDAY = 3
+    FRIDAY = 4
+    SATURDAY = 5
+    SUNDAY = 6
+
+NO_ANALYTICS = [
+    '/static/',
+    '/__reload__/events/'
+]
+
+ANALYTICS_DAYS = [
+    WEEKDAYS.FRIDAY,
+    WEEKDAYS.SATURDAY,
+    WEEKDAYS.SUNDAY
+]
+
+ANALYTICS_CONFIG = {
+    'NO_ANALYTICS': NO_ANALYTICS,
+    'VALID_WEEKDAYS': ANALYTICS_DAYS
+}
+
+# AUTHENTICATION_BACKENDS = ['core.backends.backends.MyBackend']
+
+# email
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'base@pyrl.online'
+# EMAIL_HOST_PASSWORD = '@e5[8Y6,C03O'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -79,6 +113,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "core.middlewares.middleware.add_company_to_request",
+    "analytics.middlewares.middleware.get_request_analytics",
+
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -110,7 +147,7 @@ DB_USER = 'postgres'
 DB_PASSWORD = ''
 DB_IP = '127.0.0.1'
 DB_PORT = '6666'
-
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 if ENV == ENV_DEV:
     with open(os.path.join(BASE_DIR, 'db.password.txt'), 'r') as db_password_file:
         data = db_password_file.read()

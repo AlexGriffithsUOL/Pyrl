@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.conf import settings
 from django.core.mail import send_mail
+from utils.views import message_manager
 
 
 class page_view(View):
@@ -30,6 +31,7 @@ class index(page_view):
 
     def get(self, request):
         super().get(request=request, page_title = self.page_title)
+        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Our page has been updated! Scroll down to see more!', length_of_time=3)
         return render(request, self.template, self.context)
     
 class pricing(View):

@@ -27,8 +27,9 @@ urlpatterns = [
     path("home/", include("base.urls")),
     path("main_app/", include("main_app.urls")),
     path("auth/", include("user_management.urls")),
-    path("404/", view=views.four_o_four.as_view(), name="four")
-] 
+    path("404/", view=views.four_o_four.as_view(), name="four"),
+    path("utils/", include('utils.urls')),
+]
 
 if ENV == ENV_DEV:
     urlpatterns.append(path("__reload__/", include("django_browser_reload.urls")))

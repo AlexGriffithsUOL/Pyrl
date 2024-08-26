@@ -2,7 +2,7 @@
 {% load static %}
 {% load custom_tags %}
 {% load alert_tags %}
-
+{% csrf_token %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +21,7 @@
         {% endblock %}
     </div>
     {% include 'fragments/footer.html' %}
+    {% include 'fragments/utils/messages/message_runner.html' %}
 </body>
     <span scripts>
         {% block scripts%}

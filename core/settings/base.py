@@ -69,7 +69,9 @@ INSTALLED_APPS = [
     'main_app',
     'jquery',
     'products',
+    'utils',
 ]
+
 class WEEKDAYS:
     MONDAY = 0
     TUESDAY = 1

@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
+from uuid import uuid4
 from django.views.generic import View
-from .forms import SignUpForm, RootLoginForm, FullSignupForm
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, logout, user_logged_in, user_logged_out
+from .forms import RootLoginForm, FullSignupForm
+from django.contrib.auth import authenticate, logout
 from django.contrib import auth
-from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
+from utils.views import retrieve_message, message_manager
 
 
 # Create your views here.
@@ -66,7 +67,7 @@ class login_root(View):
             else: 
                 return redirect('user_management:login_root')
         else:
-            print(request, "invalid credentials")
+            message_manager.attach_message(request, message_manager.STATUS.ERROR, 'Login failed, please try again!')
             return redirect('user_management:login_root')
         
 def logout_func(request):

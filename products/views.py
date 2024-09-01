@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 import pytz
+from uuid import uuid4
 
 class view_products(View):
     def __init__(self, *args, **kwargs):
@@ -43,11 +44,11 @@ def product_info(request):
             information = product.objects.get(pk=product_id)
             return render(request, fragment, { 'product':information })
 
-def test(request):
+def new_product(request):
     if request.user.is_authenticated:
         if request.method == 'GET':
-            fragment = "fragments/products/test_modal.html"
-            return render(request, fragment, {})
+            fragment = "fragments/products/create_new_product.html"
+            return render(request, fragment, {'pid':uuid4()})
     else: 
         return redirect('base:index')
     

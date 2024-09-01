@@ -9,7 +9,7 @@ app_name = 'products'
 
 urlpatterns = [
     path("view/", view=views.view_products.as_view(), name="view"),
-    path("test", view=views.test, name="test"),
+    path("new_product/", view=views.new_product, name="new_product"),
     path("create", view=views.create, name="create"),
     path("product_info/", view=views.product_info, name="product_info"),
 ]

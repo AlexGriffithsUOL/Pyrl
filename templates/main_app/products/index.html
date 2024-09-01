@@ -20,13 +20,7 @@
 
     </div>
   {% endfor %}
-    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" id="product-card-{{product.product_id}}">
-        <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse" id="fullWidthTab">
-            <div class="w-full bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 cursor-pointer">
-                <img class="inline-block p-4 fill-current text-red-500" width='50px' src="{% static 'img/svg_images/misc/plus.svg' %}"/>
-            </div>
-        </ul>
-    </div>
+    {% include 'fragments/products/new_product_button.html' %}
 </div>
 
 <div id="list_contents">
@@ -51,24 +45,6 @@
             }
         })
     }
-</script>
-
-<script type="text/javascript">
-  $(document).on('click', '#new-product', function (e) {
-      e.preventDefault();
-      $.ajax({
-          type: 'GET',
-          url: "{% url 'main_app:products:test' %}",
-          headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
-          mode: 'same-origin', // Do not send CSRF token to another domain.
-          data: {
-              first_name: "123",
-          },
-          success: function (data) {
-              $("#list_contents").html(data)
-          }
-      })
-  });
 </script>
 <script src="{% static 'js/display_by_id.js' %}"></script>
 <script>

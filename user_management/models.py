@@ -40,7 +40,7 @@ class PyrlUser(AbstractBaseUser):
     # Meta class
     class Meta:
         db_table = 'users'
-
+    primary_key = 'id'
     # Unique identifiers for the user
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
 
@@ -57,7 +57,7 @@ class PyrlUser(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_root = models.BooleanField(default=False)
-    company = models.ForeignKey(company, on_delete=models.CASCADE)
+    company = models.ForeignKey(company, on_delete=models.CASCADE, default=1)
 
     # Model-specific metadata
     EMAIL_FIELD = 'email'

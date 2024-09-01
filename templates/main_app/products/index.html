@@ -5,15 +5,9 @@
 {% load static %}
 <div class="grid grid-cols-1 gap-4 mb-4">
   {% for product in products %}
-    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" id="product-card-{{product.product_id}}">
-        <div class="sm:hidden">
-            <select id="product-{{ product.pid }}-tabs" class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option>Info</option>
-                <option>Statistics</option>
-            </select>
-        </div>
-        <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse" id="fullWidthTab">
-            <h1 OnClick="eee({{product.pid}})" class="inline-block w-full p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 cursor-pointer">{{product.name}}</h1>
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" id="product-card-{{product.pid}}">
+        <ul class="text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse" id="fullWidthTab">
+            <h1 OnClick="display_product_form({{product.pid}})" class="inline-block w-full p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 cursor-pointer">{{product.name}}</h1>
         </ul>
         <div id="contents-{{product.pid}}">
         </div>
@@ -23,34 +17,74 @@
     {% include 'fragments/products/new_product_button.html' %}
 </div>
 
-<div id="list_contents">
-</div>
+<script src="{% static 'js/jquery.js' %}"></script>
 
-<script src={% static 'js/jquery.js' %}></script>
+<script src="{% static 'js/display_by_id.js' %}"></script>
 
 <script>
-    function eee(product_id) {
-        console.log(product_id);
-        $.ajax({
-            type: 'GET',
-            url: `{% url 'main_app:products:product_info'%}`,
-            headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
-            mode: 'same-origin', // Do not send CSRF token to another domain.
-            data: {
-                product_id: product_id,
-            },
-            success: function (data) {
-                console.log(data);
-                $(`#contents-${product_id}`).html(data);
-            }
-        })
+    function display_product_form(product_id) {
+        if (document.getElementById(`bottom-contents-${product_id}`)) {
+            //toggle_display_card(product_id);
+            display_by_id(`bottom-contents-${product_id}`, 'hidden');
+        } else {
+            $.ajax({
+                type: 'GET',
+                url: `{% url 'main_app:products:product_info'%}`,
+                headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+                mode: 'same-origin', // Do not send CSRF token to another domain.
+                data: {
+                    product_id: product_id,
+                },
+                success: function (data) {
+                    $(`#contents-${product_id}`).html(data);
+                }
+            })
+        }
     }
 </script>
-<script src="{% static 'js/display_by_id.js' %}"></script>
 <script>
-  function toggleDisplayCard(product_id, cityName) {
+    function delete_product(product_id) {
+        console.log(product_id);
+        if (document.getElementById(`bottom-contents-${product_id}`)) {
+            $.ajax({
+                type: 'POST',
+                headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+                url: "{% url 'main_app:products:delete' %}",
+                mode: 'same-origin', // Do not send CSRF token to another domain.
+                data: {
+                    product_id: product_id,
+                    action: 'post'
+                },
+            })
+        }
+        var element = document.getElementById(`product-card-${product_id}`);
+        console.log(`product-card-${product_id}`);
+        element.remove();
+    }
+</script>
+<script>
+    function save_product(product_id) {
+        var form = document.getElementById(`product-form-${product_id}`);
+        console.log(form);
+        $.ajax({
+            type: 'POST',
+            headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+            url: "{% url 'main_app:products:create' %}",
+            mode: 'same-origin', // Do not send CSRF token to another domain.
+            data: {
+                product_name: $(`#name-${product_id}`).val(),
+                product_description: $(`#description-${product_id}`).val(),
+                product_price: $(`#price-${product_id}`).val(),
+                product_category: $(`#category-${product_id}`).val(),
+                action: 'post'
+            },
+        })
+        window.location.reload();
+    }
+</script>
+<script>
+  function toggle_display_card(product_id) {
       console.log(product_id);
-      console.log(cityName);
       // Declare all variables
       var i, tabcontent, tablinks;
     
@@ -62,7 +96,7 @@
       }
     
       // Show the current tab, and add an "active" class to the button that opened the tab
-      display_by_id(cityName, 'hidden');
+      //display_by_id(cityName, 'hidden');
       
     }
 </script>

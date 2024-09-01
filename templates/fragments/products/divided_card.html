@@ -54,21 +54,3 @@
         </div>
     </div>
 </div>
-<script src="{% static 'js/display_by_id.js'%}"></script>
-<script>
-    function toggleDisplayCard(product_id, cityName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-      
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName(`${product_id}-tabcontent`);
-        console.log(tabcontent);
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].classList.add('hidden');
-        }
-      
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        display_by_id(cityName, 'hidden');
-        
-      }
-</script>

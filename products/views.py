@@ -54,13 +54,9 @@ def new_product(request):
     
 def create(request):
     if request.user.is_authenticated:
-        import json
-        print(f'user company_id {request.user.company_id}')
         user_company = get_object_or_404(company, id=request.user.company_id)
         current_time = f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}+00'
-        print(request.POST)
-        if len(request.POST) > 0:
-            print('post gone through')
+        if request.method == "POST":
             saving_product = product(
                 company_id = user_company,
                 name = request.POST.get('product_name'),
@@ -81,3 +77,12 @@ def create(request):
         return HttpResponse("Piss yourself uncs")
     else:
         return redirect('base:index')
+    
+def delete(request):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            product_id = request.POST['product_id']
+            specific_product = product.objects.get(pid=product_id)
+            specific_product.delete()
+            return HttpResponse("deleted")
+        

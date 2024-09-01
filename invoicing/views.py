@@ -139,14 +139,16 @@ class index(page_view):
                 return total
 
             total_invoices = invoice.objects.select_related('note', 'terms_conditions')
-            iv = total_invoices[0]
+            invoice_p = invoice_product_link.objects.filter(invoice_id_id=0)
+            if len(total_invoices) > 0:
+                iv = total_invoices[0]
 
-            if iv.total == 0.00:
-                invoice_total = total_invoice(iv.invoice_product_link_set.all())
-                iv.total = invoice_total
-                iv.save()
-            
-            self.add_to_context({'total_invoices': total_invoices})
+                if iv.total == 0.00:
+                    invoice_total = total_invoice(iv.invoice_product_link_set.all())
+                    iv.total = invoice_total
+                    iv.save()
+                
+                self.add_to_context({'total_invoices': total_invoices})
                 
             return render(request, 'main_app/invoice/index.html', self.context)
         else:

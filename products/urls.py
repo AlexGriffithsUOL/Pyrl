@@ -11,7 +11,7 @@ urlpatterns = [
     path("view/", view=views.view_products.as_view(), name="view"),
     path("test", view=views.test, name="test"),
     path("create", view=views.create, name="create"),
-    # path("create", view=views.create, name="create"),
+    path("product_info/", view=views.product_info, name="product_info"),
 ]
 
 if settings.DEBUG:

@@ -71,17 +71,6 @@ class PyrlUser(AbstractBaseUser):
 
     phone_number = models.CharField(max_length=100)
 
-    mfa_enabled = models.BooleanField(default=False, verbose_name="MFA Enabled", null=True, blank=True)
-    mfa_type = models.CharField(max_length=2, verbose_name="MFA Type", choices=[('sm', 'sms'), ('em', 'email')], null=True, blank=True)
-    mfa_code = models.IntegerField(verbose_name="MFA Code", null=True, blank=True)
-
-    address_line_1 = models.CharField(max_length=100, null=False)
-    address_line_2 = models.CharField(max_length=100, null=False)
-    city = models.CharField(max_length=100, null=False)
-    country = models.CharField(max_length=100, null=False)
-    postal_code = models.CharField(max_length=100, null=False)
-    country = models.CharField(max_length=100, null=False)
-
     objects = PyrlUserManager()
 
     # Authentication functions

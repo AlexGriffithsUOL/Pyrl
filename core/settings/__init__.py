@@ -11,5 +11,3 @@ elif IS_HEROKU is False and ENV == ENV_DEV:
     from .dev import *
 else:
     raise Exception('Environment not found in __init__')
-
-print(f'ENV: {ENV}')

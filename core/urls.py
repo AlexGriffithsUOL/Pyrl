@@ -31,7 +31,7 @@ urlpatterns = [
     path("utils/", include('utils.urls')),
 ]
 
-if ENV == ENV_DEV:
+if ENV == ENV_DEV and settings.RELOAD:
     urlpatterns.append(path("__reload__/", include("django_browser_reload.urls")))
 
 if settings.DEBUG:

@@ -70,6 +70,8 @@ INSTALLED_APPS = [
     'jquery',
     'products',
     'utils',
+    'jobs',
+    'customer_management',
 ]
 
 class WEEKDAYS:
@@ -80,6 +82,8 @@ class WEEKDAYS:
     FRIDAY = 4
     SATURDAY = 5
     SUNDAY = 6
+
+RELOAD = False
 
 NO_ANALYTICS = [
     '/static/',
@@ -116,8 +120,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "core.middlewares.middleware.add_company_to_request",
+    "utils.middlewares.middleware.determine_ajax",
     "analytics.middlewares.middleware.get_request_analytics",
-
 ]
 
 ROOT_URLCONF = "core.urls"

@@ -11,6 +11,8 @@ urlpatterns = [
     path("", view=views.dashboard.as_view(), name="index"),
     path("products/", include("products.urls")),
     path("invoice/", include("invoicing.urls")),
+    path("calendar/", include("jobs.urls")),
+    path('customers/', include("customer_management.urls"))
 ]
 
 if settings.DEBUG:

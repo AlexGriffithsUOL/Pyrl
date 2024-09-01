@@ -1,24 +1,32 @@
 {% extends "main_app/base.html" %}
 {% block title %}{{ page_title }}{% endblock %}
-{% block main_app_content %}
+{% block content %}
 {% load custom_tags %}
 {% load static %}
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-{% for product in products %}
-  <div
-      class="border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64"
-  >
-    {% comment %} <img src="{{product.product_image.url}}" alt="product image"/> {% endcomment %}
-    <p>Product name: {{product.product_name}}</p>
-    <p>Product description: {{product.product_description}}</p>
-    <p>Product price: {{product.product_price}}</p>
-    <p>Product category: {{product.product_category}}</p>
-  </div>
-{% endfor %}
-  <div
-      class="grid grid-cols-3 grid-rows-3 place-content-center border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64" id="new-product"
-    >{{'col-start-2 col-end-3 row-start-2 row-end-3, fill-current hover:text-gray-500 cursor-pointer ease-in-out duration-300 dark:text-gray-600 text-gray-300'|get_plus}}
-  </div>
+<div class="grid grid-cols-1 gap-4 mb-4">
+  {% for product in products %}
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" id="product-card-{{product.product_id}}">
+        <div class="sm:hidden">
+            <select id="product-{{ product.pid }}-tabs" class="bg-gray-50 border-0 border-b border-gray-200 text-gray-900 text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option>Info</option>
+                <option>Statistics</option>
+            </select>
+        </div>
+        <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse" id="fullWidthTab">
+            <h1 OnClick="eee({{product.pid}})" class="inline-block w-full p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 cursor-pointer">{{product.name}}</h1>
+        </ul>
+        <div id="contents-{{product.pid}}">
+        </div>
+
+    </div>
+  {% endfor %}
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" id="product-card-{{product.product_id}}">
+        <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse" id="fullWidthTab">
+            <div class="w-full bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 cursor-pointer">
+                <img class="inline-block p-4 fill-current text-red-500" width='50px' src="{% static 'img/svg_images/misc/plus.svg' %}"/>
+            </div>
+        </ul>
+    </div>
 </div>
 
 <div id="list_contents">
@@ -26,9 +34,27 @@
 
 <script src={% static 'js/jquery.js' %}></script>
 
+<script>
+    function eee(product_id) {
+        console.log(product_id);
+        $.ajax({
+            type: 'GET',
+            url: `{% url 'main_app:products:product_info'%}`,
+            headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+            mode: 'same-origin', // Do not send CSRF token to another domain.
+            data: {
+                product_id: product_id,
+            },
+            success: function (data) {
+                console.log(data);
+                $(`#contents-${product_id}`).html(data);
+            }
+        })
+    }
+</script>
+
 <script type="text/javascript">
   $(document).on('click', '#new-product', function (e) {
-      console.log("CLICK");
       e.preventDefault();
       $.ajax({
           type: 'GET',
@@ -43,5 +69,25 @@
           }
       })
   });
+</script>
+<script src="{% static 'js/display_by_id.js' %}"></script>
+<script>
+  function toggleDisplayCard(product_id, cityName) {
+      console.log(product_id);
+      console.log(cityName);
+      // Declare all variables
+      var i, tabcontent, tablinks;
+    
+      // Get all elements with class="tabcontent" and hide them
+      tabcontent = document.getElementsByClassName(`${product_id}-tabcontent`);
+      console.log(tabcontent);
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.add('hidden');
+      }
+    
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      display_by_id(cityName, 'hidden');
+      
+    }
 </script>
 {% endblock %}

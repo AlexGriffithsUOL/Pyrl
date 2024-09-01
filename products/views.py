@@ -19,7 +19,8 @@ class view_products(View):
 
     def get(self, request):
         if request.user.is_authenticated:
-            products = product.objects.all()
+            products = product.objects.values('pid', 'name')
+            
             return render(
                 request, 
                 self.template,          
@@ -30,6 +31,17 @@ class view_products(View):
             )
         else:
             return redirect('base:index')
+    
+    def post(self,request):
+        return render(request, self.template, {})
+    
+def product_info(request):
+    if request.user.is_authenticated:
+        fragment = "fragments/products/info_modal.html"
+        product_id = request.GET.get('product_id')
+        if request.is_ajax:
+            information = product.objects.get(pk=product_id)
+            return render(request, fragment, { 'product':information })
 
 def test(request):
     if request.user.is_authenticated:
@@ -41,25 +53,30 @@ def test(request):
     
 def create(request):
     if request.user.is_authenticated:
+        import json
         print(f'user company_id {request.user.company_id}')
         user_company = get_object_or_404(company, id=request.user.company_id)
         current_time = f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}+00'
-        print(current_time)
-        saving_product = product(
-            company_id = user_company,
-            name = request.POST.get('product_name'),
-            description = request.POST.get('product_description'),
-            invoice_description = request.POST.get('product_description'),
-            price = float(request.POST.get('product_price')),
-            image = request.POST.get('product_name'),
-            category = request.POST.get('product_category'),
-            created_by = request.user.id,
-            created_at = current_time,
-            last_updated_by = request.user.id,
-            last_updated_at = current_time
-            )
-        
-        saving_product.save()
+        print(request.POST)
+        if len(request.POST) > 0:
+            print('post gone through')
+            saving_product = product(
+                company_id = user_company,
+                name = request.POST.get('product_name'),
+                description = request.POST.get('product_description'),
+                invoice_description = request.POST.get('product_description'),
+                price = float(request.POST.get('product_price')),
+                image = request.POST.get('product_name'),
+                category = request.POST.get('product_category'),
+                created_by = request.user.id,
+                created_at = current_time,
+                last_updated_by = request.user.id,
+                last_updated_at = current_time
+                )
+            
+            saving_product.save()
+        else:
+            print('failed')
         return HttpResponse("Piss yourself uncs")
     else:
         return redirect('base:index')

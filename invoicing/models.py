@@ -32,8 +32,8 @@ class invoice(abstract_auditing):
     description = models.TextField(default=f'Invoice {date.today()} to Alex' , max_length=40, null=False, blank=False)
     company_id = models.ForeignKey(to=company, on_delete=models.CASCADE, null=False, blank=False)
     due_date = models.DateField(null=True, blank=False)
-    note = models.ForeignKey(to=note, on_delete=models.CASCADE, null=False, blank=False)
-    terms_conditions = models.ForeignKey(to=terms_conditions, on_delete=models.CASCADE, null=False, blank=False)
+    note = models.ForeignKey(to=note, on_delete=models.CASCADE, null=True, blank=False)
+    terms_conditions = models.ForeignKey(to=terms_conditions, on_delete=models.CASCADE, null=True, blank=False)
     total = models.DecimalField(default=0.0, max_digits=10, decimal_places=2, null=True, blank=True)
     paid = models.BooleanField(default=False)
 

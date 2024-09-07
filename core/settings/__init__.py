@@ -3,6 +3,11 @@ import os
 
 IS_HEROKU = 'DYNO' in os.environ
 
+if 'MAINTENANCE' in os.environ:
+    MAINTENANCE = True
+else:
+    MAINTENANCE = True
+
 if IS_HEROKU and ENV == ENV_STAGING:
     from .staging import *
 elif IS_HEROKU and ENV == ENV_PROD:

@@ -1,0 +1,36 @@
+{% load static tailwind_tags %}
+{% load static %}
+{% load custom_tags %}
+{% load alert_tags %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% tailwind_css  %}
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link type="css" rel="stylesheet" href="/static/css/dist/styles.css"/>
+    <link href={% static 'css/dist/styles.css' %}/>
+    <title>{% block title %}{% endblock %} {{'DIVIDER'|get_setting }} {{ 'NAME'|get_setting }}</title>
+</head>
+<body class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white">
+    <div class="relative flex min-h-screen flex-col justify-center overflow-hidden">
+        <div class="relative bg-white px-6 pt-10 pb-8 shadow-2xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg dark:bg-gray-700 sm:px-10 mb-12">
+            <div class="mx-auto max-w-md">
+              <div class="flex justify-center">
+                  <h1 class="text-6xl text-center m-4 mb-8 bg-gray-800 text-white dark:bg-white dark:text-black rounded-xl px-8 pt-4 pb-5">Maintenance</h1>
+              </div>
+              <div class="justify-center mb-8 text-center">
+                    <h1 class="text-xl font-semibold pb-1"><i>Pyrl is down for maintenance...</i></h1>
+                    <p>Please bear with us during this technical downtime, we are committed to getting back online as soon as we can!</p>
+              </div>
+            </div>
+          </div>
+    </div>
+</body>
+<span scripts>
+    {% block scripts%}
+    {% endblock %}
+</span>
+</html>

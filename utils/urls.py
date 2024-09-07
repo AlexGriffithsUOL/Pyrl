@@ -9,5 +9,6 @@ app_name = 'utils'
 
 urlpatterns = [
     path("messages/<str:status>/<str:encoded_message>/", view=views.retrieve_message, name="messages"),
-    path("clear_messages/", view=views.clear_messages, name='clear_message')
+    path("clear_messages/", view=views.clear_messages, name='clear_message'),
+    path("spinner/", view=views.spinner, name="spinner")
 ]

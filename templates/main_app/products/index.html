@@ -63,6 +63,25 @@
     }
 </script>
 <script>
+    function edit_product(product_id) {
+        $.ajax({
+            type: 'POST',
+            headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+            url: "{% url 'main_app:products:edit' %}",
+            mode: 'same-origin', // Do not send CSRF token to another domain.
+            data: {
+                product_id: product_id,
+                name: $(`#name-${product_id}`).val(),
+                description: $(`#description-${product_id}`).val(),
+                price: $(`#price-${product_id}`).val(),
+                category: $(`#category-${product_id}`).val(),
+                action: 'post'
+            },
+        })
+        display_product_form(product_id);
+    }
+</script>
+<script>
     function save_product(product_id) {
         var form = document.getElementById(`product-form-${product_id}`);
         console.log(form);

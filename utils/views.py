@@ -1,6 +1,7 @@
 from django.template.loader import render_to_string
 from uuid import uuid4
 from django.http import JsonResponse
+from django.shortcuts import render, redirect
 
 # Create your views here.
 def retrieve_message(status, message, *args, **kwargs):
@@ -42,3 +43,7 @@ class message_manager:
             length_of_time = 10
         rendered = retrieve_message(status, message, length_of_time=length_of_time)
         request.session['message'] = rendered
+
+def spinner(request):
+    if request.user.is_authenticated:
+        return render(request, 'fragments/utils/spinners/standard.html', {})

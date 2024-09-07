@@ -86,3 +86,15 @@ def delete(request):
             specific_product.delete()
             return HttpResponse("deleted")
         
+
+def edit(request):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            product_id = request.POST['product_id']
+            specific_product = product.objects.get(pid=product_id)
+            specific_product.name = request.POST['name']
+            specific_product.description = request.POST['description']
+            specific_product.price = request.POST['price']
+            specific_product.category = request.POST['category']
+            specific_product.save()
+            return HttpResponse(200)

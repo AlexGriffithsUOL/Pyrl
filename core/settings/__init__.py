@@ -4,9 +4,9 @@ import os
 IS_HEROKU = 'DYNO' in os.environ
 
 if 'MAINTENANCE' in os.environ:
-    MAINTENANCE = True
+    MAINTENANCE = os.environ['MAINTENANCE']
 else:
-    MAINTENANCE = True
+    MAINTENANCE = False
 
 if IS_HEROKU and ENV == ENV_STAGING:
     from .staging import *

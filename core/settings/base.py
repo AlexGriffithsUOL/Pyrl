@@ -83,7 +83,7 @@ class WEEKDAYS:
     SATURDAY = 5
     SUNDAY = 6
 
-RELOAD = False
+RELOAD = True
 
 NO_ANALYTICS = [
     '/static/',

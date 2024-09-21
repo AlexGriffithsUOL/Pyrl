@@ -1,44 +1,63 @@
 {% extends 'main_app/base.html' %}
 {% block content %}
-<h1 class="font-semibold text-3xl text-center">CUSTOMER INDEX</h1>
-<div class="flex items-center justify-center p-6">
-    <div class="flex flex-col border-gray-300 border bg-white divide-y rounded-lg flex-none w-full md:w-full">
-        <div class="flex flex-col space-y-2 divide-y">
-            <!-- Item -->
-            <div class="flex justify-between space-x-6 items-center p-6">
-                <div class="flex items-center space-x-4">
-                    <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" class="rounded-full h-14 w-14" alt="">
-                    <div class="flex flex-col space-y-2">
-                        <span>Leonard Krashner</span>
-                        <span>(+44)-770-102-8269</span>
+<div class="p-2 min-w-full min-h-full hidden md:block">
+    <div class="flex flex-row justify-between border-gray-300 border bg-white divide-y rounded-lg flex-none w-full md:w-full p-2">
+            <form class="max-w-md min-w-[50%] xl:min-w-[35%] mx-4">   
+                <label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
                     </div>
-                    <div class="flex flex-col space-y-2">
-                        <span>29 Leaberry, New Bradwell, Milton Keynes, UK, MK13 0EU</span>
-                    </div>
-                    <div class="flex flex-col space-y-2">
-                        <span>Next Job: 12th March 2025</span>
-                        <span>Job: Renew safety certificate</span>
-                    </div>
+                    <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                </div>
+            </form>
+            <div class="p-2">
+                <button type="submit" class="text-white end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
+            </div>
+    </div>        
+</div>
+<div class="flex flex-row">
+    <div class="flex items-center justify-center p-2 min-w-full md:min-w-[50%]">
+        <div class="flex flex-col border-gray-300 border bg-white divide-y rounded-lg flex-none w-full md:w-full">
+            <div class="flex flex-col space-y-2 divide-y">
+                {% for customer in customers %}
+                <!-- Item -->
+                <div class="flex justify-between space-x-6 items-center p-6">
                     
-                </div>
-                <div>
-                    <button class="border rounded-md px-4 py-2">
-                        View
-                    </button>
-                </div>
-            </div>
-            <!-- Item -->
-            <div class="flex justify-between space-x-6 items-center p-6">
-                <div class="flex items-center space-x-4">
-                    <div>
-                        <button class="border rounded-md px-4 py-2">
-                            View
-                        </button>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" class="rounded-full h-14 w-14" alt="">
+                        <div class="flex flex-col space-y-2">
+                            <span>Leonard Krashner</span>
+                            <span>(+44)-770-102-8269</span>
+                        </div>
+                        {% comment %} <div class="flex flex-col space-y-2 hidden md:block">
+                            <span>29 Leaberry, New Bradwell, Milton Keynes, UK, MK13 0EU</span>
+                        </div>
+                        <div class="flex flex-col space-y-2 hidden md:block">
+                            <span>Next Job: 12th March 2025</span>
+                            <span>Job: Renew safety certificate</span>
+                        </div> {% endcomment %}
+                        
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            <!-- Item -->
-        </div>
+        </div>        
+    </div>
+
+    <div class="p-2 min-w-full md:min-w-[50%] min-h-full">
+        <div class="flex flex-col border-gray-300 border bg-white divide-y rounded-lg flex-none w-full md:w-full">
+                    <div class="flex items-center space-x-4">
+                        <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" class="rounded-full h-14 w-14" alt="">
+                        <div class="flex flex-col space-y-2">
+                            <span>Leonard Krashner</span>
+                            <span>(+44)-770-102-8269</span>
+                        </div>
+                    </div>
+        </div>        
     </div>
 </div>
 {% endblock %}

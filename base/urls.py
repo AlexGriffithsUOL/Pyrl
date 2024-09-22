@@ -9,6 +9,10 @@ app_name = 'base'
 
 urlpatterns = [
     path("", view=views.index.as_view(), name="index"),
+    path("financial_product/", view=views.financial_product.as_view(), name="finance_product"),
+    path("stock_product/", view=views.stock_product.as_view(), name="stock_product"),
+    path("communication_product/", view=views.communication_product.as_view(), name="communication_product"),
+    path("project_product/", view=views.project_product.as_view(), name="project_product"),
     path("pricing/", view=views.pricing.as_view(), name="pricing"),
     path("about/", view=views.about.as_view(), name="about"),
     path("contact/", view=views.contact.as_view(), name="contact"),

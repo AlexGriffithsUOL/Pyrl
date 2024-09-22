@@ -68,6 +68,7 @@
 <!-- START -->
 <div class="w-screen relative left-1/2 right-1/2 -mx-[50vw] dark:bg-gray-800">
   <div class="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row md:[--duration:40s] [--duration:30s]">
+    <!-- FIRST START -->
      <div class="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee3 flex-row group-hover:[animation-play-state:paused]">
       <div class="transform hover:-translate-y-2 transition duration-300">
         <div class="flex justify-center items-center p-4">
@@ -88,15 +89,15 @@
                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Multilingual Support</span>
                   </div>
                     <div class="mb-4">
-                      <button class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                      <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
                           <p class="line-clamp-2">Designed for technical teams and client partnerships, it optimizes productivity, enabling clear, organized interactions for successful project execution.</p>
                           <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
-                            <span class="text-xs mr-1">Read more</span>
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
                                 <path d="m6 9 6 6 6-6"></path>
                             </svg>
                           </div>
-                      </button>
+                        </div>
                     </div>
                     <div class="flex flex-wrap gap-2 mb-4">
                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Projects</span>
@@ -105,12 +106,12 @@
                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Client Collaborations</span>
                   </div>
                     <div class="flex justify-end items-center">
-                      <button class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                      <a href="{% url 'base:communication_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
                           View product
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
                             <path d="m9 18 6-6-6-6"></path>
                           </svg>
-                      </button>
+                        </a>
                     </div>
                 </div>
               </div>
@@ -136,15 +137,15 @@
                         <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Budget Control</span>
                       </div>
                        <div class="mb-4">
-                          <button class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
                              <p class="line-clamp-2">A new, state of the art Project Planning and Management, any project, in any way, at your fingertips. With short setup, dynamic customisation, ready to support any scale.</p>
                              <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
-                                <span class="text-xs mr-1">Read more</span>
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
                                    <path d="m6 9 6 6 6-6"></path>
                                 </svg>
                              </div>
-                          </button>
+                            </div>
                        </div>
                        <div class="flex flex-wrap gap-2 mb-4">
                         <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Services</span>
@@ -153,12 +154,12 @@
                         <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Consulting Services</span>
                       </div>
                        <div class="flex justify-end items-center">
-                          <button class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          <a href="{% url 'base:project_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
                              View product
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
                                 <path d="m9 18 6-6-6-6"></path>
                              </svg>
-                          </button>
+                            </a>
                        </div>
                     </div>
                  </div>
@@ -184,15 +185,15 @@
                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Balance Sheet</span>
                      </div>
                       <div class="mb-4">
-                         <button class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                         <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
                             <p class="line-clamp-2">An integrated financial tool that simplifies budgeting and invoicing, offering instant insights for informed decision-making.</p>
                             <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
-                               <span class="text-xs mr-1">Read more</span>
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
                                   <path d="m6 9 6 6 6-6"></path>
                                </svg>
                             </div>
-                         </button>
+                          </div>
                       </div>
                       <div class="flex flex-wrap gap-2 mb-4">
                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Revenue Tracking</span>
@@ -202,12 +203,12 @@
                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Payroll</span> 
                      </div>
                       <div class="flex justify-end items-center">
-                         <button class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                         <a href="{% url 'base:finance_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
                             View product
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
                                <path d="m9 18 6-6-6-6"></path>
                             </svg>
-                         </button>
+                          </a>
                       </div>
                    </div>
                 </div>
@@ -233,15 +234,15 @@
                      <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Barcode Scanning</span>
                    </div>
                     <div class="mb-4">
-                       <button class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                       <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
                           <p class="line-clamp-2">Efficiently manage your inventory and gain smarter control over stock, ensuring optimal operations and reduced costs.</p>
                           <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
-                             <span class="text-xs mr-1">Read more</span>
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
                                 <path d="m6 9 6 6 6-6"></path>
                              </svg>
                           </div>
-                       </button>
+                       </div>
                     </div>
                     <div class="flex flex-wrap gap-2 mb-4">
                      <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Electronics</span>
@@ -251,12 +252,12 @@
                      <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Raw Materials</span>
                    </div>
                     <div class="flex justify-end items-center">
-                       <button class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                       <a href="{% url 'base:stock_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
                           View product
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
                              <path d="m9 18 6-6-6-6"></path>
                           </svg>
-                       </button>
+                        </a>
                     </div>
                  </div>
               </div>
@@ -284,15 +285,15 @@
                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Multilingual Support</span>
                   </div>
                     <div class="mb-4">
-                      <button class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                      <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
                           <p class="line-clamp-2">Designed for technical teams and client partnerships, it optimizes productivity, enabling clear, organized interactions for successful project execution.</p>
                           <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
-                            <span class="text-xs mr-1">Read more</span>
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
                                 <path d="m6 9 6 6 6-6"></path>
                             </svg>
                           </div>
-                      </button>
+                        </div>
                     </div>
                     <div class="flex flex-wrap gap-2 mb-4">
                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Projects</span>
@@ -301,12 +302,12 @@
                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Client Collaborations</span>
                   </div>
                     <div class="flex justify-end items-center">
-                      <button class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                      <a href="{% url 'base:communication_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
                           View product
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
                             <path d="m9 18 6-6-6-6"></path>
                           </svg>
-                      </button>
+                        </a>
                     </div>
                 </div>
               </div>
@@ -332,15 +333,15 @@
                         <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Budget Control</span>
                       </div>
                        <div class="mb-4">
-                          <button class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
                              <p class="line-clamp-2">A new, state of the art Project Planning and Management, any project, in any way, at your fingertips. With short setup, dynamic customisation, ready to support any scale.</p>
                              <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
-                                <span class="text-xs mr-1">Read more</span>
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
                                    <path d="m6 9 6 6 6-6"></path>
                                 </svg>
                              </div>
-                          </button>
+                            </div>
                        </div>
                        <div class="flex flex-wrap gap-2 mb-4">
                         <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Services</span>
@@ -349,12 +350,12 @@
                         <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Consulting Services</span>
                       </div>
                        <div class="flex justify-end items-center">
-                          <button class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          <a href="{% url 'base:project_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
                              View product
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
                                 <path d="m9 18 6-6-6-6"></path>
                              </svg>
-                          </button>
+                            </a>
                        </div>
                     </div>
                  </div>
@@ -380,15 +381,15 @@
                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Balance Sheet</span>
                      </div>
                       <div class="mb-4">
-                         <button class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                         <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
                             <p class="line-clamp-2">An integrated financial tool that simplifies budgeting and invoicing, offering instant insights for informed decision-making.</p>
                             <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
-                               <span class="text-xs mr-1">Read more</span>
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
                                   <path d="m6 9 6 6 6-6"></path>
                                </svg>
                             </div>
-                         </button>
+                          </div>
                       </div>
                       <div class="flex flex-wrap gap-2 mb-4">
                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Revenue Tracking</span>
@@ -398,12 +399,12 @@
                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Payroll</span> 
                      </div>
                       <div class="flex justify-end items-center">
-                         <button class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                         <a href="{% url 'base:finance_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
                             View product
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
                                <path d="m9 18 6-6-6-6"></path>
                             </svg>
-                         </button>
+                          </a>
                       </div>
                    </div>
                 </div>
@@ -429,15 +430,15 @@
                      <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Barcode Scanning</span>
                    </div>
                     <div class="mb-4">
-                       <button class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                       <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
                           <p class="line-clamp-2">Efficiently manage your inventory and gain smarter control over stock, ensuring optimal operations and reduced costs.</p>
                           <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
-                             <span class="text-xs mr-1">Read more</span>
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
                                 <path d="m6 9 6 6 6-6"></path>
                              </svg>
                           </div>
-                       </button>
+                       </div>
                     </div>
                     <div class="flex flex-wrap gap-2 mb-4">
                      <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Electronics</span>
@@ -447,12 +448,12 @@
                      <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Raw Materials</span>
                    </div>
                     <div class="flex justify-end items-center">
-                       <button class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                       <a href="{% url 'base:stock_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
                           View product
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
                              <path d="m9 18 6-6-6-6"></path>
                           </svg>
-                       </button>
+                        </a>
                     </div>
                  </div>
               </div>
@@ -460,6 +461,800 @@
         </div>
       </div>
     </div>
+    <div class="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee3 flex-row group-hover:[animation-play-state:paused]">
+      <div class="transform hover:-translate-y-2 transition duration-300">
+        <div class="flex justify-center items-center p-4">
+          <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+              <div class="p-6">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Transform Communication with Unmatched Transparency</h2>
+                    <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                      <span>Only at {{'NAME'|get_setting}}</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                      <span><i>Make the most of your customer success</i></span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Engagement</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Remote Collaboration</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Secure Messaging</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Multilingual Support</span>
+                  </div>
+                    <div class="mb-4">
+                      <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <p class="line-clamp-2">Designed for technical teams and client partnerships, it optimizes productivity, enabling clear, organized interactions for successful project execution.</p>
+                          <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                <path d="m6 9 6 6 6-6"></path>
+                            </svg>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Projects</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Research Initiatives</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Event Planning</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Client Collaborations</span>
+                  </div>
+                    <div class="flex justify-end items-center">
+                      <a href="{% url 'base:communication_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          View product
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </a>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+        <div class="transform hover:-translate-y-2 transition duration-300">
+           <div class="flex justify-center items-center p-4">
+              <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                 <div class="p-6">
+                    <div>
+                       <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Take Project Management to the next level</h2>
+                       <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                          <span>Only at {{'NAME'|get_setting}}</span>
+                       </div>
+                       <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                        <span><i>New Gen Project Management solution</i></span>
+                       </div>
+                       <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Automation</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Intelligent Charting</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Customisable Pipelines</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Budget Control</span>
+                      </div>
+                       <div class="mb-4">
+                          <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                             <p class="line-clamp-2">A new, state of the art Project Planning and Management, any project, in any way, at your fingertips. With short setup, dynamic customisation, ready to support any scale.</p>
+                             <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                   <path d="m6 9 6 6 6-6"></path>
+                                </svg>
+                             </div>
+                            </div>
+                       </div>
+                       <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Services</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Manufacturing Logistics</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Construction Projects</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Consulting Services</span>
+                      </div>
+                       <div class="flex justify-end items-center">
+                          <a href="{% url 'base:project_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                             View product
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                                <path d="m9 18 6-6-6-6"></path>
+                             </svg>
+                            </a>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="transform hover:-translate-y-2 transition duration-300">
+          <div class="flex justify-center items-center p-4">
+             <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                <div class="p-6">
+                   <div>
+                      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Effortless Accounting, Real-Time Insights</h2>
+                      <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                         <span>Only at {{'NAME'|get_setting}}</span>
+                      </div>
+                      <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                       <span><i>A comprehensive platform for automating expenses, budgets, and financial reports</i></span>
+                      </div>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Invoice Management</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Reporting</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Expense Tracking</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Balance Sheet</span>
+                     </div>
+                      <div class="mb-4">
+                         <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                            <p class="line-clamp-2">An integrated financial tool that simplifies budgeting and invoicing, offering instant insights for informed decision-making.</p>
+                            <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                  <path d="m6 9 6 6 6-6"></path>
+                               </svg>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Revenue Tracking</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Annual Reporting</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Tax Preparation</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Audits</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Payroll</span> 
+                     </div>
+                      <div class="flex justify-end items-center">
+                         <a href="{% url 'base:finance_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                            View product
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                               <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                          </a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="transform hover:-translate-y-2 transition duration-300">
+        <div class="flex justify-center items-center p-4">
+           <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+              <div class="p-6">
+                 <div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Streamline Inventory and Stock Management</h2>
+                    <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                       <span>Only at {{'NAME'|get_setting}}</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                     <span><i>Simple, easy to use stock management solution</i></span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Product Categorisation</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Stock Level Alerts</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Stock Auditing</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Barcode Scanning</span>
+                   </div>
+                    <div class="mb-4">
+                       <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <p class="line-clamp-2">Efficiently manage your inventory and gain smarter control over stock, ensuring optimal operations and reduced costs.</p>
+                          <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                <path d="m6 9 6 6 6-6"></path>
+                             </svg>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Electronics</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Automotive Parts</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Industrial Tools</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Luxury Goods</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Raw Materials</span>
+                   </div>
+                    <div class="flex justify-end items-center">
+                       <a href="{% url 'base:stock_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          View product
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                             <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </a>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIRST START -->
+    <!-- SECOND START -->
+    <div class="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee3 flex-row group-hover:[animation-play-state:paused]">
+      <div class="transform hover:-translate-y-2 transition duration-300">
+        <div class="flex justify-center items-center p-4">
+          <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+              <div class="p-6">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Transform Communication with Unmatched Transparency</h2>
+                    <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                      <span>Only at {{'NAME'|get_setting}}</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                      <span><i>Make the most of your customer success</i></span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Engagement</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Remote Collaboration</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Secure Messaging</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Multilingual Support</span>
+                  </div>
+                    <div class="mb-4">
+                      <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <p class="line-clamp-2">Designed for technical teams and client partnerships, it optimizes productivity, enabling clear, organized interactions for successful project execution.</p>
+                          <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                <path d="m6 9 6 6 6-6"></path>
+                            </svg>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Projects</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Research Initiatives</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Event Planning</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Client Collaborations</span>
+                  </div>
+                    <div class="flex justify-end items-center">
+                      <a href="{% url 'base:communication_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          View product
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </a>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+        <div class="transform hover:-translate-y-2 transition duration-300">
+           <div class="flex justify-center items-center p-4">
+              <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                 <div class="p-6">
+                    <div>
+                       <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Take Project Management to the next level</h2>
+                       <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                          <span>Only at {{'NAME'|get_setting}}</span>
+                       </div>
+                       <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                        <span><i>New Gen Project Management solution</i></span>
+                       </div>
+                       <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Automation</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Intelligent Charting</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Customisable Pipelines</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Budget Control</span>
+                      </div>
+                       <div class="mb-4">
+                          <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                             <p class="line-clamp-2">A new, state of the art Project Planning and Management, any project, in any way, at your fingertips. With short setup, dynamic customisation, ready to support any scale.</p>
+                             <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                   <path d="m6 9 6 6 6-6"></path>
+                                </svg>
+                             </div>
+                            </div>
+                       </div>
+                       <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Services</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Manufacturing Logistics</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Construction Projects</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Consulting Services</span>
+                      </div>
+                       <div class="flex justify-end items-center">
+                          <a href="{% url 'base:project_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                             View product
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                                <path d="m9 18 6-6-6-6"></path>
+                             </svg>
+                            </a>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="transform hover:-translate-y-2 transition duration-300">
+          <div class="flex justify-center items-center p-4">
+             <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                <div class="p-6">
+                   <div>
+                      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Effortless Accounting, Real-Time Insights</h2>
+                      <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                         <span>Only at {{'NAME'|get_setting}}</span>
+                      </div>
+                      <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                       <span><i>A comprehensive platform for automating expenses, budgets, and financial reports</i></span>
+                      </div>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Invoice Management</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Reporting</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Expense Tracking</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Balance Sheet</span>
+                     </div>
+                      <div class="mb-4">
+                         <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                            <p class="line-clamp-2">An integrated financial tool that simplifies budgeting and invoicing, offering instant insights for informed decision-making.</p>
+                            <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                  <path d="m6 9 6 6 6-6"></path>
+                               </svg>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Revenue Tracking</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Annual Reporting</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Tax Preparation</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Audits</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Payroll</span> 
+                     </div>
+                      <div class="flex justify-end items-center">
+                         <a href="{% url 'base:finance_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                            View product
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                               <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                          </a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="transform hover:-translate-y-2 transition duration-300">
+        <div class="flex justify-center items-center p-4">
+           <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+              <div class="p-6">
+                 <div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Streamline Inventory and Stock Management</h2>
+                    <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                       <span>Only at {{'NAME'|get_setting}}</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                     <span><i>Simple, easy to use stock management solution</i></span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Product Categorisation</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Stock Level Alerts</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Stock Auditing</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Barcode Scanning</span>
+                   </div>
+                    <div class="mb-4">
+                       <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <p class="line-clamp-2">Efficiently manage your inventory and gain smarter control over stock, ensuring optimal operations and reduced costs.</p>
+                          <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                <path d="m6 9 6 6 6-6"></path>
+                             </svg>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Electronics</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Automotive Parts</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Industrial Tools</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Luxury Goods</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Raw Materials</span>
+                   </div>
+                    <div class="flex justify-end items-center">
+                       <a href="{% url 'base:stock_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          View product
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                             <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </a>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <!-- SECOND END -->
+    <!-- THIRD START -->
+    <div class="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee3 flex-row group-hover:[animation-play-state:paused]">
+      <div class="transform hover:-translate-y-2 transition duration-300">
+        <div class="flex justify-center items-center p-4">
+          <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+              <div class="p-6">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Transform Communication with Unmatched Transparency</h2>
+                    <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                      <span>Only at {{'NAME'|get_setting}}</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                      <span><i>Make the most of your customer success</i></span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Engagement</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Remote Collaboration</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Secure Messaging</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Multilingual Support</span>
+                  </div>
+                    <div class="mb-4">
+                      <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <p class="line-clamp-2">Designed for technical teams and client partnerships, it optimizes productivity, enabling clear, organized interactions for successful project execution.</p>
+                          <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                <path d="m6 9 6 6 6-6"></path>
+                            </svg>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Projects</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Research Initiatives</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Event Planning</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Client Collaborations</span>
+                  </div>
+                    <div class="flex justify-end items-center">
+                      <a href="{% url 'base:communication_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          View product
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </a>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+        <div class="transform hover:-translate-y-2 transition duration-300">
+           <div class="flex justify-center items-center p-4">
+              <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                 <div class="p-6">
+                    <div>
+                       <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Take Project Management to the next level</h2>
+                       <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                          <span>Only at {{'NAME'|get_setting}}</span>
+                       </div>
+                       <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                        <span><i>New Gen Project Management solution</i></span>
+                       </div>
+                       <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Automation</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Intelligent Charting</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Customisable Pipelines</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Budget Control</span>
+                      </div>
+                       <div class="mb-4">
+                          <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                             <p class="line-clamp-2">A new, state of the art Project Planning and Management, any project, in any way, at your fingertips. With short setup, dynamic customisation, ready to support any scale.</p>
+                             <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                   <path d="m6 9 6 6 6-6"></path>
+                                </svg>
+                             </div>
+                            </div>
+                       </div>
+                       <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Services</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Manufacturing Logistics</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Construction Projects</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Consulting Services</span>
+                      </div>
+                       <div class="flex justify-end items-center">
+                          <a href="{% url 'base:project_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                             View product
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                                <path d="m9 18 6-6-6-6"></path>
+                             </svg>
+                            </a>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="transform hover:-translate-y-2 transition duration-300">
+          <div class="flex justify-center items-center p-4">
+             <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                <div class="p-6">
+                   <div>
+                      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Effortless Accounting, Real-Time Insights</h2>
+                      <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                         <span>Only at {{'NAME'|get_setting}}</span>
+                      </div>
+                      <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                       <span><i>A comprehensive platform for automating expenses, budgets, and financial reports</i></span>
+                      </div>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Invoice Management</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Reporting</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Expense Tracking</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Balance Sheet</span>
+                     </div>
+                      <div class="mb-4">
+                         <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                            <p class="line-clamp-2">An integrated financial tool that simplifies budgeting and invoicing, offering instant insights for informed decision-making.</p>
+                            <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                  <path d="m6 9 6 6 6-6"></path>
+                               </svg>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Revenue Tracking</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Annual Reporting</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Tax Preparation</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Audits</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Payroll</span> 
+                     </div>
+                      <div class="flex justify-end items-center">
+                         <a href="{% url 'base:finance_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                            View product
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                               <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                          </a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="transform hover:-translate-y-2 transition duration-300">
+        <div class="flex justify-center items-center p-4">
+           <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+              <div class="p-6">
+                 <div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Streamline Inventory and Stock Management</h2>
+                    <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                       <span>Only at {{'NAME'|get_setting}}</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                     <span><i>Simple, easy to use stock management solution</i></span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Product Categorisation</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Stock Level Alerts</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Stock Auditing</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Barcode Scanning</span>
+                   </div>
+                    <div class="mb-4">
+                       <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <p class="line-clamp-2">Efficiently manage your inventory and gain smarter control over stock, ensuring optimal operations and reduced costs.</p>
+                          <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                <path d="m6 9 6 6 6-6"></path>
+                             </svg>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Electronics</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Automotive Parts</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Industrial Tools</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Luxury Goods</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Raw Materials</span>
+                   </div>
+                    <div class="flex justify-end items-center">
+                       <a href="{% url 'base:stock_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          View product
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                             <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </a>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <!-- THIRD END -->
+    <!-- FOURTH START -->
+    <div class="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee3 flex-row group-hover:[animation-play-state:paused]">
+      <div class="transform hover:-translate-y-2 transition duration-300">
+        <div class="flex justify-center items-center p-4">
+          <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+              <div class="p-6">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Transform Communication with Unmatched Transparency</h2>
+                    <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                      <span>Only at {{'NAME'|get_setting}}</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                      <span><i>Make the most of your customer success</i></span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Engagement</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Remote Collaboration</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Secure Messaging</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Multilingual Support</span>
+                  </div>
+                    <div class="mb-4">
+                      <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <p class="line-clamp-2">Designed for technical teams and client partnerships, it optimizes productivity, enabling clear, organized interactions for successful project execution.</p>
+                          <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                <path d="m6 9 6 6 6-6"></path>
+                            </svg>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Team Projects</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Research Initiatives</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Event Planning</span>
+                    <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Client Collaborations</span>
+                  </div>
+                    <div class="flex justify-end items-center">
+                      <a href="{% url 'base:communication_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          View product
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </a>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+        <div class="transform hover:-translate-y-2 transition duration-300">
+           <div class="flex justify-center items-center p-4">
+              <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                 <div class="p-6">
+                    <div>
+                       <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Take Project Management to the next level</h2>
+                       <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                          <span>Only at {{'NAME'|get_setting}}</span>
+                       </div>
+                       <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                        <span><i>New Gen Project Management solution</i></span>
+                       </div>
+                       <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Automation</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Intelligent Charting</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Customisable Pipelines</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Budget Control</span>
+                      </div>
+                       <div class="mb-4">
+                          <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                             <p class="line-clamp-2">A new, state of the art Project Planning and Management, any project, in any way, at your fingertips. With short setup, dynamic customisation, ready to support any scale.</p>
+                             <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                   <path d="m6 9 6 6 6-6"></path>
+                                </svg>
+                             </div>
+                            </div>
+                       </div>
+                       <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Services</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Manufacturing Logistics</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Construction Projects</span>
+                        <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Consulting Services</span>
+                      </div>
+                       <div class="flex justify-end items-center">
+                          <a href="{% url 'base:project_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                             View product
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                                <path d="m9 18 6-6-6-6"></path>
+                             </svg>
+                            </a>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="transform hover:-translate-y-2 transition duration-300">
+          <div class="flex justify-center items-center p-4">
+             <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+                <div class="p-6">
+                   <div>
+                      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Effortless Accounting, Real-Time Insights</h2>
+                      <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                         <span>Only at {{'NAME'|get_setting}}</span>
+                      </div>
+                      <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                       <span><i>A comprehensive platform for automating expenses, budgets, and financial reports</i></span>
+                      </div>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Invoice Management</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Reporting</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Expense Tracking</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Balance Sheet</span>
+                     </div>
+                      <div class="mb-4">
+                         <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                            <p class="line-clamp-2">An integrated financial tool that simplifies budgeting and invoicing, offering instant insights for informed decision-making.</p>
+                            <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                              <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                  <path d="m6 9 6 6 6-6"></path>
+                               </svg>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Revenue Tracking</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Annual Reporting</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Tax Preparation</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Financial Audits</span>
+                       <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Payroll</span> 
+                     </div>
+                      <div class="flex justify-end items-center">
+                         <a href="{% url 'base:finance_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                            View product
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                               <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                          </a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="transform hover:-translate-y-2 transition duration-300">
+        <div class="flex justify-center items-center p-4">
+           <div class="w-full max-w-[600px] bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+              <div class="p-6">
+                 <div>
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Streamline Inventory and Stock Management</h2>
+                    <div class="flex items-center text-sm text-gray-800 dark:text-gray-600 mb-2">
+                       <span>Only at {{'NAME'|get_setting}}</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-700 dark:text-gray-400 mb-4">
+                     <span><i>Simple, easy to use stock management solution</i></span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Product Categorisation</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Stock Level Alerts</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Stock Auditing</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Barcode Scanning</span>
+                   </div>
+                    <div class="mb-4">
+                       <div class="text-gray-500 text-sm w-full text-left focus:outline-none">
+                          <p class="line-clamp-2">Efficiently manage your inventory and gain smarter control over stock, ensuring optimal operations and reduced costs.</p>
+                          <div class="flex items-center text-pyrl-active dark:text-pyrl-200 hover:text-pyrl-300 dark:hover:text-pyrl-400 mt-2">
+                            <a href="{% url 'base:stock_product' %}" class="text-xs mr-1">Read more</a>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down w-4 h-4">
+                                <path d="m6 9 6 6 6-6"></path>
+                             </svg>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Electronics</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Automotive Parts</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Industrial Tools</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Luxury Goods</span>
+                     <span class="px-2 py-1 bg-gray-200 hover:bg-pyrl-active hover:text-pyrl-100 dark:bg-gray-700 text-gray-400 dark:text-gray-400 text-xs rounded transition ease-in-out duration-300">Raw Materials</span>
+                   </div>
+                    <div class="flex justify-end items-center">
+                       <a href="{% url 'base:stock_product' %}" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
+                          View product
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right w-4 h-4 ml-1">
+                             <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </a>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOURTH END -->
+    
+
+    
   </div>
 </div>
 <!-- EMD -->

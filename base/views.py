@@ -75,4 +75,46 @@ class contact(View):
                       { 'page_title' : self.page_title }
                       )
     
+class financial_product(page_view):
+    page_title = "Finance & Accountancy Solution"
+    page_description = "Finance Management Product page"
+    page_keywords = "Finance"
+    template = "base/product_info/financial.html"
 
+    def get(self, request):
+        super().get(request=request, page_title = self.page_title)
+        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Finance and Accountancy Solution!', length_of_time=3)
+        return render(request, self.template, self.context)
+    
+class project_product(page_view):
+    page_title = "Project Planning & Management Solution"
+    page_description = "Project Planing Management Product page"
+    page_keywords = "Project"
+    template = "base/product_info/project_planning.html"
+
+    def get(self, request):
+        super().get(request=request, page_title = self.page_title)
+        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Project Planning and Management Solution!', length_of_time=3)
+        return render(request, self.template, self.context)
+    
+class communication_product(page_view):
+    page_title = "Communication Solution"
+    page_description = "Communication Product page"
+    page_keywords = "CommunicationFinance"
+    template = "base/product_info/communication.html"
+
+    def get(self, request):
+        super().get(request=request, page_title = self.page_title)
+        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Communication Management Solution!', length_of_time=3)
+        return render(request, self.template, self.context)
+    
+class stock_product(page_view):
+    page_title = "Stock Management Solution"
+    page_description = "Stock Management Product page"
+    page_keywords = "STock"
+    template = "base/product_info/stock.html"
+
+    def get(self, request):
+        super().get(request=request, page_title = self.page_title)
+        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Stock Management Solution!', length_of_time=3)
+        return render(request, self.template, self.context)

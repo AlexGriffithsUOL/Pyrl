@@ -8,6 +8,6 @@ class index(page_view):
 
     def get(self, request):
         super().__init__(request=request,page_title=self.page_title)
-        customers = range(0, 10)
+        customers = range(0, 1)
         self.context['customers'] = customers
         return render(request, self.template, self.context)

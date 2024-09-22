@@ -1,7 +1,7 @@
 {% extends 'main_app/base.html' %}
 {% block content %}
 <div class="p-2 min-w-full min-h-full hidden md:block">
-    <div class="flex flex-row justify-between border-gray-300 border bg-white divide-y rounded-lg flex-none w-full md:w-full p-2">
+    <div class="flex flex-row justify-between border-gray-300 dark:border-gray-700 border bg-white dark:bg-gray-800 divide-y rounded-lg flex-none w-full md:w-full p-2">
             <form class="max-w-md min-w-[50%] xl:min-w-[35%] mx-4">   
                 <label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
@@ -10,18 +10,18 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                         </svg>
                     </div>
-                    <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+                    <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Customers..." required />
                     <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                 </div>
             </form>
             <div class="p-2">
-                <button type="submit" class="text-white end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
+                <button type="submit" class="text-white end-2.5 bottom-2.5 bg-blue-700 border-none hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
             </div>
     </div>        
 </div>
 <div class="flex flex-row">
     <div class="flex items-center justify-center p-2 min-w-full md:min-w-[50%]">
-        <div class="flex flex-col border-gray-300 border bg-white divide-y rounded-lg flex-none w-full md:w-full">
+        <div class="flex flex-col border-gray-300 dark:border-gray-700 border bg-white dark:bg-gray-800 divide-y rounded-lg flex-none w-full md:w-full">
             <div class="flex flex-col space-y-2 divide-y">
                 {% for customer in customers %}
                 <!-- Item -->
@@ -29,7 +29,7 @@
                     
                     <div class="flex items-center space-x-4">
                         <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" class="rounded-full h-14 w-14" alt="">
-                        <div class="flex flex-col space-y-2">
+                        <div class="flex flex-col space-y-2 text-gray-900 dark:text-white">
                             <span>Leonard Krashner</span>
                             <span>(+44)-770-102-8269</span>
                         </div>
@@ -48,7 +48,7 @@
         </div>        
     </div>
 
-    <div class="p-2 min-w-full md:min-w-[50%] min-h-full">
+    <div class="p-2 min-w-full md:min-w-[50%] min-h-full hidden md:block">
         <div class="flex flex-col border-gray-300 border bg-white divide-y rounded-lg flex-none w-full md:w-full">
                     <div class="flex items-center space-x-4">
                         <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" class="rounded-full h-14 w-14" alt="">

@@ -1,8 +1,8 @@
 {% extends 'main_app/base.html' %}
 {% block content %}
-<div class="p-2 min-w-full min-h-full hidden md:block">
-    <div class="flex flex-row justify-between border-gray-300 dark:border-gray-700 border bg-white dark:bg-gray-800 divide-y rounded-lg flex-none w-full md:w-full p-2">
-            <form class="max-w-md min-w-[50%] xl:min-w-[35%] mx-4">   
+<div class="p-2 min-w-full min-h-full">
+    <div class="flex flex-col md:flex-row justify-between border-gray-300 dark:border-gray-700 border bg-white dark:bg-gray-800 divide-y rounded-lg flex-none w-full md:w-full p-2 items-center">
+            <form class="max-w-md min-w-[50%] xl:min-w-[35%] mx-4 w-full">   
                 <label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -14,14 +14,14 @@
                     <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                 </div>
             </form>
-            <div class="p-2">
-                <button type="submit" class="text-white end-2.5 bottom-2.5 bg-blue-700 border-none hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
+            <div class="p-2 pt-4 md:pt-2">
+                <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2">Create</a>
             </div>
     </div>        
 </div>
 <div class="flex flex-row">
     <div class="flex items-center justify-center p-2 min-w-full md:min-w-[50%]">
-        <div class="flex flex-col border-gray-300 dark:border-gray-700 border bg-white dark:bg-gray-800 divide-y rounded-lg flex-none w-full md:w-full">
+        <div class="flex flex-col border-gray-300 dark:border-gray-700 border bg-white dark:bg-gray-800 divide-y rounded-lg flex-none w-full">
             <div class="flex flex-col space-y-2 divide-y">
                 {% for customer in customers %}
                 <!-- Item -->
@@ -46,18 +46,6 @@
                 {% endfor %}
             </div>
         </div>        
-    </div>
-
-    <div class="p-2 min-w-full md:min-w-[50%] min-h-full hidden md:block">
-        <div class="flex flex-col border-gray-300 border bg-white divide-y rounded-lg flex-none w-full md:w-full">
-                    <div class="flex items-center space-x-4">
-                        <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" class="rounded-full h-14 w-14" alt="">
-                        <div class="flex flex-col space-y-2">
-                            <span>Leonard Krashner</span>
-                            <span>(+44)-770-102-8269</span>
-                        </div>
-                    </div>
-        </div>        
-    </div>
+    </div>   
 </div>
 {% endblock %}

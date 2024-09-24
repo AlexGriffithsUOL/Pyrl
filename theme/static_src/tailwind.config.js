@@ -73,7 +73,7 @@ module.exports = {
                 },
                 marquee3: {
                 '0%': { transform: 'translateX(0%)' },
-                '100%': { transform: 'translateX(-100.655)' },
+                '100%': { transform: 'translateX(-100.65%)' },
                 },
             },
         },

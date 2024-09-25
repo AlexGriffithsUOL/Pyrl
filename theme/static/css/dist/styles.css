@@ -1291,6 +1291,10 @@ select {
   height: 400px;
 }
 
+.h-\[408px\] {
+  height: 408px;
+}
+
 .h-\[86\.67px\] {
   height: 86.67px;
 }
@@ -1305,10 +1309,6 @@ select {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[408px\] {
-  height: 408px;
 }
 
 .max-h-\[297mm\] {
@@ -1460,12 +1460,12 @@ select {
   max-width: 50mm;
 }
 
-.max-w-\[66\%\] {
-  max-width: 66%;
+.max-w-\[600px\] {
+  max-width: 600px;
 }
 
-.max-w-\[700px\] {
-  max-width: 700px;
+.max-w-\[66\%\] {
+  max-width: 66%;
 }
 
 .max-w-full {
@@ -1482,10 +1482,6 @@ select {
 
 .max-w-sm {
   max-width: 24rem;
-}
-
-.max-w-\[600px\] {
-  max-width: 600px;
 }
 
 .flex-1 {
@@ -1779,6 +1775,10 @@ select {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
 }
 
 .overflow-y-auto {
@@ -3928,6 +3928,10 @@ select {
 
 .rtl\:divide-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-x-reverse: 1;
+}
+
+.rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
+  text-align: right;
 }
 
 @media (prefers-color-scheme: dark) {

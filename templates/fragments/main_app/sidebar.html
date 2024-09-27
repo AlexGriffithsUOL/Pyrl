@@ -86,7 +86,7 @@
                 ></path>
               </svg>
               <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                >Pages</span
+                >Customers</span
               >
               <svg
                 aria-hidden="true"
@@ -137,9 +137,9 @@
             <button
               type="button"
               class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-              aria-controls="dropdown-sales"
-              data-collapse-toggle="dropdown-sales"
-              onClick="display_by_id('dropdown-sales', 'hidden')"
+              aria-controls="dropdown-finance"
+              data-collapse-toggle="dropdown-finance"
+              onClick="display_by_id('dropdown-finance', 'hidden')"
             >
               <svg
                 aria-hidden="true"
@@ -155,7 +155,7 @@
                 ></path>
               </svg>
               <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                >Sales</span
+                >Finance</span
               >
               <svg
                 aria-hidden="true"
@@ -171,7 +171,7 @@
                 ></path>
               </svg>
             </button>
-            <ul id="dropdown-sales" class="hidden py-2 space-y-2">
+            <ul id="dropdown-finance" class="hidden py-2 space-y-2">
               <li>
                 <a
                   href={% url 'main_app:products:view' %}

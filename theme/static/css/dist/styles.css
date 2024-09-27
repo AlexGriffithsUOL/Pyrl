@@ -914,6 +914,10 @@ select {
   z-index: 50;
 }
 
+.z-0 {
+  z-index: 0;
+}
+
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
@@ -1773,6 +1777,10 @@ select {
   border-color: rgb(209 213 219 / 0.5);
 }
 
+.justify-self-end {
+  justify-self: end;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -2165,6 +2173,11 @@ select {
 .bg-zinc-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+}
+
+.bg-pyrl-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(16 16 162 / var(--tw-bg-opacity));
 }
 
 .fill-\[\#1a1ae8\] {
@@ -3031,6 +3044,11 @@ select {
   background-color: rgb(236 72 153 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-pyrl-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 185 248 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-pyrl-active:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(26 26 232 / var(--tw-bg-opacity));
@@ -3054,6 +3072,16 @@ select {
 .hover\:bg-teal-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(20 184 166 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-pyrl-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(93 93 239 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
 .hover\:text-black:hover {
@@ -3477,6 +3505,21 @@ select {
 .group:hover .group-hover\:text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:\[animation-play-state\:paused\] {
@@ -4030,6 +4073,11 @@ select {
     background-color: rgb(22 163 74 / var(--tw-bg-opacity));
   }
 
+  .dark\:bg-pyrl-200 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(185 185 248 / var(--tw-bg-opacity));
+  }
+
   .dark\:bg-pyrl-active {
     --tw-bg-opacity: 1;
     background-color: rgb(26 26 232 / var(--tw-bg-opacity));
@@ -4043,6 +4091,11 @@ select {
   .dark\:bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  }
+
+  .dark\:bg-pyrl-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(21 21 209 / var(--tw-bg-opacity));
   }
 
   .dark\:text-black {
@@ -4073,6 +4126,11 @@ select {
   .dark\:text-gray-600 {
     --tw-text-opacity: 1;
     color: rgb(75 85 99 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-gray-900 {
+    --tw-text-opacity: 1;
+    color: rgb(17 24 39 / var(--tw-text-opacity));
   }
 
   .dark\:text-green-400 {
@@ -4182,6 +4240,21 @@ select {
     background-color: rgb(232 232 253 / var(--tw-bg-opacity));
   }
 
+  .hover\:dark\:bg-pyrl-active:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(26 26 232 / var(--tw-bg-opacity));
+  }
+
+  .dark\:hover\:bg-pyrl-700:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(16 16 162 / var(--tw-bg-opacity));
+  }
+
+  .dark\:hover\:bg-pyrl-400:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(93 93 239 / var(--tw-bg-opacity));
+  }
+
   .dark\:hover\:text-black:hover {
     --tw-text-opacity: 1;
     color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -4207,8 +4280,29 @@ select {
     color: rgb(26 26 232 / var(--tw-text-opacity));
   }
 
+  .hover\:dark\:text-white:hover {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+
+  .dark\:hover\:text-gray-200:hover {
+    --tw-text-opacity: 1;
+    color: rgb(229 231 235 / var(--tw-text-opacity));
+  }
+
+  .dark\:hover\:text-gray-400:hover {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+  }
+
   .dark\:hover\:underline:hover {
     text-decoration-line: underline;
+  }
+
+  .dark\:hover\:shadow-none:hover {
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
   .dark\:focus\:border-blue-500:focus {
@@ -4279,6 +4373,11 @@ select {
   .group:hover .dark\:group-hover\:text-white {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+
+  .group:hover .dark\:group-hover\:text-gray-200 {
+    --tw-text-opacity: 1;
+    color: rgb(229 231 235 / var(--tw-text-opacity));
   }
 }
 

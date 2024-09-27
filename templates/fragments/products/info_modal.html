@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="flex items-center space-x-4 justify-between">
-                <button type="submit" OnClick="edit_product('{{product.pid}}')" class="text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800">
+                <button type="submit" OnClick="edit_product('{{product.pid}}')" class="px-4 py-2 bg-pyrl-100 dark:bg-pyrl-active dark:text-pyrl-100 text-pyrl-active text-sm font-medium rounded hover:bg-pyrl-active hover:text-pyrl-100 hover:dark:bg-pyrl-100 hover:dark:text-pyrl-active transition-colors duration-300 flex items-center">
                     Update product
                 </button>
                 {% csrf_token %}

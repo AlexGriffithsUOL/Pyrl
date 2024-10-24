@@ -1,5 +1,5 @@
 <select
-  class="{% if widget.classes %}{{ widget.classes }}{% endif %} w-full border-0  focus:ring-0"
+  class="{% if widget.classes %}{{ widget.classes }}{% endif %} w-full border-0  focus:ring-0 dark:bg-gray-800 bg-white"
 >
   {% for group_name, group_choices, group_index in widget.optgroups %}
     {% if group_name %}

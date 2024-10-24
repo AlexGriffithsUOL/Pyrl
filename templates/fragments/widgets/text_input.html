@@ -1,0 +1,16 @@
+<input 
+    class="{% if widget.classes %}{{ widget.classes }}{% endif %} w-full h-full bg-white dark:bg-gray-800 focus:text-black dark:focus:text-white text-gray-400 dark:text-gray-300 transition ease-in-out duration-300 !border-none !focus:ring-0"
+
+    type="{{ widget.type }}" 
+    name="{{ widget.name }}"
+
+    {% if widget.value %}
+        value="{{widget.value}}"
+    {% endif %}
+
+    {% if widget.value != None %} 
+        value="{{ widget.value|stringformat:'s' }}"
+    {% endif %}
+
+    {% include "widgets/attrs.html" %}
+/>

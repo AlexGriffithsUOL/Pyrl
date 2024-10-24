@@ -1,6 +1,6 @@
 from django import forms
 from products.models import product
-from custom_widgets.widgets import SelectInput, CustomTextInput, DecimalInput, CurrencyInput
+from custom_widgets.widgets import SelectInput, CustomTextInput, DecimalInput, CurrencyInput, InvoiceTextInput
 
 class row_form(forms.Form):
     country = forms.ModelChoiceField(
@@ -10,7 +10,7 @@ class row_form(forms.Form):
             widget=SelectInput
         )
     description = forms.DecimalField(
-        widget=CustomTextInput,
+        widget=InvoiceTextInput,
         max_digits=10,
         decimal_places=2
     )

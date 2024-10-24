@@ -29,11 +29,9 @@ class CustomInputInput(Widget):
 
         if self.styles:
             context['widget']['styles'] = self.styles
-            print(self.styles)
 
         if self.classes:
             context['widget']['classes'] = self.classes
-            print(context)
 
         if self.value:
             context['widget']['value'] = self.value
@@ -166,3 +164,6 @@ class CurrencyInput(DecimalInput):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.template_name = 'fragments/widgets/currency.html'
+
+class InvoiceTextInput(CustomInputInput):
+    template_name='fragments/widgets/text_input.html'

@@ -152,7 +152,7 @@ DB_NAME = 'localpyrl'
 DB_USER = 'postgres'
 DB_PASSWORD = ''
 DB_IP = '127.0.0.1'
-DB_PORT = '6666'
+DB_PORT = '5432'
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 if ENV == ENV_DEV:
     with open(os.path.join(BASE_DIR, 'db.password.txt'), 'r') as db_password_file:

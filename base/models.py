@@ -5,20 +5,26 @@ from datetime import datetime
 
 # Create your models here.
 
-class abstract_auditing(models.Model):
+class AbstractAuditingFields():
+    CREATED_AT = models.DateTimeField(default=datetime.now)
+    CREATED_BY = models.IntegerField(default=1)
+    LAST_UPDATED_AT = models.DateTimeField(null=True)
+    LAST_UPDATED_BY = models.IntegerField(null=True)
+
+class AbstractAuditing(models.Model):
     '''Abstract class to add auditing data'''
 
     class Meta:
         abstract = True
 
-    created_at = models.DateTimeField(default=datetime.now)
-    created_by = models.IntegerField(default=1)
-    last_updated_at = models.DateTimeField(null=True)
-    last_updated_by = models.IntegerField(null=True)
+    created_at = AbstractAuditingFields.CREATED_AT
+    created_by = AbstractAuditingFields.CREATED_BY
+    last_updated_at = AbstractAuditingFields.LAST_UPDATED_AT
+    last_updated_by = AbstractAuditingFields.LAST_UPDATED_BY
 
-    
 
-class company(abstract_auditing):
+
+class company(AbstractAuditing):
     class Meta:
         abstract = False
         db_table = 'company'

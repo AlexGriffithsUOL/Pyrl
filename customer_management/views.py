@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from base.views import page_view
+from base.views import PageView
 # Create your views here.
 
-class index(page_view):
+class index(PageView):
     template = 'main_app/customers/index.html'
     page_title = 'Customers'
 

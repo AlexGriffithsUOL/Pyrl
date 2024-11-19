@@ -1,3 +1,0 @@
-https://sandbox.plaid.com (Sandbox)
-https://development.plaid.com (Development)
-https://production.plaid.com (Production)

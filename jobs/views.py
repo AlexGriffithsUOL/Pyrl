@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views import View
-from base.views import page_view
+from base.views import PageView
 from utils.views import message_manager
 
 # Create your views here.
-class calendar(page_view):
+class calendar(PageView):
     page_title = "Calendar"
     page_description = "Calendar view"
     page_keywords = "Calendar"

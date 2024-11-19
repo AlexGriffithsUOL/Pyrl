@@ -48,6 +48,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+LOGIN_URL = '/auth/login_root/'
+LOGIN_REDIRECT_URL = '/auth/login_root/'
+
 TAILWIND_APP_NAME = "theme"
 
 # Application definition

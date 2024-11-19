@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from utils.views import message_manager
 
 
-class page_view(View):
+class PageView(View):
     context = {}
 
     def update_context(self, key, val):
@@ -23,7 +23,7 @@ class page_view(View):
     def __init__(self, *args, **kwargs):
         pass
 
-class index(page_view):
+class index(PageView):
     page_title = "Home"
     page_description = "Home page"
     page_keywords = "Home"
@@ -75,7 +75,7 @@ class contact(View):
                       { 'page_title' : self.page_title }
                       )
     
-class financial_product(page_view):
+class financial_product(PageView):
     page_title = "Finance & Accountancy Solution"
     page_description = "Finance Management Product page"
     page_keywords = "Finance"
@@ -86,7 +86,7 @@ class financial_product(page_view):
         message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Finance and Accountancy Solution!', length_of_time=3)
         return render(request, self.template, self.context)
     
-class project_product(page_view):
+class project_product(PageView):
     page_title = "Project Planning & Management Solution"
     page_description = "Project Planing Management Product page"
     page_keywords = "Project"
@@ -97,7 +97,7 @@ class project_product(page_view):
         message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Project Planning and Management Solution!', length_of_time=3)
         return render(request, self.template, self.context)
     
-class communication_product(page_view):
+class communication_product(PageView):
     page_title = "Communication Solution"
     page_description = "Communication Product page"
     page_keywords = "CommunicationFinance"
@@ -108,7 +108,7 @@ class communication_product(page_view):
         message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Communication Management Solution!', length_of_time=3)
         return render(request, self.template, self.context)
     
-class stock_product(page_view):
+class stock_product(PageView):
     page_title = "Stock Management Solution"
     page_description = "Stock Management Product page"
     page_keywords = "STock"

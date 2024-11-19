@@ -7,7 +7,6 @@ from django.contrib import auth
 from django.template.loader import render_to_string
 from utils.views import retrieve_message, message_manager
 
-
 # Create your views here.
 class signup(View):
     def __init__(self, *args, **kwargs):

@@ -5,11 +5,11 @@
 {% load static %}
 <div class="grid grid-cols-1 gap-4 mb-4">
   {% for product in products %}
-    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" id="product-card-{{product.pid}}">
+    <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" id="product-card-{{product.product_id}}">
         <ul class="text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse" id="fullWidthTab">
-            <h1 OnClick="display_product_form({{product.pid}})" class="inline-block w-full p-4 bg-gray-50 hover:bg-gray-300 hover:text-gray-900 dark:hover:text-gray-200 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 cursor-pointer">{{product.name}}</h1>
+            <h1 OnClick="display_product_form({{product.product_id}})" class="inline-block w-full p-4 bg-gray-50 hover:bg-gray-300 hover:text-gray-900 dark:hover:text-gray-200 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 cursor-pointer">{{product.name}}</h1>
         </ul>
-        <div id="contents-{{product.pid}}">
+        <div id="contents-{{product.product_id}}">
         </div>
 
     </div>

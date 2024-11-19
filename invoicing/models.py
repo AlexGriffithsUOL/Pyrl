@@ -1,12 +1,12 @@
 from django.db import models
 from products.models import product
 from base.models import company
-from base.models import abstract_auditing
+from base.models import AbstractAuditing
 from datetime import datetime, date
 from uuid import uuid4
 
 # Create your models here.
-class terms_conditions(abstract_auditing):
+class terms_conditions(AbstractAuditing):
     class Meta:
         abstract = False
         db_table = 'terms_and_conditions'
@@ -14,7 +14,7 @@ class terms_conditions(abstract_auditing):
     pid = models.BigAutoField(primary_key=True)
     terms = models.TextField(null=False, blank=False)
 
-class note(abstract_auditing):
+class note(AbstractAuditing):
     class Meta:
         abstract = False
         db_table = 'note'
@@ -22,7 +22,7 @@ class note(abstract_auditing):
     pid = models.BigAutoField(primary_key=True)
     note = models.TextField(null=False, blank=False)
 
-class invoice(abstract_auditing):
+class invoice(AbstractAuditing):
     class Meta:
         abstract = False
         db_table = 'invoice'

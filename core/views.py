@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from base.views import page_view
+from base.views import PageView
 
 # Create your views here.
 
@@ -27,7 +27,7 @@ class four_o_four(View):
     def get(self, request):
         return render(request, self.template, {})
     
-class maintenance(page_view):
+class maintenance(PageView):
     page_title = "Maintenance"
     page_description = "Maintenance page"
     page_keywords = "Maintenance"

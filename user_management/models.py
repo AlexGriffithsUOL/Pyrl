@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 import uuid
-from base.models import company, abstract_auditing
+from base.models import company, AbstractAuditing
 
 # Create your models here.
 # Custom user manager
@@ -86,7 +86,7 @@ class PyrlUser(AbstractBaseUser):
     def __str__(self):
         return f'User {self.primary_key} {self.email}'
     
-class address(abstract_auditing): 
+class address(AbstractAuditing): 
     class Meta:
         abstract = False
         db_table = 'address'
@@ -100,7 +100,7 @@ class address(abstract_auditing):
     country = models.TextField(null=False)
     postcode = models.TextField(null=False)
     
-class system_user(abstract_auditing):
+class system_user(AbstractAuditing):
     class Meta: 
         abstract = False
         db_table = 'system_users'

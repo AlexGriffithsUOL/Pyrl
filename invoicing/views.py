@@ -6,7 +6,7 @@ from uuid import uuid4
 import random
 from invoicing.models import invoice, invoice_product_link, product
 from .forms import row_form
-from base.views import page_view
+from base.views import PageView
 
 class entity_info:
     # internal object address
@@ -129,7 +129,7 @@ def generate_pages(table, pag, middle_pag):
     return pages
 
 # Create your views here.
-class index(page_view):
+class index(PageView):
     page_title = 'Invoice Home'
     def get(self, request):
         super().get(request=request, page_title = self.page_title)

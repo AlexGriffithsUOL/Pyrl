@@ -10,6 +10,7 @@ app_name = 'products'
 urlpatterns = [
     path("view/", view=views.view_products.as_view(), name="view"),
     path("new_product/", view=views.new_product, name="new_product"),
+    path("categories/", view=views.ProductCategoriesView.as_view(), name="categories"),
     path("create/", view=views.create, name="create"),
     path("delete/", view=views.delete, name="delete"),
     path("edit/", view=views.edit, name="edit"),

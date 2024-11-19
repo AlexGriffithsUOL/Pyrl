@@ -11,7 +11,7 @@ urlpatterns = [
     path("", view=views.index.as_view(), name="index"),
     path("create/", view=views.create_invoice.as_view(), name="create"),
     path("get_row/<str:fragment_id>", view=views.get_row, name="get_row"),
-    path("pdf/<str:company_id>", view=views.pdf_generator, name="pdf_generator")
+    path("pdf/<str:client_id>", view=views.pdf_generator, name="pdf_generator")
 ]
 
 if settings.DEBUG:

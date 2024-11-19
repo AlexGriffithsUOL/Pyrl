@@ -122,7 +122,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "core.middlewares.middleware.add_company_to_request",
+    "core.middlewares.middleware.add_parent_client_to_request",
     "utils.middlewares.middleware.determine_ajax",
     "analytics.middlewares.middleware.get_request_analytics",
 ]

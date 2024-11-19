@@ -1,6 +1,5 @@
 import re
 from django.conf import settings 
-from base.models import company
 from datetime import datetime
 from time import time
 from uuid import uuid4

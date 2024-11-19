@@ -62,7 +62,7 @@ class login_root(View):
         if User is not None:
             auth.login(request, User)
             if request.user.is_authenticated:
-                return render(request, "main_app/dashboard.html", { 'company_id' : 1 })
+                return render(request, "main_app/dashboard.html", { 'client_id' : 1 })
             else: 
                 return redirect('user_management:login_root')
         else:

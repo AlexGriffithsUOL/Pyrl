@@ -1,5 +1,5 @@
 from django.contrib import admin
-from user_management.models import company
+from base.models import PyrlClient
 
 # Register your models here.
-admin.site.register(company)
+admin.site.register(PyrlClient)

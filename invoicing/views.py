@@ -160,7 +160,7 @@ class create_invoice(View):
         user_products = product.objects.all()
         return render(request, self.template_name, {'product_choices':user_products})
 
-def pdf_generator(request, company_id):
+def pdf_generator(request, client_id):
     if request.method == "GET":
         invoice_id = uuid4()
         from_entity = entity_info('Pyrl', entity_info.entity_address('45 Monkston Ave.', 'Bethlehem, Oxfordshire'))

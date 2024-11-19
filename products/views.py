@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.views.generic import View
 from .models import product, ProductCategory
-from base.models import company
+from base.models import PyrlClient
 from datetime import datetime
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-import pytz
 from uuid import uuid4
 
 class view_products(View):
@@ -17,27 +17,57 @@ class view_products(View):
         self.template = "main_app/products/index.html"
         super().__init__()
 
-    @login_required
     def get(self, request):
-        products = product.objects.values('product_id', 'name')
+        if request.user.is_authenticated:
+            products = product.objects.values('product_id', 'name')
 
-        return render(
-            request, 
-            self.template,          
-            { 
-                'page_title': self.page_title,
-                'products': products
-            }
-        )
+            return render(
+                request, 
+                self.template,          
+                { 
+                    'page_title': self.page_title,
+                    'products': products
+                }
+            )
+        else:
+            return redirect('four')
     
     def post(self,request):
         return render(request, self.template, {})
+    
+class ProductCategoriesView(View):
+    def __init__(self, *args, **kwargs):
+        self.page_title = 'Product Categories'
+        self.page_description = 'User defined product categories'
+        self.page_keywords ='Product Categories'
+        self.template = 'main_app/products/product_categories.html'
+        super().__init__()
+        
+    def get(self, request):
+        product_categories = ProductCategory.objects.filter(client_id=request.user.client_id)
+        return render(
+            request,
+            self.template,
+            {
+                'page_title': self.page_title,
+                'product_categories': product_categories
+            }
+        )
+    
+    def post(self, request):
+        return JsonResponse(
+            {
+                'Result': 'Yay'
+            }
+        )
+        
+    
     
 @login_required
 def product_info(request):
     fragment = "fragments/products/info_modal.html"
     product_id = request.GET.get('product_id')
-    product_categories = ProductCategory.objects.filter(company_id=request.user.company_id)
+    product_categories = ProductCategory.objects.filter(client_id=request.user.client_id)
     if request.is_ajax:
         information = product.objects.get(pk=product_id)
         return render(
@@ -53,7 +83,7 @@ def product_info(request):
 def new_product(request):
     if request.method == 'GET':
         fragment = "fragments/products/create_new_product.html"
-        product_categories = ProductCategory.objects.filter(company_id=request.user.company_id)
+        product_categories = ProductCategory.objects.filter(client_id=request.user.client_id)
         return render(
             request, 
             fragment, 
@@ -65,11 +95,11 @@ def new_product(request):
     
 @login_required
 def create(request):
-    user_company = get_object_or_404(company, id=request.user.company_id)
+    parent_client = get_object_or_404(PyrlClient, id=request.user.client_id)
     current_time = f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}+00'
     if request.method == "POST":
         saving_product = product(
-            company_id = user_company,
+            client_id = parent_client,
             name = request.POST.get('product_name'),
             product_description = request.POST.get('product_description'),
             invoice_description = request.POST.get('product_description'),

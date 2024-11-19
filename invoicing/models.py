@@ -1,6 +1,6 @@
 from django.db import models
 from products.models import product
-from base.models import company
+from base.models import PyrlClient
 from base.models import AbstractAuditing
 from datetime import datetime, date
 from uuid import uuid4
@@ -30,7 +30,7 @@ class invoice(AbstractAuditing):
     pid = models.BigAutoField(primary_key=True)
     uuid = models.UUIDField(default=uuid4, editable=False)
     description = models.TextField(default=f'Invoice {date.today()} to Alex' , max_length=40, null=False, blank=False)
-    company_id = models.ForeignKey(to=company, on_delete=models.CASCADE, null=False, blank=False)
+    client_id = models.ForeignKey(to=PyrlClient, on_delete=models.CASCADE, null=False, blank=False)
     due_date = models.DateField(null=True, blank=False)
     note = models.ForeignKey(to=note, on_delete=models.CASCADE, null=True, blank=False)
     terms_conditions = models.ForeignKey(to=terms_conditions, on_delete=models.CASCADE, null=True, blank=False)

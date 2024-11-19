@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 import uuid
-from base.models import company, AbstractAuditing
+from base.models import PyrlClient, AbstractAuditing
 
 # Create your models here.
 # Custom user manager
@@ -32,7 +32,7 @@ class PyrlUserManager(BaseUserManager):
         user.mfa_enabled = False
         user.mfa_type = 'sm'
         user.mfa_code = 0
-        user.company_id = 1
+        user.client_id = 1
         user.save(using=self._db)
 
 # Custom user model
@@ -41,15 +41,14 @@ class PyrlUser(AbstractBaseUser):
     class Meta:
         db_table = 'users'
     primary_key = 'id'
-    # Unique identifiers for the user
-    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
 
     # Login information
     email = models.EmailField(unique=True)
-    username = models.CharField(max_length=120, unique=True)
 
     # Password for authentication
     password = models.CharField(max_length=120)
+
+    uuid = models.UUIDField()
 
     # User permissions
     is_active = models.BooleanField(default=True)
@@ -57,7 +56,7 @@ class PyrlUser(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_root = models.BooleanField(default=False)
-    company = models.ForeignKey(company, on_delete=models.CASCADE, default=1)
+    client = models.ForeignKey(PyrlClient, on_delete=models.CASCADE, default=1)
 
     # Model-specific metadata
     EMAIL_FIELD = 'email'
@@ -111,7 +110,7 @@ class system_user(AbstractAuditing):
     last_names = models.TextField()
     dob = models.DateField()
     password = models.TextField()
-    company_id = models.ForeignKey(company, on_delete=models.CASCADE, null=False)
+    client_id = models.ForeignKey(PyrlClient, on_delete=models.CASCADE, null=False)
     root_user = models.BooleanField()
     contact_email_address = models.TextField()
     contact_phone_number = models.TextField(max_length=11)

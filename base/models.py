@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
-from django.forms import TextInput
 from datetime import datetime
 
 # Create your models here.
@@ -24,19 +22,20 @@ class AbstractAuditing(models.Model):
 
 
 
-class company(AbstractAuditing):
+class PyrlClient(models.Model):
     class Meta:
         abstract = False
-        db_table = 'company'
+        db_table = 'client'
     id = models.BigAutoField(primary_key=True)
-    company_name = models.CharField(max_length=100)
-    company_address = models.CharField(max_length=100)
-    company_description = models.TextField()
-    company_phone = models.CharField(max_length=9)
-    company_email_base = models.CharField(max_length=100)
-    company_website = models.CharField(max_length=100)
-    company_logo = models.ImageField(upload_to='company_logos')
+    client_name = models.CharField(max_length=100)
+    client_address = models.CharField(max_length=100)
+    client_description = models.TextField()
+    client_phone = models.CharField(max_length=9)
+    client_email_base = models.CharField(max_length=100)
+    client_website = models.CharField(max_length=100)
+    client_logo = models.ImageField(upload_to='client_logos')
     package_scheme = models.CharField(max_length=1)
+    created_at = AbstractAuditingFields.CREATED_AT
 
     def __str__(self):
-        return f'{self.company_name}'
+        return f'{self.client_name}'

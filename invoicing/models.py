@@ -29,7 +29,7 @@ class invoice(AbstractAuditing):
     
     pid = models.BigAutoField(primary_key=True)
     uuid = models.UUIDField(default=uuid4, editable=False)
-    description = models.TextField(default=f'Invoice {date.today()} to Alex' , max_length=40, null=False, blank=False)
+    description = models.TextField(default=f'Invoice eee to Alex' , max_length=40, null=False, blank=False)
     client_id = models.ForeignKey(to=PyrlClient, on_delete=models.CASCADE, null=False, blank=False)
     due_date = models.DateField(null=True, blank=False)
     note = models.ForeignKey(to=note, on_delete=models.CASCADE, null=True, blank=False)

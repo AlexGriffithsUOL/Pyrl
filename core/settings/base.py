@@ -48,8 +48,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-LOGIN_URL = '/auth/login_root/'
-LOGIN_REDIRECT_URL = '/auth/login_root/'
+LOGIN_URL = '/auth/login/'
+LOGIN_REDIRECT_URL = '/auth/login/'
 
 TAILWIND_APP_NAME = "theme"
 
@@ -140,6 +140,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "core.context_processors.user_context",
             ],
         },
     },
@@ -232,6 +233,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "core.context_processors.user_context",
             ],
         }
     },

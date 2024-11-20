@@ -15,6 +15,9 @@ class PageView(View):
         for arg in args:
             for key, val in arg.items():
                 self.update_context(key, val)
+                
+        for key, val in kwargs.items():
+            self.update_context(key,val)
 
     def get(self, request, *args, **kwargs):
         self.add_to_context(kwargs)

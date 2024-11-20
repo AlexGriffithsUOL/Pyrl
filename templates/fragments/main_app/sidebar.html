@@ -179,13 +179,15 @@
                   >Products</a
                 >
               </li>
-              <li>
-                <a
-                  href={% url 'main_app:products:categories' %}
-                  class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >Product Categories</a
-                >
-              </li>
+              {% if is_root or is_client_admin %}
+                <li>
+                  <a
+                    href={% url 'main_app:products:categories' %}
+                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    >Product Categories</a
+                  >
+                </li>
+              {% endif %}
               <li>
                 <a
                   href="#"

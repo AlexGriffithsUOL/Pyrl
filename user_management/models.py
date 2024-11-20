@@ -57,6 +57,7 @@ class PyrlUser(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     is_root = models.BooleanField(default=False)
     client = models.ForeignKey(PyrlClient, on_delete=models.CASCADE, default=1)
+    is_client_admin = models.BooleanField(default=False)
 
     # Model-specific metadata
     EMAIL_FIELD = 'email'
@@ -98,21 +99,4 @@ class address(AbstractAuditing):
     county = models.TextField(null=False)
     country = models.TextField(null=False)
     postcode = models.TextField(null=False)
-    
-class system_user(AbstractAuditing):
-    class Meta: 
-        abstract = False
-        db_table = 'system_users'
-    
-    pid =   models.BigAutoField(primary_key=True)
-    first_names = models.TextField()
-    middle_names = models.TextField()
-    last_names = models.TextField()
-    dob = models.DateField()
-    password = models.TextField()
-    client_id = models.ForeignKey(PyrlClient, on_delete=models.CASCADE, null=False)
-    root_user = models.BooleanField()
-    contact_email_address = models.TextField()
-    contact_phone_number = models.TextField(max_length=11)
-    address_id = models.ForeignKey(address, on_delete=models.CASCADE)
 

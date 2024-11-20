@@ -19,14 +19,30 @@ class AbstractAuditing(models.Model):
     created_by = AbstractAuditingFields.CREATED_BY
     last_updated_at = AbstractAuditingFields.LAST_UPDATED_AT
     last_updated_by = AbstractAuditingFields.LAST_UPDATED_BY
-
-
-
-class PyrlClient(models.Model):
+    
+class PyrlModel(models.Model):
+    class Meta:
+        abstract = True
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+    read_only_attributes = { 'created_by', 'created_at' }
+    
+    def _read_only_check(self, attribute):
+        if attribute in self.read_only_attributes:
+            return True
+    
+    def is_read_only(self, attribute):
+        self._read_only_check(attribute)
+        
+    
+class PyrlClient(PyrlModel):
     class Meta:
         abstract = False
         db_table = 'client'
-    id = models.BigAutoField(primary_key=True)
+        
+    client_id = models.BigAutoField(primary_key=True)
     client_name = models.CharField(max_length=100)
     client_address = models.CharField(max_length=100)
     client_description = models.TextField()

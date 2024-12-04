@@ -39,7 +39,7 @@ class PyrlUserManager(BaseUserManager):
 class PyrlUser(AbstractBaseUser):
     # Meta class
     class Meta:
-        db_table = 'users'
+        db_table = 'system_users'
     primary_key = 'id'
 
     # Login information
@@ -58,6 +58,7 @@ class PyrlUser(AbstractBaseUser):
     is_root = models.BooleanField(default=False)
     client = models.ForeignKey(PyrlClient, on_delete=models.CASCADE, default=1)
     is_client_admin = models.BooleanField(default=False)
+    failed_login_attempts = models.IntegerField(default=0)
 
     # Model-specific metadata
     EMAIL_FIELD = 'email'

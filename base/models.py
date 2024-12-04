@@ -43,13 +43,14 @@ class PyrlClient(PyrlModel):
         db_table = 'client'
         
     client_id = models.BigAutoField(primary_key=True)
-    client_name = models.CharField(max_length=100)
-    client_address = models.CharField(max_length=100)
-    client_description = models.TextField()
-    client_phone = models.CharField(max_length=9)
-    client_email_base = models.CharField(max_length=100)
-    client_website = models.CharField(max_length=100)
-    client_logo = models.ImageField(upload_to='client_logos')
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    description = models.TextField()
+    telephone_number = models.CharField(max_length=9)
+    email_base = models.CharField(max_length=100)
+    website = models.CharField(max_length=100)
+    domain = models.TextField(null=True)
+    logo = models.ImageField(upload_to='client_logos')
     package_scheme = models.CharField(max_length=1)
     created_at = AbstractAuditingFields.CREATED_AT
 

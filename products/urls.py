@@ -8,13 +8,13 @@ from . import views
 app_name = 'products'
 
 urlpatterns = [
-    path("view/", view=views.view_products.as_view(), name="view"),
-    path("new_product/", view=views.new_product, name="new_product"),
+    path("view/", view=views.ProductMainView.as_view(), name="view"),
+    path("new_product/", view=views.AsyncGetCreateNewProductHTMLFunc, name="new_product"),
     path("categories/", view=views.ProductCategoriesView.as_view(), name="categories"),
-    path("create/", view=views.create, name="create"),
-    path("delete/", view=views.delete, name="delete"),
-    path("edit/", view=views.edit, name="edit"),
-    path("product_info/", view=views.product_info, name="product_info"),
+    path("create/", view=views.AsyncCreateProduct, name="create"),
+    path("delete/", view=views.AsyncDeleteProduct, name="delete"),
+    path("edit/", view=views.AsyncEditProduct, name="edit"),
+    path("product_info/", view=views.AsyncGetProductInfo, name="product_info"),
 ]
 
 if settings.DEBUG:

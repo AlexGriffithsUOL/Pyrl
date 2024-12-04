@@ -43,16 +43,19 @@ function save_product(product_id) {
     console.log(form);
     $.ajax({
         type: 'POST',
-        headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+        headers:    {
+                        'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val(),
+                        'Content-Type': 'application/json'
+                    },
         url: "{% url 'main_app:products:create' %}",
         mode: 'same-origin', // Do not send CSRF token to another domain.
-        data: {
+        data: JSON.stringify({
             product_name: $(`#name-${product_id}`).val(),
             product_description: $(`#description-${product_id}`).val(),
             product_price: $(`#price-${product_id}`).val(),
             product_category: $(`#category-${product_id}`).val(),
             action: 'post'
-        },
+        }),
     })
     window.location.reload();
 }

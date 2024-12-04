@@ -75,6 +75,8 @@ INSTALLED_APPS = [
     'utils',
     'jobs',
     'customer_management',
+    'relationships',
+    'opportunities',
 ]
 
 class WEEKDAYS:
@@ -93,11 +95,15 @@ NO_ANALYTICS = [
     '/__reload__/events/'
 ]
 
+MAIN_PAGE_PATH_ID = '/home/'
+
 ANALYTICS_DAYS = [
     WEEKDAYS.FRIDAY,
     WEEKDAYS.SATURDAY,
     WEEKDAYS.SUNDAY
 ]
+
+
 
 ANALYTICS_CONFIG = {
     'NO_ANALYTICS': NO_ANALYTICS,
@@ -123,8 +129,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "core.middlewares.middleware.add_parent_client_to_request",
-    "utils.middlewares.middleware.determine_ajax",
+    # "utils.middlewares.middleware.determine_ajax",
     "analytics.middlewares.middleware.get_request_analytics",
+    "core.middlewares.domain_middlewares.print_domain",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -239,4 +246,44 @@ TEMPLATES = [
     },
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Redis database 1
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
 # Forms and Widgets
+
+## settings.py
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        '__main__': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

@@ -8,12 +8,12 @@ from . import views
 app_name = 'user_management'
 
 urlpatterns = [
-    path("signup/", view=views.SignUpView.as_view(), name="signup"),
-    path("login/", view=views.LoginView.as_view(), name="login"),
-    path("logout", view=views.logout_func, name="logout"),
+    path("signup/", view=views.UserManagementSignUpView.as_view(), name="signup"),
+    path("login/", view=views.UserManagementLoginView.as_view(), name="login"),
+    path("logout", view=views.LogOutFunc, name="logout"),
     path("dashboard/", view=views.AdminDashboardView.as_view(), name="admin_dashboard"),
-    path("change_password/", view=views.change_password.as_view(), name="change_password"),
-    path("forgot_password/", view=views.forgot_password.as_view(), name="forgot_password"),
+    path("change_password/", view=views.UserManagementChangePasswordView.as_view(), name="change_password"),
+    path("forgot_password/", view=views.UserManagementForgotPasswordView.as_view(), name="forgot_password"),
 ]
 
 if settings.DEBUG:

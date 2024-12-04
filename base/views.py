@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
-from django.conf import settings
-from django.core.mail import send_mail
-from utils.views import message_manager
-
+from .mixins import UserAuthenticatedMixin
 
 class PageView(View):
     context = {}
@@ -18,106 +15,71 @@ class PageView(View):
                 
         for key, val in kwargs.items():
             self.update_context(key,val)
+            
+    def get_page_attrs(self):
+        if hasattr(self, 'page_title'): self.add_to_context(page_title=self.page_title) 
 
     def get(self, request, *args, **kwargs):
-        self.add_to_context(kwargs)
-        pass
+        self.add_to_context(**kwargs)
+        self.get_page_attrs()
+        return render(request=request, template_name=self.template, context=self.context)
+    
+    def post(self, request, *args, **kwargs):
+        self.add_to_context(**kwargs)
+        self.get_page_attrs()
+        return render(request=request, template_name=self.template, context=self.context)
 
     def __init__(self, *args, **kwargs):
-        pass
+        self.add_to_context(*args, **kwargs)
 
-class index(PageView):
+class AuthenticatedView(UserAuthenticatedMixin, PageView):
+    pass
+
+class HomePageMainView(PageView):
     page_title = "Home"
     page_description = "Home page"
     page_keywords = "Home"
     template = "base/home/index.html"
-
-    def get(self, request):
-        super().get(request=request, page_title = self.page_title)
-        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Our page has been updated! Scroll down to see more!', length_of_time=3)
-        return render(request, self.template, self.context)
     
-class pricing(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = "Pricing"
-        self.page_description = "Pricing page"
-        self.page_keywords = "pricing"
-        self.template = "base/pricing/index.html"
-        super().__init__()
+class HomePagePricingView(PageView):
+    page_title = "Pricing"
+    page_description = "Pricing page"
+    page_keywords = "pricing"
+    template = "base/pricing/index.html"
 
-
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
-
-class about(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = "About"
-        self.page_description = "About page"
-        self.page_keywords = "about"
-        self.template = "base/about/index.html"
-        super().__init__()
-
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
+class HomePageAboutView(PageView):
+    page_title = "About"
+    page_description = "About page"
+    page_keywords = "about"
+    template = "base/about/index.html"
     
-class contact(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = "Contact"
-        self.page_description = "Contact page"
-        self.page_keywords = "contact"
-        self.template = "base/contact/index.html"
-        super().__init__()
-
-
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
+class HomePageContactView(PageView):
+    page_title = "Contact"
+    page_description = "Contact page"
+    page_keywords = "contact"
+    template = "base/contact/index.html"
     
-class financial_product(PageView):
+class HomePageFinancialProductView(PageView):
     page_title = "Finance & Accountancy Solution"
     page_description = "Finance Management Product page"
     page_keywords = "Finance"
     template = "base/product_info/financial.html"
-
-    def get(self, request):
-        super().get(request=request, page_title = self.page_title)
-        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Finance and Accountancy Solution!', length_of_time=3)
-        return render(request, self.template, self.context)
     
-class project_product(PageView):
+class HomePageProjectProductView(PageView):
     page_title = "Project Planning & Management Solution"
     page_description = "Project Planing Management Product page"
     page_keywords = "Project"
     template = "base/product_info/project_planning.html"
-
-    def get(self, request):
-        super().get(request=request, page_title = self.page_title)
-        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Project Planning and Management Solution!', length_of_time=3)
-        return render(request, self.template, self.context)
     
-class communication_product(PageView):
+class HomePageCommunicationProductView(PageView):
     page_title = "Communication Solution"
     page_description = "Communication Product page"
     page_keywords = "CommunicationFinance"
     template = "base/product_info/communication.html"
-
-    def get(self, request):
-        super().get(request=request, page_title = self.page_title)
-        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Communication Management Solution!', length_of_time=3)
-        return render(request, self.template, self.context)
     
-class stock_product(PageView):
+class HomePageStockProductView(PageView):
     page_title = "Stock Management Solution"
     page_description = "Stock Management Product page"
     page_keywords = "STock"
     template = "base/product_info/stock.html"
-
-    def get(self, request):
-        super().get(request=request, page_title = self.page_title)
-        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Welcome to our new Stock Management Solution!', length_of_time=3)
-        return render(request, self.template, self.context)
+    

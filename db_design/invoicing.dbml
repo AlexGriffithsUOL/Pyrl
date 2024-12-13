@@ -1,0 +1,67 @@
+Table companies {
+    pid int [pk, increment]
+    company_name text
+}
+
+Table products {
+    pid int [pk, increment]
+    company_id int [fk]
+    product_name text
+    price float
+    invoice_description text
+    description text
+    date_created date_timestamped
+    last_updated date_timestamped
+    created_by int [fk] // links to sub-user account
+    last_updated_by int [fk] // links to sub-user account
+}
+
+Table invoice {
+    pid int [pk, increment]
+    company_id int [fk]
+    notes int [fk]
+    terms_conditions int [fk]
+    date_created date_timestamped
+    last_updated date_timestamped
+    created_by int [fk] // links to sub-user account
+    last_updated_by int [fk] // links to sub-user account
+}
+
+Table invoice_notes {
+    pid int [pk, increment]
+    invoice_id int [fk]
+    note text
+    date_created date_timestamped
+    last_updated date_timestamped
+    created_by int [fk] // links to sub-user account
+    last_updated_by int [fk] // links to sub-user account
+}z
+
+Table invoice_terms_conditions {
+    pid int [pk, increment]
+    invoice_id int [fk]
+    terms_conditions text
+    date_created date_timestamped
+    last_updated date_timestamped
+    created_by int [fk] // links to sub-user account
+    last_updated_by int [fk] // links to sub-user account
+}
+
+Table invoice_link {
+    pid int [pk, increment]
+    invoice_id int [fk]
+    product_id int [fk]
+    quantity float
+    price float
+    date_created date_timestamped
+    last_updated date_timestamped
+    created_by int [fk] // links to sub-user account
+    last_updated_by int [fk] // links to sub-user account
+}
+
+ref: invoice.company_id - companies.pid
+ref: invoice_terms_conditions.invoice_id - invoice.pid
+ref: invoice_notes.invoice_id - invoice.pid
+ref: invoice_link.product_id < products.pid
+ref: invoice_link.invoice_id > invoice.pid
+ref: products.company_id > companies.pid

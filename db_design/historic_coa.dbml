@@ -1,0 +1,39 @@
+Table coa_account_types {
+    pid int [pk, increment]
+    company_id int
+    number_identifier int(2)
+    asset_type string
+}
+
+// ref: coa_account_types.company_id - company.pid
+
+Table coa_types {
+    pid int [pk, increment]
+    company_id int
+    coa_account_type_id int
+    coa_end_number int
+    coa_description string
+}
+
+Table statements {
+    pid int [pk, increment]
+    statement_name string
+}
+
+Table coa_intermediaries {
+    id int [pk, increment]
+    coa_id int
+    coa_type_id int
+}
+
+Table coa {
+	pid int [pk, increment]
+    date_made date
+    company_id int
+    coa_statement int [note: "This can be linked to in the future"]
+}
+
+ref: coa_account_types.pid < coa_types.coa_account_type_id
+ref: coa_types.pid - coa_intermediaries.coa_type_id
+ref: coa_intermediaries.coa_id > coa.pid
+ref: coa.coa_statement > zstatements.pid

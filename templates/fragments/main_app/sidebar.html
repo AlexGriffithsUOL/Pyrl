@@ -1,7 +1,7 @@
 {% load static tailwind_tags %}
 {% tailwind_css  %}
 <aside
-      class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+      class="fixed top-8 md:xl:top-0 left-0 z-40 w-64 h-screen pt-14  transition-transform bg-white border-r border-gray-200 -translate-x-full md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
       aria-label="Sidenav"
       id="drawer-navigation"
     >
@@ -36,8 +36,19 @@
         </form>
         <ul class="space-y-2">
           <li>
+            <form action="#" method="GET" class="hidden lg:block lg:pl-2">
+              <label for="topbar-search" class="sr-only">Search</label>
+              <div class="relative mt-1 w-full">
+                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/> </svg>
+                </div>
+                <input type="text" name="email" id="topbar-search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search">
+              </div>
+            </form>
+          </li>
+          <li>
             <a
-              href="#"
+              href="{% url 'main_app:index' %}"
               class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
               <svg
@@ -59,6 +70,7 @@
               class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-pages"
               data-collapse-toggle="dropdown-pages"
+              onClick="display_by_id('dropdown-pages', 'hidden')"
             >
               <svg
                 aria-hidden="true"
@@ -74,7 +86,7 @@
                 ></path>
               </svg>
               <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                >Pages</span
+                >Customers</span
               >
               <svg
                 aria-hidden="true"
@@ -107,9 +119,16 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="{% url 'main_app:jobs:index' %}"
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >Calendar</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'main_app:customers:index' %}"
+                  class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >Customers</a
                 >
               </li>
             </ul>
@@ -118,8 +137,9 @@
             <button
               type="button"
               class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-              aria-controls="dropdown-sales"
-              data-collapse-toggle="dropdown-sales"
+              aria-controls="dropdown-finance"
+              data-collapse-toggle="dropdown-finance"
+              onClick="display_by_id('dropdown-finance', 'hidden')"
             >
               <svg
                 aria-hidden="true"
@@ -135,7 +155,7 @@
                 ></path>
               </svg>
               <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                >Sales</span
+                >Finance</span
               >
               <svg
                 aria-hidden="true"
@@ -151,14 +171,23 @@
                 ></path>
               </svg>
             </button>
-            <ul id="dropdown-sales" class="hidden py-2 space-y-2">
+            <ul id="dropdown-finance" class="hidden py-2 space-y-2">
               <li>
                 <a
-                  href="#"
+                  href={% url 'main_app:products:view' %}
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >Products</a
                 >
               </li>
+              {% if is_root or is_client_admin %}
+                <li>
+                  <a
+                    href={% url 'main_app:products:categories' %}
+                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    >Product Categories</a
+                  >
+                </li>
+              {% endif %}
               <li>
                 <a
                   href="#"
@@ -168,14 +197,14 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="{% url 'main_app:invoicing:index' %}"
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >Invoice</a
                 >
               </li>
             </ul>
           </li>
-          <li>
+          {% comment %} <li>
             <a
               href="#"
               class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -201,13 +230,14 @@
                 4
               </span>
             </a>
-          </li>
+          </li> {% endcomment %}
           <li>
             <button
               type="button"
               class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
               aria-controls="dropdown-authentication"
               data-collapse-toggle="dropdown-authentication"
+              onClick="display_by_id('dropdown-authentication', 'hidden')"
             >
               <svg
                 aria-hidden="true"
@@ -240,6 +270,22 @@
               </svg>
             </button>
             <ul id="dropdown-authentication" class="hidden py-2 space-y-2">
+              {% if request.user.is_authenticated %}
+              <li>
+                <a
+                  href={% url 'user_management:change_password' %}
+                  class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >Change Password</a
+                >
+              </li>
+              <li>
+                <a
+                  href={% url 'user_management:logout' %}
+                  class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >Sign Out</a
+                >
+              </li>
+              {% else %}
               <li>
                 <a
                   href="#"
@@ -256,11 +302,16 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="{% url 'user_management:forgot_password' %}"
                   class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >Forgot Password</a
                 >
               </li>
+              <li>
+                <p>Tester</p>
+              </li>
+              {% endif %}
+
             </ul>
           </li>
         </ul>
@@ -287,25 +338,6 @@
                 ></path>
               </svg>
               <span class="ml-3">Docs</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-            >
-              <svg
-                aria-hidden="true"
-                class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"
-                ></path>
-              </svg>
-              <span class="ml-3">Components</span>
             </a>
           </li>
           <li>
@@ -381,6 +413,7 @@
           type="button"
           data-dropdown-toggle="language-dropdown"
           class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:hover:text-white dark:text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+          onClick="display_by_id('language-dropdown', 'hidden')"
         >
           <svg
             aria-hidden="true"
@@ -423,7 +456,7 @@
         </button>
         <!-- Dropdown -->
         <div
-          class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
+          class="hidden absolute bottom-8a z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
           id="language-dropdown"
         >
           <ul class="py-1" role="none">
@@ -578,3 +611,5 @@
         </div>
       </div>
     </aside>
+
+    <script src={%static 'js/display_by_id.js'%}></script>

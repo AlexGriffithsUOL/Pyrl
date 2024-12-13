@@ -1,0 +1,14 @@
+{% extends "base/home/base.html" %}
+{% load static %}
+{% load custom_tags %}
+{% block title %}{{page_title}}{% endblock %}
+{% block content %}
+<div class="w-full h-screen">
+    <div class="m-auto h-full p-4">
+        <h1 class="border-b border-gray-200 pb-2 dark:border-gray-800 text-center text-5xl sm:text-4xl font-bold">Welcome to {{'NAME'|get_setting}} Communications</h1>
+        <p class="pl-24 pr-24">COMMUNICATION PRODUCT PLACEHOLDER</p>
+    </div>
+</div>
+{% endblock %}
+{% block scripts%}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% spaceless %}
+{% load static %}
+<div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" id="product-card-new">
+    <ul class="text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg sm:flex dark:divide-gray-600 dark:text-gray-400 rtl:divide-x-reverse" id="fullWidthTab">
+        <div class="w-full bg-gray-50 hover:bg-gray-300 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600 cursor-pointer">
+            <img class="inline-block p-4 fill-current" width='50px' src="{% static 'img/svg_images/misc/plus.svg' %}"/>
+        </div>
+    </ul>
+    <script src="{% static 'js/jquery.js'%}"></script>
+    <script type="text/javascript">
+        $(document).on('click', '#product-card-new', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'GET',
+                url: "{% url 'main_app:products:new_product' %}",
+                headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+                mode: 'same-origin', // Do not send CSRF token to another domain.
+                success: function (data) {
+                    var Obj = document.getElementById('product-card-new'); //any element to be fully replaced
+                    if(Obj.outerHTML) { //if outerHTML is supported
+                        Obj.outerHTML=data; ///it's simple replacement of whole element with contents of str var
+                    }
+                    else { //if outerHTML is not supported, there is a weird but crossbrowsered trick
+                        ObjParent=Obj.parentNode; //Okey, element should be parented
+                        ObjParent.replaceChild(tmpObj,Obj); //here we placing our temporary data instead of our target, so we can find it then and replace it into whatever we want to replace to
+                        ObjParent.innerHTML=ObjParent.innerHTML=data;
+                    }
+                }
+            })
+        });
+      </script>
+</div>
+{% endspaceless %}

@@ -1,0 +1,16 @@
+ID:
+656de5c362289e001cf71576
+
+DEV:
+7e5beba716bbfdec7b9233b570ddd1
+
+SANDBOX:
+e60c32b738a55d265472edebf9af4c
+
+RECOVERY CODE:
+5AXUY6-CIMCIWT-UEPIZ57-LHIFH4
+
+URLs:
+https://sandbox.plaid.com (Sandbox)
+https://development.plaid.com (Development)
+https://production.plaid.com (Production)

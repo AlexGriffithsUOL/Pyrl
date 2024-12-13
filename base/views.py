@@ -1,87 +1,85 @@
 from django.shortcuts import render
 from django.views.generic import View
-from .forms import SignUpForm
+from .mixins import UserAuthenticatedMixin
 
-# Create your views here.
-class PyrlBaseView(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = kwargs.pop('page_title')
-        self.page_description = kwargs.pop('page_description')
-        self.page_keywords = kwargs.pop('page_keywords')
-        self.template = kwargs.pop('template')
-        super().__init__()
+class PageView(View):
+    context = {}
 
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
+    def update_context(self, key, val):
+        self.context[key] = val
 
-class index(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = "Home"
-        self.page_description = "Home page"
-        self.page_keywords = "Home"
-        self.template = "base/home/index.html"
-        super().__init__()
+    def add_to_context(self, *args, **kwargs):
+        for arg in args:
+            for key, val in arg.items():
+                self.update_context(key, val)
+                
+        for key, val in kwargs.items():
+            self.update_context(key,val)
+            
+    def get_page_attrs(self):
+        if hasattr(self, 'page_title'): self.add_to_context(page_title=self.page_title) 
 
-
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
+    def get(self, request, *args, **kwargs):
+        self.add_to_context(**kwargs)
+        self.get_page_attrs()
+        return render(request=request, template_name=self.template, context=self.context)
     
-class pricing(View):
+    def post(self, request, *args, **kwargs):
+        self.add_to_context(**kwargs)
+        self.get_page_attrs()
+        return render(request=request, template_name=self.template, context=self.context)
+
     def __init__(self, *args, **kwargs):
-        self.page_title = "Pricing"
-        self.page_description = "Pricing page"
-        self.page_keywords = "pricing"
-        self.template = "base/pricing/index.html"
-        super().__init__()
+        self.add_to_context(*args, **kwargs)
 
+class AuthenticatedView(UserAuthenticatedMixin, PageView):
+    pass
 
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
-
-class about(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = "About"
-        self.page_description = "About page"
-        self.page_keywords = "about"
-        self.template = "base/about/index.html"
-        super().__init__()
-
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
+class HomePageMainView(PageView):
+    page_title = "Home"
+    page_description = "Home page"
+    page_keywords = "Home"
+    template = "base/home/index.html"
     
-class contact(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = "Contact"
-        self.page_description = "Contact page"
-        self.page_keywords = "contact"
-        self.template = "base/contact/index.html"
-        super().__init__()
+class HomePagePricingView(PageView):
+    page_title = "Pricing"
+    page_description = "Pricing page"
+    page_keywords = "pricing"
+    template = "base/pricing/index.html"
 
-
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title }
-                      )
+class HomePageAboutView(PageView):
+    page_title = "About"
+    page_description = "About page"
+    page_keywords = "about"
+    template = "base/about/index.html"
     
-class form(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = "Form"
-        self.page_description = "Form page"
-        self.page_keywords = "form"
-        self.template = "base/form/index.html"
-        super().__init__()
-
-
-    def get(self, request):
-        return render(request, self.template, 
-                      { 'page_title' : self.page_title,
-                        'form': SignUpForm() }
-                      )
+class HomePageContactView(PageView):
+    page_title = "Contact"
+    page_description = "Contact page"
+    page_keywords = "contact"
+    template = "base/contact/index.html"
+    
+class HomePageFinancialProductView(PageView):
+    page_title = "Finance & Accountancy Solution"
+    page_description = "Finance Management Product page"
+    page_keywords = "Finance"
+    template = "base/product_info/financial.html"
+    
+class HomePageProjectProductView(PageView):
+    page_title = "Project Planning & Management Solution"
+    page_description = "Project Planing Management Product page"
+    page_keywords = "Project"
+    template = "base/product_info/project_planning.html"
+    
+class HomePageCommunicationProductView(PageView):
+    page_title = "Communication Solution"
+    page_description = "Communication Product page"
+    page_keywords = "CommunicationFinance"
+    template = "base/product_info/communication.html"
+    
+class HomePageStockProductView(PageView):
+    page_title = "Stock Management Solution"
+    page_description = "Stock Management Product page"
+    page_keywords = "STock"
+    template = "base/product_info/stock.html"
+    

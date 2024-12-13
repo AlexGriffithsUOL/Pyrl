@@ -3,16 +3,18 @@
 {% block title %}{{page_title}}{% endblock %}
 {% block content %}
 <div class="w-full h-screen bg-gray-100 dark:bg-gray-800">
-    <div class="m-auto h-[90%] p-12 pb-0 grid  md:xl:grid-cols-3 md:xl:grid-rows-1 sm:grid-cols-1 sm:grid-rows-3 gap-12">
-        <div class="col-span-1 bg-white dark:bg-gray-700 rounded-2xl shadow-xl p-2">
+    <div class="m-auto h-[90%] p-12 pt-4 pb-0 grid  md:xl:grid-cols-3 md:xl:grid-rows-1 sm:grid-cols-1 sm:grid-rows-3 gap-12">
+        <div class="col-span-1 bg-white dark:bg-gray-700 rounded-2xl p-2 transition ease-in-out duration-500 shadow-inner hover:shadow-xl">
             <h1 class="text-xl md:text-3xl text-center border-b border-gray-300 dark:border-gray-500 pb-2 font-bold">Standard</h1>
         </div>
-        <div class="col-span-1 bg-white dark:bg-gray-700 rounded-2xl shadow-xl p-2">
+        <div class="col-span-1 bg-white dark:bg-gray-700 rounded-2xl p-2 transition ease-in-out duration-500 shadow-inner hover:shadow-xl">
             <h1 class="text-xl md:text-3xl text-center border-b border-gray-300 pb-2 dark:border-gray-500 font-bold">Executive</h1>
         </div>
-        <div class="col-span-1 bg-white dark:bg-gray-700 rounded-2xl shadow-xl p-2">
+        <div class="col-span-1 bg-white dark:bg-gray-700 rounded-2xl p-2 transition ease-in-out duration-500 shadow-inner hover:shadow-xl">
             <h1 class="text-xl md:text-3xl text-center border-b border-gray-300 pb-2 dark:border-gray-500 font-bold">Enterprise</h1>
         </div>
     </div>
 </div>
+{% endblock %}
+{% block scripts %}
 {% endblock %}

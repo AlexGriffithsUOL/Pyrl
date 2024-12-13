@@ -1,0 +1,188 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table root_users {
+  pid int [primary key]
+  email email
+  password hashed_string
+  mfa_enabled bool
+  mfa_type varchar
+  mfa_code int
+}
+
+Table company {
+  pid int [primary key]
+  root_user int
+  email_root string
+  business_name string //
+  business_address int //
+  business_structure varchar(4) //
+  tax_id_number int [note: "This needs validation"] //
+  fiscal_year_start date [note: "year doesn't need validation"] //
+  current_chart_of_accounts int //
+  bank_account_information int 
+  industry_and_business varchar(5) //
+  contact_information int //
+  sales_tax_information int
+}
+
+Table business_contact_info { 
+    pid int [pk, increment]
+    company_id int
+    first_name string
+    last_name string
+    phone_number int
+    email string
+    address_id int
+}
+
+ref: business_contact_info.address_id - business_address.pid
+ref: business_contact_info.company_id - company.pid
+
+Table business_address {
+    pid int [pk, increment]
+    house_number string
+    line1 string
+    line2 string
+    line3 string
+    city string
+    county string
+    country string
+    post_code string
+}
+
+Table industry_and_business {
+    code varchar(5)
+    name textarea
+}
+
+Table sub_users {
+  //Internals
+  pid int [primary key]
+  company_id int
+  email_start string
+
+  //Personal stuff
+  //Naming
+  first_name string
+  last_name string
+  middle_names string
+
+  //Address
+  house_number string
+  line1 string
+  line2 string
+  line3 string
+  city string
+  county string
+  country string
+  post_code string
+}
+
+Table clients {
+  //Identification
+  pid int [primary key]
+  primary_relationship int
+
+  //Personal stuff
+  //Naming
+  first_name string
+  last_name string
+  middle_names string
+
+  //Address
+  house_number string
+  line1 string
+  line2 string
+  line3 string
+  city string
+  county string
+  country string
+  post_code string
+}
+
+Table products {
+  pid int [primary key]
+  company_id int
+  name string
+  description textarea
+  price float
+  img image
+}
+
+Table Invoice_Product {
+  // Identification
+  pid id [primary key]
+  invoice_id uuid
+  product_id int
+
+  // Data
+  date_of_order date
+  item_description varchar(100)
+  price_per_item float
+  quantity int
+  total_price integer
+}
+
+Table invoices {
+  pid uuid [primary key]
+  company_id int
+  date_of_invoice date
+  bank_details int
+}
+
+Table coa_account_types {
+    pid int [pk, increment]
+    company_id int
+    number_identifier int(2)
+    asset_type string
+}
+
+ref: coa_account_types.company_id - company.pid
+
+Table coa_types {
+    pid int [pk, increment]
+    company_id int
+    coa_account_type_id int
+    coa_end_number int
+    coa_description string
+    coa_statement int [note: "This can be linked to in the future"]
+}
+
+Table statements {
+    pid int [pk, increment]
+    statement_name string
+}
+
+Table coa_intermediaries {
+    id int [pk, increment]
+    coa_id int
+    coa_type_id int
+}
+
+Table coa {
+	pid int [pk, increment]
+    date_made date
+    company_id int
+}
+
+ref: industry_and_business.code - company.industry_and_business
+
+ref: coa_account_types.pid < coa_types.coa_account_type_id
+ref: coa_types.pid - coa_intermediaries.coa_type_id
+ref: coa_intermediaries.coa_id > coa.pid
+ref: coa.company_id > company.pid
+ref: coa_types.company_id > company.pid
+ref: coa_types.coa_statement > statements.pid
+ref: company.current_chart_of_accounts - coa.pid
+
+ref:products.company_id > company.pid
+
+ref: invoices.company_id > company.pid
+ref: Invoice_Product.price_per_item - products.price
+ref: Invoice_Product.product_id > products.pid
+ref: Invoice_Product.invoice_id > invoices.pid
+
+ref: sub_users.company_id > company.pid
+ref: company.root_user - root_users.pid
+ref: clients.primary_relationship - sub_users.pid

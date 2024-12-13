@@ -1,0 +1,14 @@
+Business Name			// Done
+Business Address		// Done
+Business Structure		// Done
+Tax ID Number			// Done
+Fiscal Year			// Done
+Chart of Accounts		// Done
+Bank Account Information	NEEDS INVESTIGATION (LOOK AT PLAID)
+Industry and Business Type	// Done link to table holding csv info
+Contact Information		// Done
+Sales Tax Information		// Investigate
+
+
+Bank account info can be set up and managed through the PLAID API DO NOT DO YOURSELF ITS VERY HARD AND UNSAFE. YOU ARE NOT READY
+Need to investigate the actual Invoices and what they need can do this with conor

@@ -18,7 +18,9 @@ ENV_STAGING = "STAGING"
 ENV_PROD = "PROD"
 ENV_DEV = "DEV"
 
-ENV = os.environ["ENV"]
+if 'ENV' not in os.environ:
+    ENV = ENV_DEV
+else: ENV = os.environ["ENV"]
 
 from pathlib import Path
 
@@ -30,7 +32,8 @@ INTERNAL_IPS = [
 ]
 
 NAME = "Pyrl"
-SITE_TITLE = "Pyrl"
+DIVIDER = "@"
+SITE_TITLE = NAME
 
 DOMAIN = f'https://www.{SITE_TITLE}.com'
 
@@ -44,6 +47,9 @@ SECRET_KEY = "django-insecure-^glq(et8ig!4jj^s!f$^)_7y(-@%2jzb3l*9+7wm5hsc$6-6!8
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+LOGIN_URL = '/auth/login/'
+LOGIN_REDIRECT_URL = '/auth/login/'
 
 TAILWIND_APP_NAME = "theme"
 
@@ -59,13 +65,60 @@ INSTALLED_APPS = [
     'tailwind',
     "theme",
     'core',
+    'analytics',
+    'user_management',
+    'invoicing',
     'base',
-    'accounts',
     'main_app',
-    'demo',
     'jquery',
     'products',
+    'utils',
+    'jobs',
+    'customers',
+    'relationships',
+    'opportunities',
 ]
+
+class WEEKDAYS:
+    MONDAY = 0
+    TUESDAY = 1
+    WEDNESDAY = 2
+    THURSDAY = 3
+    FRIDAY = 4
+    SATURDAY = 5
+    SUNDAY = 6
+
+RELOAD = True
+
+NO_ANALYTICS = [
+    '/static/',
+    '/__reload__/events/'
+]
+
+MAIN_PAGE_PATH_ID = '/home/'
+
+ANALYTICS_DAYS = [
+    WEEKDAYS.FRIDAY,
+    WEEKDAYS.SATURDAY,
+    WEEKDAYS.SUNDAY
+]
+
+
+
+ANALYTICS_CONFIG = {
+    'NO_ANALYTICS': NO_ANALYTICS,
+    'VALID_WEEKDAYS': ANALYTICS_DAYS
+}
+
+# AUTHENTICATION_BACKENDS = ['core.backends.backends.MyBackend']
+
+# email
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'base@pyrl.online'
+# EMAIL_HOST_PASSWORD = '@e5[8Y6,C03O'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -75,6 +128,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "core.middlewares.middleware.add_parent_client_to_request",
+    # "utils.middlewares.middleware.determine_ajax",
+    "analytics.middlewares.middleware.get_request_analytics",
+    "core.middlewares.domain_middlewares.print_domain",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -90,6 +147,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "core.context_processors.user_context",
             ],
         },
     },
@@ -101,14 +159,25 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databasess
 
+DB_NAME = 'localpyrl'
+DB_USER = 'postgres'
+DB_PASSWORD = ''
+DB_IP = '127.0.0.1'
+DB_PORT = '5432'
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+if ENV == ENV_DEV:
+    with open(os.path.join(BASE_DIR, 'db.password.txt'), 'r') as db_password_file:
+        data = db_password_file.read()
+        DB_PASSWORD = data
+
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'localpyrl',
-       'USER': 'postgres',
-       'PASSWORD': 'WhosThat9!',
-       'HOST': '127.0.0.1',
-       'PORT': '6666',
+       'NAME': DB_NAME,
+       'USER': DB_USER,
+       'PASSWORD': DB_PASSWORD,
+       'HOST': DB_IP,
+       'PORT': DB_PORT,
    }
 }
 
@@ -130,6 +199,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+AUTH_USER_MODEL = 'user_management.PyrlUser'
 
 
 # Internationalization
@@ -154,7 +225,9 @@ STATIC_URL = "theme/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATIC_ROOT = str(BASE_DIR) + STATIC_URL
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+THEME_HIGHLIGHT = '#1a1ae8'
 
 TEMPLATES = [
     {
@@ -167,7 +240,50 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "core.context_processors.user_context",
             ],
         }
     },
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Redis database 1
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+# Forms and Widgets
+
+## settings.py
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        '__main__': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

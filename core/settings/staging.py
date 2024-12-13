@@ -1,4 +1,4 @@
-from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR, DEBUG, ALLOWED_HOSTS, STATIC_ROOT
+from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR, NAME, DIVIDER
 import environ
 import os
 
@@ -9,6 +9,12 @@ MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 
 DEBUG = os.environ['DEBUG']
 
+NAME = os.environ['NAME']
+DIVIDER = os.environ['DIVIDER']
+SITE_TITLE = NAME
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Static files (CSS, JavaScript, Images)

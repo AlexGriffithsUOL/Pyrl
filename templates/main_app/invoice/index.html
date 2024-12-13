@@ -1,0 +1,40 @@
+{% extends "main_app/base.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% load custom_tags %}
+{% load static %}
+{% block content %}
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th class="px-6 py-3">ID</th>
+              <th class="px-6 py-3">Description</th>
+              <th class="px-6 py-3">Due</th>
+              <th class="px-6 py-3">Total</th>
+              <th class="px-6 py-3">Paid</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for invoice in total_invoices%}
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ invoice.uuid }}</td>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ invoice.description }}</td>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ invoice.due_date }}</td>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ invoice.total }}</td>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ invoice.paid }}</td>
+            </tr>
+          {% endfor %}
+          <tr class="text-center border-b bg-white dark:bg-gray-800 dark:border-gray-700">
+            <td colspan="5" class="h-[52.3333px]">
+              <div class="p-1">
+                {% comment %} <a class="px-2 py-1 rounded-full bg-pyrl-active text-white hover:bg-pyrl-200 hover:text-gray-900 transition ease-in-out duration-300 dark:bg-pyrl-200 dark:text-gray-900 hover:dark:bg-pyrl-active hover:dark:text-white " href="{% url 'main_app:invoicing:create' %}">+</a> {% endcomment %}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+{% endblock %}
+{% block scripts %}
+  <script src={% static 'js/jquery.js' %}></script>
+{% endblock %}

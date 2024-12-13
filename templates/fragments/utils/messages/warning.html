@@ -1,0 +1,44 @@
+{% load tailwind_tags %}
+{% load static %}
+<div id="message_notif_{{ identifier }}" class="{{ length_of_time }}">
+    <head>
+        {% tailwind_css %}
+    </head>
+    <body>
+        <div class="bottom-0 left-0 p-3 fixed w-full">
+            <div class="bg-orange-200 border-l-4 border-orange-500 text-orange-700 p-4 w-full" role="alert">
+                <p class="font-bold">Warning!</p>
+                <p>{{ message }}</p>
+            </div>
+        <div>
+    </body>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script>
+        function resolveAfterNSeconds(n) {
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                resolve(n);
+              }, n);
+            });
+          }
+
+        async function delete_func() {
+            const id = 'message_notif_{{ identifier }}';
+            const element = document.getElementById(id);
+            const length_of_time = Number(element.className);
+            await resolveAfterNSeconds(length_of_time);
+            element.remove()
+            $.ajax({
+              type: 'POST',
+              url: "{% url 'utils:clear_message' %}",
+              headers: {'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+              mode: 'same-origin', // Do not send CSRF token to another domain.
+              success: function (data) {
+                  console.log(data);
+              }
+          })
+          }
+          
+        delete_func();
+    </script>
+</div>

@@ -25,7 +25,7 @@ module.exports = {
          * Adjust the following line to match your project structure.
          */
         '../../**/templates/**/*.html',
-
+        // '../../../**/templates/**/*.html'
         /**
          * JS: If you use Tailwind CSS in JavaScript, uncomment the following lines and make sure
          * patterns match your project structure.
@@ -42,7 +42,41 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'pyrl-active': '#1a1ae8',
+                'pyrl-light': '#5d5def',
+                'pyrl-100': '#e8e8fd',
+                'pyrl-200': '#b9b9f8',
+                'pyrl-300': '#8b8bf3',
+                'pyrl-400': '#5d5def',
+                'pyrl-500': '#2e2eea',
+                'pyrl-600': '#1515d1',
+                'pyrl-700': '#1010a2',
+                'pyrl-800': '#0c0c74',
+                'pyrl-900': '#070746',
+
+            },
+            animation: {
+                marquee: 'marquee 25s linear infinite',
+                marquee2: 'marquee2 25s linear infinite',
+                marquee3: 'marquee3 30s linear infinite',
+            },
+            keyframes: {
+                marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100%)' },
+                },
+                marquee2: {
+                '0%': { transform: 'translateX(100%)' },
+                '100%': { transform: 'translateX(0%)' },
+                },
+                marquee3: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100.65%)' },
+                },
+            },
+        },
     },
     plugins: [
         /**
@@ -55,3 +89,22 @@ module.exports = {
         require('@tailwindcss/aspect-ratio'),
     ],
 }
+
+// module.exports = {
+//     extend: {
+//         animation: {
+//           marquee: 'marquee 25s linear infinite',
+//           marquee2: 'marquee2 25s linear infinite',
+//         },
+//         keyframes: {
+//           marquee: {
+//             '0%': { transform: 'translateX(0%)' },
+//             '100%': { transform: 'translateX(-100%)' },
+//           },
+//           marquee2: {
+//             '0%': { transform: 'translateX(100%)' },
+//             '100%': { transform: 'translateX(0%)' },
+//           },
+//         },
+//     },
+// }

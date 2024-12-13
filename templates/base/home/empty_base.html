@@ -1,0 +1,30 @@
+{% load static tailwind_tags %}
+{% load static %}
+{% load custom_tags %}
+{% load alert_tags %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% tailwind_css  %}
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link type="css" rel="stylesheet" href="/static/css/dist/styles.css"/>
+    <link href={% static 'css/dist/styles.css' %}/>
+    <title>{% block title %}{% endblock %} {{'DIVIDER'|get_setting }} {{ 'NAME'|get_setting }}</title>
+</head>
+<body class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white">
+    <div></div>
+    <a href="{% url 'base:index' %}" class="fixed left-4 top-4 z-50 text-gray-500 transition duration-300 ease-in-out dark:hover:text-gray-300 hover:text-gray-800">Home...</a>
+    <div class="relative flex min-h-screen flex-col justify-center overflow-hidden">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% include 'fragments/utils/messages/message_runner.html' %}
+</body>
+<span scripts>
+    {% block scripts%}
+    {% endblock %}
+</span>
+</html>

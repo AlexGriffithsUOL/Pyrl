@@ -74,7 +74,7 @@ INSTALLED_APPS = [
     'products',
     'utils',
     'jobs',
-    'customer_management',
+    'customers',
     'relationships',
     'opportunities',
 ]

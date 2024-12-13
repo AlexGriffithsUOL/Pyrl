@@ -12,7 +12,7 @@ urlpatterns = [
     path("products/", include("products.urls")),
     path("invoice/", include("invoicing.urls")),
     path("calendar/", include("jobs.urls")),
-    path('customers/', include("customer_management.urls"))
+    path('customers/', include("customers.urls"))
 ]
 
 if settings.DEBUG:

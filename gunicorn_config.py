@@ -1,3 +1,2 @@
-from rq import cpu_count
-
-workers = cpu_count() * 2 + 1
+workers = 3
+max_connections = 30

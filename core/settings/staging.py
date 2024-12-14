@@ -1,13 +1,16 @@
 from .base import INSTALLED_APPS, MIDDLEWARE, BASE_DIR, NAME, DIVIDER
 import environ
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(', ')
 
 INSTALLED_APPS.append('whitenoise.runserver_nostatic')
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 
-DEBUG = os.environ['DEBUG']
+DEBUG = os.environ['DEBUG'] == 'True'
 
 NAME = os.environ['NAME']
 DIVIDER = os.environ['DIVIDER']

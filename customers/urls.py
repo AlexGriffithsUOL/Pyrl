@@ -7,7 +7,7 @@ from . import views
 app_name = 'customers'
 
 urlpatterns = [
-    path("home/", view=views.index.as_view(), name="index"),
+    path("view/", view=views.index.as_view(), name="index"),
 ]
 
 if settings.DEBUG:

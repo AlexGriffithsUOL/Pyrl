@@ -4,7 +4,7 @@ from base.views import PageView
 
 # Create your views here.
 
-class index(View):
+class index(PageView):
     def __init__(self, *args, **kwargs):
         self.page_title = "Redirects"
         self.page_description = "Redirect"
@@ -16,16 +16,14 @@ class index(View):
     def get(self, request):
         return redirect('base:index')
 
-class four_o_four(View):
-    def __init__(self, *args, **kwargs):
-        self.page_title = "404"
-        self.page_description = "404"
-        self.page_keywords = "404"
-        self.template = "404.html"
-        super().__init__()
+class FourOhFourView(PageView):
+    page_title = "404"
+    page_description = "404"
+    page_keywords = "404"
+    template = "404.html"
 
     def get(self, request):
-        return render(request, self.template, {})
+        return super().get(request)
     
 class maintenance(PageView):
     page_title = "Maintenance"

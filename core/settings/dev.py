@@ -12,3 +12,5 @@ DEBUG = True
 if RELOAD == True:
     INSTALLED_APPS.append('django_browser_reload')
     MIDDLEWARE.append("django_browser_reload.middleware.BrowserReloadMiddleware")
+
+DOMAIN_PATHS['local_reload'] = 'reload'

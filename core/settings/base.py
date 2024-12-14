@@ -77,6 +77,8 @@ INSTALLED_APPS = [
     'customers',
     'relationships',
     'opportunities',
+    'aws',
+    'storages'
 ]
 
 class WEEKDAYS:
@@ -132,6 +134,8 @@ MIDDLEWARE = [
     # "utils.middlewares.middleware.determine_ajax",
     "analytics.middlewares.middleware.get_request_analytics",
     "core.middlewares.domain_middlewares.print_domain",
+    "core.middlewares.middleware.OneSessionPerUserMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -214,6 +218,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+DOMAIN_PATHS =  {
+                    'home': 'home', 
+                    'root': '/'
+                }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -287,3 +295,17 @@ LOGGING = {
         },
     },
 }
+
+# AWS S3 Settings
+AWS_ACCESS_KEY_ID = 'AKIAX5ZI6F2N545ZX56D'
+AWS_SECRET_ACCESS_KEY = 'rwN1V31tA2NMDzjceOG/CybFDKbi0VYa6/X32FgP'
+AWS_STORAGE_BUCKET_NAME = 'pyrl-invoice-documents'
+AWS_S3_REGION_NAME = 'eu-west-2'  # e.g., 'us-west-1'
+AWS_S3_FILE_OVERWRITE = True 
+AWS_DEFAULT_ACL = 'private' 
+AWS_QUERYSTRING_AUTH = True
+
+# S3 Media Files Configuration
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'

@@ -12,5 +12,5 @@ class calendar(PageView):
 
     def get(self, request):
         super().__init__(request=request, page_title=self.page_title)
-        message_manager.attach_message(request, message_manager.STATUS.INFO, 'Our page has been updated! Scroll down to see more!', length_of_time=3)
+        # message_manager.attach_message(request, message_manager.STATUS.INFO, 'Our page has been updated! Scroll down to see more!', length_of_time=3)
         return render(request, self.template, self.context)

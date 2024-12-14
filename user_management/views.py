@@ -5,9 +5,8 @@ from .forms import RootLoginForm, FullSignupForm
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
-from django.template.loader import render_to_string
-from utils.views import retrieve_message, message_manager
-from base.views import PageView, AuthenticatedView
+from utils.views import message_manager
+from base.views import PageView
 
 
 # Create your views here.
@@ -19,7 +18,7 @@ class UserManagementSignUpView(PageView):
 
     def get(self, request):
         self.add_to_context(form=FullSignupForm())
-        return super.get()
+        return super().get(request)
 
 class UserManagementLoginView(PageView):
     page_title = "Login"

@@ -1,0 +1,6 @@
+<h1>Add a New AT</h1>
+<form method="post">
+    {% csrf_token %}
+    {{at_form}}
+    <button type="submit">Save</button>
+</form>

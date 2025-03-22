@@ -1,0 +1,10 @@
+{% extends "main_app/base.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<h1>{% if edit %}Edit a {% else %}Add a New {% endif %}COA</h1>
+<form method="post">
+    {% csrf_token %}
+    {{coa_form}}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

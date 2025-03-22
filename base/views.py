@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
 from .mixins import UserAuthenticatedMixin
 
 class PageView(View):
     context = {}
-
+    
     def update_context(self, key, val):
         self.context[key] = val
 
@@ -29,9 +29,14 @@ class PageView(View):
         self.get_page_attrs()
         return render(request=request, template_name=self.template, context=self.context)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, request=None, *args, **kwargs):
         self.add_to_context(*args, **kwargs)
 
+class WebhookView(View):
+    def post(self, request, *args, **kwargs):
+        raise Exception('Webhook view post has not been implemented')
+        
+    
 class AuthenticatedView(UserAuthenticatedMixin, PageView):
     pass
 

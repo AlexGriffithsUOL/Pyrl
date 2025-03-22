@@ -1,0 +1,44 @@
+{% load static %}
+{{link_token}}
+
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+
+<script src="{% static 'js/jquery.js' %}"></script>
+{%csrf_token%}
+<script>
+    function myFunction() {
+        const csrf_val = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+        return csrf_val;
+    }
+    {% comment %} const csrf_val = document.getElementsByName("csrfmiddlewaretoken").value; {% endcomment %}
+</script>
+
+<script>
+    console.log(myFunction());
+    const handler = Plaid.create({
+        token: `{{link_token}}`,
+        onSuccess: (public_token, metadata) => {    // log and save metadata
+            // exchange public token (if using Item-based products)
+            console.log(public_token);
+            console.log(metadata);
+            $.ajax({
+                type: 'POST',
+                headers:    {
+                                'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val(),
+                                'Content-Type': 'application/json'
+                            },
+                url: "{% url 'main_app:banking:public-token' customer_id %}",
+                mode: 'same-origin', 
+                data: JSON.stringify({
+                    public_token: public_token,
+                    metadata: metadata,
+                    csrfmiddlewaretoken: myFunction()
+                  })
+            })},
+        onLoad: () => {},
+        onExit: (err, metadata) => {},
+        onEvent: (eventName, metadata) => {},
+      });
+
+    handler.open();
+</script>

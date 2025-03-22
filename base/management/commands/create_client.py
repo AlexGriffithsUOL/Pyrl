@@ -30,11 +30,11 @@ class Command(BaseCommand):
             
         print(field_dict)
         
-        field_dict['created_at'] = datetime.now()
+        # field_dict['created_at'] = datetime.now()
         
         instance = PyrlClient(**field_dict)
         instance.save()
         
         # The main logic of your command
         
-        self.stdout.write(f'Company: {field_dict["client_name"]} is saved!')
+        self.stdout.write(f'Company: {field_dict["name"]} is saved!')

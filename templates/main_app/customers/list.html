@@ -1,0 +1,64 @@
+{% extends 'main_app/base.html' %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<div class="flex flex-row mt-0 md:mt-2">
+    <div class="flex items-center justify-center p-2 min-w-full">
+        <div class="flex flex-col border-gray-200 dark:border-gray-700 border bg-white dark:bg-gray-800 divide-y rounded-lg flex-none w-full">
+            <div class="flex flex-col">
+                {% for name, customer in customer_list.items %} 
+                    {% if customer.customer_id is not None %}
+                        <!-- Item -->
+                        <div class="group flex justify-between space-x-6 items-center p-6 cursor-pointer transition ease-in-out duration-300 hover:bg-gray-200 hover:shadow-inline dark:hover:shadow-none dark:hover:bg-gray-700">
+                            <a href="{% url 'main_app:customers:details' customer.customer_id %}" class="flex items-center space-x-4">
+                                <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" class="rounded-full h-14 w-14" alt="">
+                                <div class="flex flex-col space-y-2 text-gray-900 dark:text-white transition ease-in-out duration-300 group-hover:text-gray-600 dark:group-hover:text-gray-200">
+                                    <span>{{customer.display_name}}</span>
+                                    <span>{{customer.legal_entity}}</span>
+                                </div>
+                                {% if customer.plaid_access_token%}
+                                    <div>
+                                        <p>Bank Accounts Linked</p>
+                                    </div>
+                                {% endif %}
+                            </a>
+                        </div>
+                    {% else %}
+                            <div class="px-2 pt-2">
+                                <p class="text-xl font-semibold">{{name}}:</p>
+                                <div class="border-t border-gray-200">
+                                    {% for individual_customer in customer %}
+                                        <!-- Item -->
+                                        <div class="group flex justify-between space-x-6 items-center p-6 cursor-pointer transition ease-in-out duration-300 hover:bg-gray-200 hover:shadow-inline dark:hover:shadow-none dark:hover:bg-gray-700">
+                                            <a href="{% url 'main_app:customers:details' individual_customer.customer_id %}" class="flex items-center space-x-4">
+                                                <img src="https://flowbite.com/docs/images/people/profile-picture-1.jpg" class="rounded-full h-14 w-14" alt="">
+                                                <div class="flex flex-col space-y-2 text-gray-900 dark:text-white transition ease-in-out duration-300 group-hover:text-gray-600 dark:group-hover:text-gray-200">
+                                                    <span>{{individual_customer.display_name}}</span>
+                                                    <span>{{individual_customer.legal_entity}}</span>
+                                                </div>
+                                                {% if individual_customer.plaid_access_token%}
+                                                    <div>
+                                                        <p>Bank Accounts Linked</p>
+                                                        <a href="{% url 'main_app:customers:details' individual_customer.customer_id %}" class="flex items-center space-x-4">                           </div>
+                                                {% endif %}
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        <div class="flex flex-row rounded-xl m-2">
+                            <a class="px-4 py-2 text-pyrl-active hover:bg-gray-100 text-sm">View</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="group flex justify-between space-x-6 items-center p-6 cursor-pointer transition ease-in-out duration-300 hover:bg-gray-200 hover:shadow-inline dark:hover:shadow-none dark:hover:bg-gray-700">
+                    <a href="{% url 'main_app:customers:create' %}" class="flex items-center space-x-4">
+                        <div class="flex flex-col space-y-2 text-gray-900 dark:text-white transition ease-in-out duration-300 group-hover:text-gray-600 dark:group-hover:text-gray-200">
+                            <span>CREATE</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>        
+    </div>   
+</div>
+{% endblock %}

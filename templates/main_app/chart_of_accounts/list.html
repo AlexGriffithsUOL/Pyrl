@@ -1,0 +1,103 @@
+{% if page_debug %}
+    {% if account_types %}
+        <div>
+            <h1><b>Account Types</b></h1>
+            {% for at in account_types %}
+                <div>
+                    <p>{{at.account_type_id}}/{{at.description}} - {{at.expected_transaction_type.transaction_type}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1><b>Account Types</b></h1>
+        <p>Can't find any Account Types</p>
+    {% endif %}
+
+    {% if financial_statements %}
+        <div>
+            <h1><b>Financial Statements</b></h1>
+            {% for fs in financial_statements %}
+                <div>
+                    <p>{{fs.financial_statement_id}}/{{fs.description}} - {{fs.customer.display_name}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1><b>Financial Statements</b></h1>
+        <p>Can't find any Financial Statements</p>
+    {% endif %}
+
+    {% if accounts %}
+        <div>
+            <h1><b>Accounts</b></h1>
+            {% for account in accounts %}
+                <p>{{account.account_id}}/{{account.description}}</p>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1><b>Accounts</b></h1>
+        <p>Can't find any Accounts</p>
+    {% endif %}
+
+    {% if chart_of_accounts %}
+        <div>
+            <h1><b>Charts of Accounts</b></h1>
+            {% for coa in chart_of_accounts %}
+                <p>{{coa.coa_id}}/{{coa.description}} - {{coa.customer.display_name}}</p>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1><b>Charts of Accounts</b></h1>
+        <p>Can't find any Charts of Accounts</p>
+    {% endif %}
+
+    {% if coa_links %}
+        <div>
+            <h1><b>COA Links</b></h1>
+            {% for link in coa_links %}
+                <p>{{link.account.description}} - {{link.coa.description}}</p>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h1><b>COA Links</b></h1>
+        <p>Can't find any COA Links</p>
+    {% endif %}
+
+    {% if real_coa %}
+        {{real_coa}}
+    {% endif %}
+
+{% endif %}
+
+{% if real_coa %}
+    {% for coa in real_coa %}
+        <h1>{{coa.description}}{%if coa.start_date%}, {{coa.start_date}}{%endif%}{%if coa.end_date %} / {{coa.end_date}}{%endif%}</h1>
+        <table>
+            <tr>
+                <th>Nominal Code</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Financial Statement</th>
+                <th></th>{% comment %} Deletion {% endcomment %}
+            </tr>
+            {% for link in coa.links %}
+                <tr>
+                    <td><a href="{% url 'main_app:chart_of_accounts:acc_edit' customer_id link.account.account_id %}">{{link.account.nominal_code}}</a></td>
+                    <td>{{link.account.description}}</td>
+                    <td>
+                        <a href="{% url 'main_app:chart_of_accounts:at_edit' customer_id link.account.account_type.account_type_id %}">
+                            {{link.account.account_type.description}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'main_app:chart_of_accounts:fs_edit' customer_id link.account.financial_statement.financial_statement_id %}">
+                            {{link.account.financial_statement.description}}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+{% else %}
+        <p>No Charts of Accounts found</p>
+{% endif %}

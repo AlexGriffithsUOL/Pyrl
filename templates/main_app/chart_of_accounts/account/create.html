@@ -1,0 +1,6 @@
+<h1>Add a New COA Account</h1>
+<form method="post">
+    {% csrf_token %}
+    {{acc_form}}
+    <button type="submit">Save</button>
+</form>

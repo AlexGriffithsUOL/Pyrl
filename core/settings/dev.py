@@ -14,3 +14,7 @@ if RELOAD == True:
     MIDDLEWARE.append("django_browser_reload.middleware.BrowserReloadMiddleware")
 
 DOMAIN_PATHS['local_reload'] = 'reload'
+
+PLAID_API_KEY=os.environ['PLAID_API_KEY']
+PLAID_API_URL=os.environ['PLAID_API_URL']
+PLAID_CLIENT_ID=os.environ['PLAID_CLIENT_ID']

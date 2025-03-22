@@ -30,7 +30,7 @@ class invoice(AbstractAuditing):
     pid = models.BigAutoField(primary_key=True)
     uuid = models.UUIDField(default=uuid4, editable=False)
     description = models.TextField(default=f'Invoice eee to Alex' , max_length=40, null=False, blank=False)
-    client_id = models.ForeignKey(to=PyrlClient, on_delete=models.CASCADE, null=False, blank=False)
+    client = models.ForeignKey(to=PyrlClient, on_delete=models.CASCADE, null=False, blank=False)
     due_date = models.DateField(null=True, blank=False)
     note = models.ForeignKey(to=note, on_delete=models.CASCADE, null=True, blank=False)
     terms_conditions = models.ForeignKey(to=terms_conditions, on_delete=models.CASCADE, null=True, blank=False)
@@ -42,7 +42,7 @@ class invoice_product_link(models.Model):
         db_table = 'invoice_product_link'
 
     pid = models.BigAutoField(primary_key=True)
-    product_id = models.ForeignKey(to=product, on_delete=models.CASCADE, null=False, blank=False)
-    invoice_id = models.ForeignKey(to=invoice, on_delete=models.CASCADE, null=False, blank=False)
+    product = models.ForeignKey(to=product, on_delete=models.CASCADE, null=False, blank=False)
+    invoice = models.ForeignKey(to=invoice, on_delete=models.CASCADE, null=False, blank=False)
     quantity = models.DecimalField(default=0.0, max_digits=10, decimal_places=3, null=False, blank=False)
     price = models.DecimalField(default=0.0, max_digits=10, decimal_places=3, null=False, blank=False)

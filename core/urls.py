@@ -30,10 +30,10 @@ else:
         path("", view=views.index.as_view(), name="index"),
         path("admin/", admin.site.urls),
         path("home/", include("base.urls")),
-        path("main_app/", include("main_app.urls")),
-        path("auth/", include("user_management.urls")),
+        path("app/", include("main_app.urls")),
         path("404/", view=views.FourOhFourView.as_view(), name="four"),
         path("utils/", include('utils.urls')),
+        path("api/", include('api_application.urls')),
     ]
 
     if ENV == ENV_DEV and settings.RELOAD:

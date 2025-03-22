@@ -16,7 +16,7 @@ urlpatterns = [
     path("pricing/", view=views.HomePagePricingView.as_view(), name="pricing"),
     path("about/", view=views.HomePageAboutView.as_view(), name="about"),
     path("contact/", view=views.HomePageContactView.as_view(), name="contact"),
-    path("auth/", include("user_management.urls")),
+    # path("auth/", include("user_management.urls"))
 ]
 
 if settings.DEBUG:

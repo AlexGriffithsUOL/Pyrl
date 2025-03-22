@@ -1,0 +1,16 @@
+{% extends 'main_app/base.html' %}
+{% block content %}
+<div class="flex flex-row mt-0 md:mt-2">
+    <div class="flex items-center justify-center p-2 min-w-full">
+        <div class="flex flex-col border-gray-200 dark:border-gray-700 border bg-white dark:bg-gray-800 divide-y rounded-lg flex-none w-full">
+            <div class="flex flex-col">
+                <p>TEST</p>
+                <p>{{customer.customer_id}}</p>
+                <p>{{customer.display_name}}</p>
+                <p>{{customer.legal_entity}}</p>
+                <a href="{% url 'main_app:chart_of_accounts:list_coa' %}">Tester</a>
+            </div>
+        </div>        
+    </div>   
+</div>
+{% endblock %}

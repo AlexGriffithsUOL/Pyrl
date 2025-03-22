@@ -1,26 +1,26 @@
 from django import forms
 from products.models import product
-from custom_widgets.widgets import SelectInput, CustomTextInput, DecimalInput, CurrencyInput, InvoiceTextInput
+from ui.widget_library import TestCustomWidget
 
 class row_form(forms.Form):
     country = forms.ModelChoiceField(
             queryset= product.objects.all(),
             to_field_name='name',
             required=True,
-            widget=SelectInput
+            widget=TestCustomWidget()
         )
     description = forms.DecimalField(
-        widget=InvoiceTextInput,
+        widget=TestCustomWidget(),
         max_digits=10,
         decimal_places=2
     )
     quantity = forms.DecimalField(
-        widget=DecimalInput,
+        widget=TestCustomWidget(),
         max_digits=10,
         decimal_places=2
     )
     rate = forms.DecimalField(
-        widget=CurrencyInput,
+        widget=TestCustomWidget(),
         max_digits=10,
         decimal_places=2
     )

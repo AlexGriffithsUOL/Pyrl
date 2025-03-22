@@ -1,0 +1,6 @@
+<h1>Add a New FS</h1>
+<form method="post">
+    {% csrf_token %}
+    {{fs_form}}
+    <button type="submit">Save</button>
+</form>

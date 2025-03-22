@@ -3,7 +3,7 @@ from datetime import datetime
 
 # Create your models here.
 
-class AbstractAuditingFields():
+class AbstractAuditingFields:
     CREATED_AT = models.DateTimeField(default=datetime.now)
     CREATED_BY = models.IntegerField(default=1)
     LAST_UPDATED_AT = models.DateTimeField(null=True)
@@ -25,7 +25,6 @@ class AbstractAuditingLastUpdate(models.Model):
     last_updated_at = AbstractAuditingFields.LAST_UPDATED_AT
     last_updated_by = AbstractAuditingFields.LAST_UPDATED_BY
     
-
 class AbstractAuditing(AbstractAuditingCreated, AbstractAuditingLastUpdate):
     '''Abstract class to add auditing data'''
 
@@ -73,4 +72,5 @@ class PyrlClient(PyrlModel):
     package_scheme = models.CharField(max_length=1)
 
     def __str__(self):
-        return f'{self.client_name}'
+        return f'{self.name}'
+

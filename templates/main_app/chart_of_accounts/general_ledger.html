@@ -1,0 +1,30 @@
+<h1>General Ledger</h1>
+
+{% if transactions %}
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>To</th>
+            <th>Reference</th>
+            <th>Vat Type</th>
+            <th>Net</th>
+            <th>Vat</th>
+            <th>Gross</th>
+            <th>Transaction Type</th>
+        </tr>
+        {% for transaction in transactions %}
+            <tr>
+                <td>{{transaction.date_of_transaction}}</td>
+                <td>{{transaction.account.description}}</td>
+                <td>{{transaction.reference_description}}</td>
+                <td>{{transaction.vat_type}}</td>
+                <td>{{transaction.net}}</td>
+                <td>{{transaction.vat}}</td>
+                <td>{{transaction.gross}}</td>
+                <td>{{transaction.transaction_type.full_type_name}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+<a href="{% url 'main_app:transaction:tr_create' customer_id %}">Create a transaction</a>
+        

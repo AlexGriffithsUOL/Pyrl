@@ -1,0 +1,19 @@
+{% extends 'main_app/base.html' %}
+
+{% block title %}{{page_title}}{% endblock %}
+
+{% block content %}
+<h1>Add a New Transaction</h1>
+<form method="post">
+    {% csrf_token %}
+        <div>
+            <h1>DEBIT</h1>
+            {{ dr_tr_form }}
+        </div>
+        <div>
+            <h1>CREDIT</h1>
+            {{ cr_tr_form }}
+        </div>
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

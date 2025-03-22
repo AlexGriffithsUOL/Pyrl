@@ -14,6 +14,7 @@ urlpatterns = [
     path("dashboard/", view=views.AdminDashboardView.as_view(), name="admin_dashboard"),
     path("change_password/", view=views.UserManagementChangePasswordView.as_view(), name="change_password"),
     path("forgot_password/", view=views.UserManagementForgotPasswordView.as_view(), name="forgot_password"),
+    path("users/list/", view=views.ListUserView.as_view(), name='list'),
 ]
 
 if settings.DEBUG:

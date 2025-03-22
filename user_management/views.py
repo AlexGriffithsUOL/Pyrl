@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from utils.views import message_manager
 from base.views import PageView
+from .models import PyrlUser
 
 
 # Create your views here.
@@ -29,10 +30,8 @@ class UserManagementLoginView(PageView):
     def get(self, request):
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
-            # Extract the first IP in case of a list of forwarded IPs
             ip = x_forwarded_for.split(',')[0]
         else:
-            # Fallback to the remote address
             ip = request.META.get('REMOTE_ADDR')
         self.add_to_context(form=RootLoginForm())
         return render(request, self.template, self.context)
@@ -46,14 +45,14 @@ class UserManagementLoginView(PageView):
             auth.login(request, User)
             if request.user.is_authenticated:
                 if ((request.user.is_root) or (request.user.is_client_admin)):
-                    return redirect("user_management:admin_dashboard")
+                    return redirect("main_app:user_management:admin_dashboard")
                 else:
-                    return render(request, "main_app/dashboard.html", {})
+                    return redirect('main_app:index')
             else: 
-                return redirect('user_management:login')
+                return redirect('main_app:user_management:login')
         else:
             message_manager.attach_message(request, message_manager.STATUS.ERROR, 'Login failed, please try again!')
-            return redirect('user_management:login')
+            return redirect('main_app:user_management:login')
 
 @login_required        
 def LogOutFunc(request):
@@ -92,10 +91,32 @@ class UserManagementForgotPasswordView(View):
         self.page_title = "Form"
         self.page_description = "Form page"
         self.page_keywords = "form"
-        self.template = "user_management/login/forgot_password.html"
+        self.template = "user_management/change_password/forgot_password.html"
         super().__init__()
 
     def get(self, request):
         return render(request, self.template, 
                       { 'page_title' : self.page_title }
                       )
+        
+class ListUserView(PageView):
+    page_title = 'Users'
+    template = 'main_app/user_management/user/list.html'
+    
+    def get(self, request):
+        users = PyrlUser.objects.filter(client=request.user.client)
+        self.add_to_context(users=users)
+        return render(
+            request,
+            self.template,
+            self.context
+        )
+        
+class CreateUserView(PageView):
+    page_title = 'Create a User'
+    template = 'main_app/user_management/user/create.html'
+    def __init__(self, *args, **kwargs):
+        super().__init__()
+        
+    def get(self, request):
+        return

@@ -9,7 +9,7 @@ class product(AbstractAuditing):
         abstract = False
 
     product_id = models.BigAutoField(primary_key=True)
-    client_id = models.ForeignKey(to=PyrlClient, on_delete=models.PROTECT)
+    client = models.ForeignKey(to=PyrlClient, on_delete=models.PROTECT)
     name = models.CharField(max_length=100)
     product_description = models.TextField()
     invoice_description = models.TextField(max_length=30, null=True, blank=True)
@@ -37,7 +37,7 @@ class ProductCategory(models.Model):
     product_category_id = models.BigAutoField(primary_key=True)
     category_description = models.TextField()
     product_category_value = models.TextField(max_length=4, blank=True, default='CAT')
-    client_id = models.ForeignKey(to=PyrlClient, on_delete=models.CASCADE, null=False, blank=False)
+    client = models.ForeignKey(to=PyrlClient, on_delete=models.CASCADE, null=False, blank=False)
     created_at = AbstractAuditingFields.CREATED_AT
     created_by = AbstractAuditingFields.CREATED_BY
     last_updated_at = AbstractAuditingFields.LAST_UPDATED_AT

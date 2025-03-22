@@ -35,7 +35,10 @@ NAME = "Pyrl"
 DIVIDER = "@"
 SITE_TITLE = NAME
 
-DOMAIN = f'https://www.{SITE_TITLE}.com'
+if ENV == ENV_STAGING or ENV == ENV_PROD:
+    DOMAIN = 'pyrl.uk'
+else:
+    DOMAIN = 'localpyrl.uk:8000'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -62,9 +65,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.forms',
     'tailwind',
     "theme",
     'core',
+    'ui',
     'analytics',
     'user_management',
     'invoicing',
@@ -75,10 +80,15 @@ INSTALLED_APPS = [
     'utils',
     'jobs',
     'customers',
-    'relationships',
+    'vendors',
+    'chart_of_accounts',
     'opportunities',
     'aws',
-    'storages'
+    'projects',
+    'storages',
+    'transaction',
+    'banking',
+    'api_application',
 ]
 
 class WEEKDAYS:
@@ -90,7 +100,7 @@ class WEEKDAYS:
     SATURDAY = 5
     SUNDAY = 6
 
-RELOAD = True
+RELOAD = False
 
 NO_ANALYTICS = [
     '/static/',
@@ -130,11 +140,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "core.middlewares.middleware.add_parent_client_to_request",
+    # "core.middlewares.middleware.add_parent_client_to_request",
     # "utils.middlewares.middleware.determine_ajax",
     "analytics.middlewares.middleware.get_request_analytics",
     "core.middlewares.domain_middlewares.print_domain",
-    "core.middlewares.middleware.OneSessionPerUserMiddleware",
+    # "core.middlewares.middleware.OneSessionPerUserMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 

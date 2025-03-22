@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from base.entity_list import LEGAL_ENTITY_DICT
-from relationships.models import EntityTypes
+from customers.models import EntityTypes
 
 class Command(BaseCommand):
     help = 'Load in the predefined list of legal entities'    

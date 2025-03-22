@@ -1,0 +1,25 @@
+{% extends 'main_app/base.html' %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+    <div class="bg-white mx-auto px-4 py-2 ">
+        <p>{{page_header}}</p>
+        <h1>{{contact_name}}<h1>
+        <form method='post'>
+            {% csrf_token %}
+            {% for field in contact_form %}
+                <div class="py-1">
+                    {{field}}
+                </div>
+            {% endfor %}
+            <div class="flex justify-between">
+                <button name="submit" value="submit">Submit</button>
+                {% if mode == 'edit' %}
+                    <button name="delete" value="delete">Delete</button>
+                {% endif %}
+            </div>
+        </form>
+        <a href="{% url 'main_app:customers:details' customer_id %}">Back</a>
+    </div>
+
+    
+{% endblock %}
